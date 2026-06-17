@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Download, ArrowRight, Eye, Lightbulb, MousePointerClick, Sparkles } from "lucide-react";
+import { Download, ArrowRight, Cpu, Network, ShieldCheck, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
@@ -92,7 +92,7 @@ function HomePage() {
             </div>
             <div className="hidden items-center justify-center md:flex">
               <div className="grid w-full max-w-sm grid-cols-2 gap-3">
-                {[Eye, Sparkles, Lightbulb, MousePointerClick].map((Icon, i) => (
+                {[Cpu, Network, ShieldCheck, Globe].map((Icon, i) => (
                   <div
                     key={i}
                     className="flex aspect-square items-center justify-center rounded-xl border border-border/70 bg-surface/60"
@@ -140,7 +140,7 @@ function HomePage() {
       <section className="mx-auto max-w-6xl px-4 py-24 sm:px-6">
         <SectionHeading
           eyebrow="Ecosystem"
-          title="OS Map is just the beginning."
+          title="Part of a growing ecosystem."
           description="OS Map is the first product in the PCNav ecosystem. Additional tools are planned with the same focus on clarity, visibility, and confidence."
         />
       </section>

@@ -69,7 +69,7 @@ function DownloadPage() {
                 </Button>
               </div>
               <p className="mt-6 text-sm text-muted-foreground">
-                GitHub is intended for technical users, transparency, issue reporting, and project review.
+                Prefer to review the project, follow development, or provide feedback? Visit the GitHub repository.
               </p>
             </CardContent>
           </Card>
