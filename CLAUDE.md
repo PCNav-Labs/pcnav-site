@@ -1,5 +1,9 @@
 # CLAUDE.md
 
+## Canonical governance
+This file is the canonical, version-controlled source of governance for this
+repository. Where any agent/local memory disagrees with this file, this file wins.
+
 ## Repository purpose
 This is the **PCNav public website** — the marketing/informational site for the
 PCNav ecosystem. PCNav is the public ecosystem brand; **OS Map** is the flagship
@@ -8,6 +12,14 @@ product the site presents.
 This repository is **separate** from the WinOS desktop app repo. **WinOS** is the
 internal desktop-app repository identity. Do **not** apply WinOS desktop-app
 structures, conventions, or rules here — this is a web project only.
+
+## Portfolio relationship
+* **PCNav** — public ecosystem brand and website (this repository).
+* **OS Map** — a product within the PCNav ecosystem (the flagship product this site presents).
+* **WinOS** — the internal repository identity under which OS Map is developed.
+* PCNav and WinOS are separate repositories with separate governance and
+  implementation concerns.
+* A change in one repository does not imply a change in the other.
 
 ## Source of truth
 The code in this repository is the source of truth for the website. Product
@@ -30,6 +42,14 @@ internal app repo (elsewhere). Keep terminology consistent with these.
 * Cross-project analysis, reconciliation, or file access requires explicit approval.
 * When uncertain whether information outside the repository is required, ask
   before expanding scope.
+* **Exception — ai_PILOT operational workflow artifacts:** ai_PILOT operational
+  workflow artifacts (currently resident in the WinOS project) remain the source
+  of truth for approved ai_PILOT operational workflow activities. Only when
+  explicitly requested to perform an operational workflow activity (close thread,
+  update cont, update parking, log friction, compression reviews, ai_PILOT
+  documentation updates, timesheet activities) may you reference those artifacts.
+  WinOS source code, specifications, implementation files, and other project
+  content remain off-limits without explicit approval.
 
 ## Commit messages
 * Write clean, human-readable messages scoped to the actual change.
