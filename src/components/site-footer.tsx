@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Compass } from "lucide-react";
 
-const GITHUB_URL = "https://github.com/pcnav";
+const GITHUB_URL = "https://github.com/Xtopher888/pcnav";
 
 export function SiteFooter() {
   return (

@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
 
-const GITHUB_URL = "https://github.com/pcnav";
+const GITHUB_URL = "https://github.com/Xtopher888/pcnav";
 
 export const Route = createFileRoute("/download")({
   head: () => ({
