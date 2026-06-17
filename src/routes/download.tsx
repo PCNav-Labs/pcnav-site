@@ -74,7 +74,16 @@ function DownloadPage() {
             </CardContent>
           </Card>
         </div>
+
+        <div className="mt-10 max-w-2xl">
+          <h3 className="font-display text-lg font-semibold">Prefer to explore first?</h3>
+          <p className="mt-2 text-sm text-muted-foreground">
+            Technical users can review the project, follow development, submit feedback, and access project resources on GitHub.
+          </p>
+        </div>
       </section>
+
+
 
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <SectionHeading eyebrow="Before you launch" title="A couple of things to expect." />
