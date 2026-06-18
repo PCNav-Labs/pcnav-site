@@ -65,8 +65,13 @@ function FeedbackPage() {
                 <h2 className="text-xl font-semibold">Suggest an idea</h2>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                Feature suggestions are welcome. Share them on GitHub as a discussion or issue.
+                Have an idea for OS Map? Open an issue on GitHub and tell us what you'd find useful.
               </p>
+              <Button asChild className="mt-6" variant="outline">
+                <a href={GITHUB_ISSUES_URL} target="_blank" rel="noreferrer noopener">
+                  <Github /> Suggest on GitHub
+                </a>
+              </Button>
             </CardContent>
           </Card>
         </div>

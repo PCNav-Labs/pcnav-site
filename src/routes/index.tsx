@@ -59,6 +59,9 @@ function HomePage() {
                 <a href="#what-is-pcnav">Learn More</a>
               </Button>
             </div>
+            <p className="mt-5 text-sm text-muted-foreground">
+              OS Map 0.1.0 is currently in beta. The first public download is coming soon.
+            </p>
           </div>
         </div>
       </section>
@@ -70,6 +73,12 @@ function HomePage() {
           title="Technology should be easier to understand."
           description="PCNav develops practical tools focused on visibility, clarity, and confidence rather than complexity."
         />
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+          PCNav builds practical tools that help you see and understand what your computer is doing.
+          Windows already holds the information that matters — it's just spread across many separate
+          screens and settings. PCNav brings that information together and presents it plainly, so you
+          can make decisions with a clearer picture of what's happening.
+        </p>
       </section>
 
       {/* Featured product */}
@@ -141,11 +150,15 @@ function HomePage() {
         <SectionHeading
           eyebrow="Ecosystem"
           title="Part of a growing ecosystem."
-          description="OS Map is the first product in the PCNav ecosystem. Additional tools are planned with the same focus on clarity, visibility, and confidence."
+          description="OS Map is the first product in the PCNav ecosystem — a set of tools built around the same idea: show you what's happening clearly before anything else."
         />
+        <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
+          More tools are planned over time, each focused on making a specific part of technology
+          easier to understand.
+        </p>
       </section>
 
-      <CtaBand />
+      <CtaBand description="See the OS Map beta and current release details." />
     </>
   );
 }

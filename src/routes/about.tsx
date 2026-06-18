@@ -2,7 +2,10 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/section-heading";
 import { PrivacyList } from "@/components/privacy-list";
 import { Card, CardContent } from "@/components/ui/card";
-import { Eye, Lightbulb, BookOpen, Compass, ShieldCheck } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Eye, Lightbulb, BookOpen, Compass, ShieldCheck, Github } from "lucide-react";
+
+const GITHUB_URL = "https://github.com/Xtopher888/pcnav";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -24,11 +27,31 @@ export const Route = createFileRoute("/about")({
 });
 
 const PILLARS = [
-  { icon: Lightbulb, label: "Clarity" },
-  { icon: Eye, label: "Visibility" },
-  { icon: BookOpen, label: "Understanding" },
-  { icon: Compass, label: "Confidence" },
-  { icon: ShieldCheck, label: "Privacy" },
+  {
+    icon: Lightbulb,
+    label: "Clarity",
+    description: "Information is presented plainly, so you don't need to be an expert to follow it.",
+  },
+  {
+    icon: Eye,
+    label: "Visibility",
+    description: "You can see what your system is doing before deciding what, if anything, to change.",
+  },
+  {
+    icon: BookOpen,
+    label: "Understanding",
+    description: "Each view explains what it shows and why it matters, not just raw values.",
+  },
+  {
+    icon: Compass,
+    label: "Confidence",
+    description: "Seeing and understanding your system makes everyday technology decisions less uncertain.",
+  },
+  {
+    icon: ShieldCheck,
+    label: "Privacy",
+    description: "Your information should remain under your control, with clear and honest handling of any data a tool uses.",
+  },
 ];
 
 function AboutPage() {
@@ -48,17 +71,44 @@ function AboutPage() {
 
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionHeading
+          eyebrow="The project"
+          title="An independent project."
+        />
+        <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground">
+          <p>
+            PCNav is an independent software project, built around a simple idea: technology is
+            easier to trust when you can clearly understand what it's doing. That visibility-first
+            principle shapes every tool it produces, starting with OS Map.
+          </p>
+          <p>
+            Development happens in the open. The source and issue tracker are available on GitHub,
+            where you can review how things work, follow progress, and share feedback.
+          </p>
+        </div>
+        <Button asChild className="mt-6" variant="outline">
+          <a href={GITHUB_URL} target="_blank" rel="noreferrer noopener">
+            <Github /> View on GitHub
+          </a>
+        </Button>
+        <p className="mt-6 text-sm text-muted-foreground">
+          PCNav is an independent project and is not affiliated with Microsoft or Windows.
+        </p>
+      </section>
+
+      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
+        <SectionHeading
           eyebrow="Why build these tools?"
           title="Focused on what matters."
         />
         <div className="mt-10 grid gap-3 sm:grid-cols-2 lg:grid-cols-5">
-          {PILLARS.map(({ icon: Icon, label }) => (
+          {PILLARS.map(({ icon: Icon, label, description }) => (
             <Card key={label} className="border-border/70 shadow-none">
               <CardContent className="flex flex-col items-start gap-3 p-6">
                 <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-primary">
                   <Icon className="h-5 w-5" />
                 </div>
                 <p className="font-medium">{label}</p>
+                <p className="text-sm leading-relaxed text-muted-foreground">{description}</p>
               </CardContent>
             </Card>
           ))}
@@ -84,7 +134,7 @@ function AboutPage() {
         <SectionHeading
           eyebrow="Ecosystem"
           title="A growing set of tools."
-          description="OS Map is the first PCNav product. Additional tools are planned with the same focus on clarity, visibility, and confidence."
+          description="Everything PCNav builds follows the same order: see first, understand next, then act. OS Map applies that approach to Windows; future tools will apply it elsewhere."
         />
       </section>
     </>

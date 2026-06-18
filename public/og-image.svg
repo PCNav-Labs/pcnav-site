@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" fill="none">
+  <defs>
+    <radialGradient id="accentGlow" cx="50%" cy="0%" r="75%">
+      <stop offset="0%" stop-color="#DCEAEF" stop-opacity="0.9" />
+      <stop offset="70%" stop-color="#FDFCFA" stop-opacity="0" />
+    </radialGradient>
+    <linearGradient id="markBg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3A8DA3" />
+      <stop offset="100%" stop-color="#2A7B91" />
+    </linearGradient>
+  </defs>
+
+  <!-- Warm near-white background with subtle accent glow -->
+  <rect width="1200" height="630" fill="#FDFCFA" />
+  <rect width="1200" height="630" fill="url(#accentGlow)" />
+
+  <!-- Brand mark (compass tile) -->
+  <g transform="translate(540,132)">
+    <rect width="120" height="120" rx="28" fill="url(#markBg)" />
+    <g transform="scale(1.875)">
+      <circle cx="32" cy="32" r="20" fill="none" stroke="#FFFFFF" stroke-width="2.5" />
+      <polygon points="32,16 35.54,28.46 48,32 35.54,35.54 32,48 28.46,35.54 16,32 28.46,28.46" fill="#FFFFFF" />
+      <circle cx="32" cy="32" r="2.4" fill="#2A7B91" />
+    </g>
+  </g>
+
+  <!-- Wordmark -->
+  <text x="600" y="382" text-anchor="middle" font-family="Manrope, Inter, Arial, sans-serif" font-size="104" font-weight="700" fill="#1B2230" letter-spacing="-1">PCNav</text>
+
+  <!-- Tagline -->
+  <text x="600" y="446" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="34" font-weight="500" fill="#5B6675">Navigate Technology With Confidence.</text>
+
+  <!-- OS Map label -->
+  <g transform="translate(600,498)">
+    <rect x="-86" y="0" width="172" height="44" rx="22" fill="#EAF2F4" stroke="#CFE0E5" />
+    <text x="0" y="29" text-anchor="middle" font-family="Inter, Arial, sans-serif" font-size="22" font-weight="600" fill="#2A7B91">OS Map</text>
+  </g>
+</svg>

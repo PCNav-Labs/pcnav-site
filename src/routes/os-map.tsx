@@ -11,11 +11,7 @@ import {
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
-import { PlaceholderShot } from "@/components/placeholder-shot";
-import systemInformationShot from "@/assets/system-information.png.asset.json";
-import networkShot from "@/assets/network.png.asset.json";
-import privacyShot from "@/assets/privacy.png.asset.json";
-import webConfigurationShot from "@/assets/web-configuration.png.asset.json";
+import { SurfaceTile } from "@/components/surface-tile";
 import { PrincipleCard } from "@/components/principle-card";
 
 export const Route = createFileRoute("/os-map")({
@@ -38,12 +34,36 @@ export const Route = createFileRoute("/os-map")({
 });
 
 const FEATURES = [
-  { icon: Cpu, title: "System Information", items: ["Hardware", "Storage", "Operating system information"] },
-  { icon: Network, title: "Network", items: ["Adapters", "Connections", "DNS", "Firewall", "Ports"] },
-  { icon: ShieldCheck, title: "Privacy", items: ["Windows privacy visibility", "Configuration awareness"] },
-  { icon: Globe, title: "Web Configuration", items: ["DNS", "Hosts", "Proxy", "Encrypted DNS"] },
-  { icon: Wrench, title: "Utilities", items: ["Practical Windows shortcuts", "Useful tools"] },
-  { icon: LifeBuoy, title: "Help", items: ["Guidance", "Explanations", "References"] },
+  {
+    icon: Cpu,
+    title: "System Information",
+    items: ["See your hardware, storage, and OS at a glance", "See key details about your system"],
+  },
+  {
+    icon: Network,
+    title: "Network",
+    items: ["See which adapters and connections are active", "View DNS, firewall, and port configuration"],
+  },
+  {
+    icon: ShieldCheck,
+    title: "Privacy",
+    items: ["See how Windows privacy settings are configured", "Understand what each setting controls"],
+  },
+  {
+    icon: Globe,
+    title: "Web Configuration",
+    items: ["See your DNS, hosts, proxy, and encrypted DNS", "Understand how web traffic is routed"],
+  },
+  {
+    icon: Wrench,
+    title: "Utilities",
+    items: ["Reach common Windows settings quickly", "Practical shortcuts kept close at hand"],
+  },
+  {
+    icon: LifeBuoy,
+    title: "Help",
+    items: ["Plain-language explanations of what you see", "Guidance and references when you need them"],
+  },
 ];
 
 const PRINCIPLES = [
@@ -73,6 +93,9 @@ function OsMapPage() {
               </Link>
             </Button>
           </div>
+          <p className="mt-4 text-sm text-muted-foreground">
+            Currently in beta — the first public download is coming soon.
+          </p>
         </div>
       </section>
 
@@ -83,9 +106,16 @@ function OsMapPage() {
           title="Everything you need to see, in one place."
         />
         <div className="mt-6 grid gap-6 text-base leading-relaxed text-muted-foreground md:grid-cols-2">
-          <p>Windows contains valuable information, but it is often scattered across many tools.</p>
           <p>
-            OS Map brings important visibility together into a single interface designed for clarity.
+            Windows holds a great deal of useful information about your system, network, privacy
+            settings, and web configuration — but it's spread across dozens of separate dialogs,
+            panels, and command-line tools. Finding any single detail often means knowing exactly
+            where to look.
+          </p>
+          <p>
+            OS Map gathers that information into one clear interface, organised so you can find what
+            you need and understand what it means. It's built to show you your system, not to change
+            it — you stay in control of any action you take.
           </p>
         </div>
       </section>
@@ -116,34 +146,18 @@ function OsMapPage() {
         </div>
       </section>
 
-      {/* Screenshots */}
+      {/* A look inside */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionHeading
           eyebrow="A look inside"
-          title="Screenshots"
-          description="A look at OS Map's main views."
+          title="One interface, built for clarity."
+          description="OS Map brings system, network, privacy, and web configuration into a single, consistent layout — so everything reads the same way, wherever you look."
         />
-        <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2">
-          <PlaceholderShot
-            label="System Information"
-            src={systemInformationShot.url}
-            alt="OS Map — System Information view showing operating system, device, and hardware details."
-          />
-          <PlaceholderShot
-            label="Network"
-            src={networkShot.url}
-            alt="OS Map — Network view showing adapters, connections, DNS, firewall, interfaces, and ports."
-          />
-          <PlaceholderShot
-            label="Privacy"
-            src={privacyShot.url}
-            alt="OS Map — Privacy view showing Windows telemetry setting and output panel."
-          />
-          <PlaceholderShot
-            label="Web Configuration"
-            src={webConfigurationShot.url}
-            alt="OS Map — Web Configuration view showing DNS details, hosts file, proxy settings, and encrypted DNS."
-          />
+        <div className="mt-10 grid gap-6 sm:grid-cols-2">
+          <SurfaceTile icon={Cpu} label="System Information" caption="Your system at a glance" />
+          <SurfaceTile icon={Network} label="Network" caption="Adapters, DNS, firewall, and ports" />
+          <SurfaceTile icon={ShieldCheck} label="Privacy" caption="How privacy settings are configured" />
+          <SurfaceTile icon={Globe} label="Web Configuration" caption="DNS, hosts, proxy, encrypted DNS" />
         </div>
       </section>
 
@@ -151,7 +165,7 @@ function OsMapPage() {
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <div className="rounded-2xl border border-border/70 bg-gradient-to-br from-accent/60 to-surface px-6 py-12 text-center sm:px-12">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Download OS Map</h2>
-          <p className="mt-3 text-base text-muted-foreground">Get started on Windows.</p>
+          <p className="mt-3 text-base text-muted-foreground">See the current beta release details.</p>
           <Button asChild size="lg" className="mt-6">
             <Link to="/download">
               <Download /> Download OS Map
