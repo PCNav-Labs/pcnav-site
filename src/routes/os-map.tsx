@@ -12,6 +12,10 @@ import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
 import { PlaceholderShot } from "@/components/placeholder-shot";
+import systemInformationShot from "@/assets/system-information.png.asset.json";
+import networkShot from "@/assets/network.png.asset.json";
+import privacyShot from "@/assets/privacy.png.asset.json";
+import webConfigurationShot from "@/assets/web-configuration.png.asset.json";
 import { PrincipleCard } from "@/components/principle-card";
 
 export const Route = createFileRoute("/os-map")({
