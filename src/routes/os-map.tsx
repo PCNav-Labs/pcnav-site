@@ -154,10 +154,34 @@ function OsMapPage() {
           description="OS Map brings system, network, privacy, and web configuration into a single, consistent layout — so everything reads the same way, wherever you look."
         />
         <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <SurfaceTile icon={Cpu} label="System Information" caption="Your system at a glance" />
-          <SurfaceTile icon={Network} label="Network" caption="Adapters, DNS, firewall, and ports" />
-          <SurfaceTile icon={ShieldCheck} label="Privacy" caption="How privacy settings are configured" />
-          <SurfaceTile icon={Globe} label="Web Configuration" caption="DNS, hosts, proxy, encrypted DNS" />
+          <SurfaceTile
+            icon={Cpu}
+            label="System Information"
+            caption="Your system at a glance"
+            src="/screenshots/system-information.png"
+            alt="OS Map System Information screen showing a read-only snapshot of the PC's operating system edition, version, install date, and system type."
+          />
+          <SurfaceTile
+            icon={Network}
+            label="Network"
+            caption="Adapters, DNS, firewall, and ports"
+            src="/screenshots/network.png"
+            alt="OS Map Network screen with cards for adapters, connections, DNS, firewall, interfaces, and ports."
+          />
+          <SurfaceTile
+            icon={ShieldCheck}
+            label="Privacy"
+            caption="How privacy settings are configured"
+            src="/screenshots/privacy.png"
+            alt="OS Map Privacy screen showing the Windows telemetry setting currently reduced, with an output log area."
+          />
+          <SurfaceTile
+            icon={Globe}
+            label="Web Configuration"
+            caption="DNS, hosts, proxy, encrypted DNS"
+            src="/screenshots/web-configuration.png"
+            alt="OS Map Web Configuration screen showing DNS details, hosts file status, proxy settings, and encrypted DNS."
+          />
         </div>
       </section>
 
