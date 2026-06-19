@@ -117,13 +117,29 @@ function OsMapPage() {
         <SectionHeading
           eyebrow="A look inside"
           title="Screenshots"
-          description="Placeholders shown below — real screenshots will replace these."
+          description="A look at OS Map's main views."
         />
-        <div className="mt-10 grid gap-6 sm:grid-cols-2">
-          <PlaceholderShot label="System Information" />
-          <PlaceholderShot label="Network" />
-          <PlaceholderShot label="Privacy" />
-          <PlaceholderShot label="Web Configuration" />
+        <div className="mt-10 grid gap-6 md:gap-8 sm:grid-cols-2">
+          <PlaceholderShot
+            label="System Information"
+            src={systemInformationShot.url}
+            alt="OS Map — System Information view showing operating system, device, and hardware details."
+          />
+          <PlaceholderShot
+            label="Network"
+            src={networkShot.url}
+            alt="OS Map — Network view showing adapters, connections, DNS, firewall, interfaces, and ports."
+          />
+          <PlaceholderShot
+            label="Privacy"
+            src={privacyShot.url}
+            alt="OS Map — Privacy view showing Windows telemetry setting and output panel."
+          />
+          <PlaceholderShot
+            label="Web Configuration"
+            src={webConfigurationShot.url}
+            alt="OS Map — Web Configuration view showing DNS details, hosts file, proxy settings, and encrypted DNS."
+          />
         </div>
       </section>
 
