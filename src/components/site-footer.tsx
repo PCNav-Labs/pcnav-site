@@ -1,8 +1,6 @@
 import { Link } from "@tanstack/react-router";
 import { Compass } from "lucide-react";
 
-const GITHUB_URL = "https://github.com/PCNav-Labs/pcnav";
-
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border/60 bg-surface/40">
@@ -31,14 +29,6 @@ export function SiteFooter() {
 
         <FooterCol title="Project">
           <FooterLink to="/feedback">Feedback</FooterLink>
-          <a
-            href={GITHUB_URL}
-            target="_blank"
-            rel="noreferrer noopener"
-            className="text-sm text-muted-foreground hover:text-foreground"
-          >
-            GitHub
-          </a>
         </FooterCol>
       </div>
 

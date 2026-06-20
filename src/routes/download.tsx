@@ -1,10 +1,8 @@
 import { createFileRoute } from "@tanstack/react-router";
-import { Download, Github, ShieldAlert, KeyRound } from "lucide-react";
+import { Download, ShieldAlert, KeyRound } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
-
-const GITHUB_URL = "https://github.com/PCNav-Labs/pcnav";
 
 export const Route = createFileRoute("/download")({
   head: () => ({
@@ -72,28 +70,13 @@ function DownloadPage() {
                 <Button size="lg" disabled>
                   <Download /> Download — not yet public
                 </Button>
-                <Button size="lg" variant="outline" asChild>
-                  <a href={GITHUB_URL} target="_blank" rel="noreferrer noopener">
-                    <Github /> View on GitHub
-                  </a>
-                </Button>
               </div>
               <p className="mt-4 text-xs text-muted-foreground">
                 The download button is disabled while hosting for the OS Map 0.1.0 beta is being
                 finalized. It will be enabled here once the release is published.
               </p>
-              <p className="mt-4 text-sm text-muted-foreground">
-                Prefer to review the project, follow development, or provide feedback? Visit the GitHub repository.
-              </p>
             </CardContent>
           </Card>
-        </div>
-
-        <div className="mt-10 max-w-2xl">
-          <h3 className="font-display text-lg font-semibold">Prefer to explore first?</h3>
-          <p className="mt-2 text-sm text-muted-foreground">
-            Technical users can review the project, follow development, submit feedback, and access project resources on GitHub.
-          </p>
         </div>
       </section>
 

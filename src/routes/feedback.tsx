@@ -3,7 +3,7 @@ import { Github, MessageSquarePlus, Bug } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 
-const GITHUB_ISSUES_URL = "https://github.com/PCNav-Labs/pcnav/issues";
+const GITHUB_ISSUES_URL = "https://github.com/PCNav-Labs/os-map-feedback/issues";
 
 export const Route = createFileRoute("/feedback")({
   head: () => ({

@@ -2,10 +2,7 @@ import { createFileRoute } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/section-heading";
 import { PrivacyList } from "@/components/privacy-list";
 import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Eye, Lightbulb, BookOpen, Compass, ShieldCheck, Github } from "lucide-react";
-
-const GITHUB_URL = "https://github.com/PCNav-Labs/pcnav";
+import { Eye, Lightbulb, BookOpen, Compass, ShieldCheck } from "lucide-react";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -80,16 +77,7 @@ function AboutPage() {
             idea: technology is easier to trust when you can clearly understand what it's doing. That
             visibility-first principle shapes every tool it produces, starting with OS Map.
           </p>
-          <p>
-            Development happens in the open. The source and issue tracker are available on GitHub,
-            where you can review how things work, follow progress, and share feedback.
-          </p>
         </div>
-        <Button asChild className="mt-6" variant="outline">
-          <a href={GITHUB_URL} target="_blank" rel="noreferrer noopener">
-            <Github /> View on GitHub
-          </a>
-        </Button>
         <p className="mt-6 text-sm text-muted-foreground">
           PCNav is an independent project and is not affiliated with Microsoft or Windows.
         </p>
