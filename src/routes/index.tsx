@@ -41,7 +41,7 @@ function HomePage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-accent)_0%,transparent_70%)] opacity-60" />
         <div className="mx-auto max-w-6xl px-4 pb-20 pt-20 sm:px-6 sm:pt-28">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">PCNav</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">PCNav · Makers of OS Map</p>
             <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-6xl">
               Navigate Technology With Confidence.
             </h1>
