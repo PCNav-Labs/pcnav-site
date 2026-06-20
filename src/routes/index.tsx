@@ -1,5 +1,5 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { Download, ArrowRight, Cpu, Network, ShieldCheck, Globe } from "lucide-react";
+import { FileText, ArrowRight, Cpu, Network, ShieldCheck, Globe } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
@@ -52,7 +52,7 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Button asChild size="lg">
                 <Link to="/download">
-                  <Download /> Download OS Map
+                  <FileText /> View Release Details
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">
@@ -60,7 +60,8 @@ function HomePage() {
               </Button>
             </div>
             <p className="mt-5 text-sm text-muted-foreground">
-              OS Map 0.1.0 is currently in beta. The first public download is coming soon.
+              OS Map 0.1.0 is currently in trusted testing. View release details, verification
+              information, and project status.
             </p>
           </div>
         </div>
@@ -158,7 +159,7 @@ function HomePage() {
         </p>
       </section>
 
-      <CtaBand description="See the OS Map beta and current release details." />
+      <CtaBand description="See the current beta release information." />
     </>
   );
 }

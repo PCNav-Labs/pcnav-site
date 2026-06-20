@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link } from "@tanstack/react-router";
-import { Menu, Compass, Download } from "lucide-react";
+import { Menu, Compass, FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import { ThemeToggle } from "./theme-toggle";
@@ -8,7 +8,7 @@ import { ThemeToggle } from "./theme-toggle";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/os-map", label: "OS Map" },
-  { to: "/download", label: "Download" },
+  { to: "/download", label: "Release" },
   { to: "/feedback", label: "Feedback" },
   { to: "/about", label: "About" },
 ] as const;
@@ -42,7 +42,7 @@ export function SiteHeader() {
           <ThemeToggle />
           <Button asChild size="sm" className="hidden sm:inline-flex">
             <Link to="/download">
-              <Download /> Download OS Map
+              <FileText /> View Release Details
             </Link>
           </Button>
 
@@ -73,7 +73,7 @@ export function SiteHeader() {
                 ))}
                 <Button asChild className="mt-4">
                   <Link to="/download" onClick={() => setOpen(false)}>
-                    <Download /> Download OS Map
+                    <FileText /> View Release Details
                   </Link>
                 </Button>
               </nav>

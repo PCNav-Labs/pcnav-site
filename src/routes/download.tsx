@@ -4,18 +4,23 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
 
-const GITHUB_URL = "https://github.com/Xtopher888/pcnav";
+const GITHUB_URL = "https://github.com/PCNav-Labs/pcnav";
 
 export const Route = createFileRoute("/download")({
   head: () => ({
     meta: [
-      { title: "Download OS Map | PCNav" },
+      { title: "OS Map Release Details | PCNav" },
       {
         name: "description",
-        content: "Download OS Map for Windows. Release info, SHA-256 hash, and GitHub source link.",
+        content:
+          "Release details for OS Map on Windows — version, build, and SHA-256 verification, plus current status. The public download is being finalized.",
       },
-      { property: "og:title", content: "Download OS Map" },
-      { property: "og:description", content: "Get the latest release of OS Map for Windows." },
+      { property: "og:title", content: "OS Map Release Details" },
+      {
+        property: "og:description",
+        content:
+          "Version, build, and SHA-256 verification details for the OS Map beta on Windows. The public download isn't open yet — view release status and notes.",
+      },
     ],
   }),
   component: DownloadPage,
@@ -65,7 +70,7 @@ function DownloadPage() {
               <h2 className="text-xl font-semibold">Download options</h2>
               <div className="mt-6 flex flex-col gap-3">
                 <Button size="lg" disabled>
-                  <Download /> Download OS Map
+                  <Download /> Download — not yet public
                 </Button>
                 <Button size="lg" variant="outline" asChild>
                   <a href={GITHUB_URL} target="_blank" rel="noreferrer noopener">

@@ -29,7 +29,8 @@ Last updated: 2026-06-17
 - Five pages built, styled (light/dark), SSR-rendering, responsive: Home, OS Map,
   Download, Feedback, About.
 - Shared shell: header (with mobile sheet nav + theme toggle), footer, per-page SEO.
-- GitHub links wired to github.com/Xtopher888/pcnav.
+- GitHub links wired to github.com/PCNav-Labs/pcnav (migrated from a personal
+  account to the PCNav Labs organization in WEB BUILD 1.2).
 - Status: structurally complete; content/assets and download flow deferred to 1.1.
 
 ---

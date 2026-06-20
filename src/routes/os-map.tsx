@@ -6,7 +6,7 @@ import {
   Globe,
   Wrench,
   LifeBuoy,
-  Download,
+  FileText,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { SectionHeading } from "@/components/section-heading";
@@ -89,12 +89,13 @@ function OsMapPage() {
           <div className="mt-8">
             <Button asChild size="lg">
               <Link to="/download">
-                <Download /> Download OS Map
+                <FileText /> View Release Details
               </Link>
             </Button>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            Currently in beta — the first public download is coming soon.
+            OS Map 0.1.0 is currently in trusted testing. View release details, verification
+            information, and project status.
           </p>
         </div>
       </section>
@@ -188,11 +189,11 @@ function OsMapPage() {
       {/* CTA */}
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <div className="rounded-2xl border border-border/70 bg-gradient-to-br from-accent/60 to-surface px-6 py-12 text-center sm:px-12">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">Download OS Map</h2>
-          <p className="mt-3 text-base text-muted-foreground">See the current beta release details.</p>
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">OS Map release details</h2>
+          <p className="mt-3 text-base text-muted-foreground">See the current beta release information.</p>
           <Button asChild size="lg" className="mt-6">
             <Link to="/download">
-              <Download /> Download OS Map
+              <FileText /> View Release Details
             </Link>
           </Button>
         </div>

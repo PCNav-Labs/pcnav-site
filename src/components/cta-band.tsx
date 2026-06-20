@@ -1,10 +1,10 @@
 import { Link } from "@tanstack/react-router";
-import { Download } from "lucide-react";
+import { FileText } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
 export function CtaBand({
-  title = "Ready to explore your Windows PC?",
-  description = "Download OS Map.",
+  title = "Want the details on OS Map?",
+  description = "See the current beta release information.",
 }: {
   title?: string;
   description?: string;
@@ -16,7 +16,7 @@ export function CtaBand({
         <p className="mt-3 text-base text-muted-foreground">{description}</p>
         <Button asChild size="lg" className="mt-6">
           <Link to="/download">
-            <Download /> Download OS Map
+            <FileText /> View Release Details
           </Link>
         </Button>
       </div>

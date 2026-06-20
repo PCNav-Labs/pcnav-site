@@ -1,7 +1,7 @@
 import { Link } from "@tanstack/react-router";
 import { Compass } from "lucide-react";
 
-const GITHUB_URL = "https://github.com/Xtopher888/pcnav";
+const GITHUB_URL = "https://github.com/PCNav-Labs/pcnav";
 
 export function SiteFooter() {
   return (
@@ -14,6 +14,9 @@ export function SiteFooter() {
           <p className="mt-3 max-w-xs text-sm text-muted-foreground">
             Navigate technology with confidence.
           </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            An independent project by PCNav Labs.
+          </p>
         </div>
 
         <FooterCol title="Site">
@@ -23,7 +26,7 @@ export function SiteFooter() {
 
         <FooterCol title="Product">
           <FooterLink to="/os-map">OS Map</FooterLink>
-          <FooterLink to="/download">Download</FooterLink>
+          <FooterLink to="/download">Release</FooterLink>
         </FooterCol>
 
         <FooterCol title="Project">

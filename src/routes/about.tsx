@@ -5,7 +5,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import { Button } from "@/components/ui/button";
 import { Eye, Lightbulb, BookOpen, Compass, ShieldCheck, Github } from "lucide-react";
 
-const GITHUB_URL = "https://github.com/Xtopher888/pcnav";
+const GITHUB_URL = "https://github.com/PCNav-Labs/pcnav";
 
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -76,9 +76,9 @@ function AboutPage() {
         />
         <div className="mt-6 max-w-2xl space-y-4 text-base leading-relaxed text-muted-foreground">
           <p>
-            PCNav is an independent software project, built around a simple idea: technology is
-            easier to trust when you can clearly understand what it's doing. That visibility-first
-            principle shapes every tool it produces, starting with OS Map.
+            PCNav is an independent software project maintained by PCNav Labs, built around a simple
+            idea: technology is easier to trust when you can clearly understand what it's doing. That
+            visibility-first principle shapes every tool it produces, starting with OS Map.
           </p>
           <p>
             Development happens in the open. The source and issue tracker are available on GitHub,
