@@ -14,7 +14,7 @@ import { FeatureCard } from "@/components/feature-card";
 import { SurfaceTile } from "@/components/surface-tile";
 import { PrincipleCard } from "@/components/principle-card";
 
-export const Route = createFileRoute("/os-map")({
+export const Route = createFileRoute("/os-map/")({
   head: () => ({
     meta: [
       { title: "OS Map — Understand Your Windows PC | PCNav" },
@@ -88,7 +88,7 @@ function OsMapPage() {
           </p>
           <div className="mt-8">
             <Button asChild size="lg">
-              <Link to="/download">
+              <Link to="/os-map/download">
                 <FileText /> View Release Details
               </Link>
             </Button>
@@ -192,7 +192,7 @@ function OsMapPage() {
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">OS Map release details</h2>
           <p className="mt-3 text-base text-muted-foreground">See the current beta release information.</p>
           <Button asChild size="lg" className="mt-6">
-            <Link to="/download">
+            <Link to="/os-map/download">
               <FileText /> View Release Details
             </Link>
           </Button>

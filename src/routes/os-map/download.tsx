@@ -4,7 +4,7 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
 
-export const Route = createFileRoute("/download")({
+export const Route = createFileRoute("/os-map/download")({
   head: () => ({
     meta: [
       { title: "OS Map Release Details | PCNav" },

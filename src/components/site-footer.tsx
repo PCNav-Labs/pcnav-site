@@ -24,7 +24,7 @@ export function SiteFooter() {
 
         <FooterCol title="Product">
           <FooterLink to="/os-map">OS Map</FooterLink>
-          <FooterLink to="/download">Release</FooterLink>
+          <FooterLink to="/os-map/download">Release</FooterLink>
         </FooterCol>
 
         <FooterCol title="Project">

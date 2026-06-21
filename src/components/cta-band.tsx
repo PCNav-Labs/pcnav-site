@@ -15,7 +15,7 @@ export function CtaBand({
         <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">{title}</h2>
         <p className="mt-3 text-base text-muted-foreground">{description}</p>
         <Button asChild size="lg" className="mt-6">
-          <Link to="/download">
+          <Link to="/os-map/download">
             <FileText /> View Release Details
           </Link>
         </Button>

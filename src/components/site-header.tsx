@@ -8,7 +8,7 @@ import { ThemeToggle } from "./theme-toggle";
 const NAV = [
   { to: "/", label: "Home" },
   { to: "/os-map", label: "OS Map" },
-  { to: "/download", label: "Release" },
+  { to: "/os-map/download", label: "Release" },
   { to: "/feedback", label: "Feedback" },
   { to: "/about", label: "About" },
 ] as const;
@@ -41,7 +41,7 @@ export function SiteHeader() {
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
           <Button asChild size="sm" className="hidden sm:inline-flex">
-            <Link to="/download">
+            <Link to="/os-map/download">
               <FileText /> View Release Details
             </Link>
           </Button>
@@ -72,7 +72,7 @@ export function SiteHeader() {
                   </Link>
                 ))}
                 <Button asChild className="mt-4">
-                  <Link to="/download" onClick={() => setOpen(false)}>
+                  <Link to="/os-map/download" onClick={() => setOpen(false)}>
                     <FileText /> View Release Details
                   </Link>
                 </Button>

@@ -11,5 +11,22 @@ export default defineConfig({
     // Redirect TanStack Start's bundled server entry to src/server.ts (our SSR error wrapper).
     // nitro/vite builds from this
     server: { entry: "server" },
+    // Static prerendering for cPanel deployment: emit a real index.html per route
+    // into the client output dir (dist/client) so the site is fully static — no
+    // Node/SSR runtime, no server-side routing, no SPA fallback required.
+    prerender: {
+      enabled: true,
+      crawlLinks: true,
+      autoSubfolderIndex: true,
+    },
+    // Explicit page list guarantees every public route is emitted regardless of crawl.
+    pages: [
+      { path: "/" },
+      { path: "/about" },
+      { path: "/feedback" },
+      { path: "/os-map" },
+      { path: "/os-map/download" },
+      { path: "/404" },
+    ],
   },
 });
