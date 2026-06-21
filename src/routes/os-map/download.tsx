@@ -11,13 +11,13 @@ export const Route = createFileRoute("/os-map/download")({
       {
         name: "description",
         content:
-          "Release details for OS Map on Windows — version, build, and SHA-256 verification, plus current status. The public download is being finalized.",
+          "Download OS Map for Windows — the v0.1.0 early evaluation build, with version, build, file size, and SHA-256 verification details.",
       },
       { property: "og:title", content: "OS Map Release Details" },
       {
         property: "og:description",
         content:
-          "Version, build, and SHA-256 verification details for the OS Map beta on Windows. The public download isn't open yet — view release status and notes.",
+          "Download the OS Map v0.1.0 beta for Windows, with version, build, file size, and SHA-256 verification details plus release notes.",
       },
     ],
   }),
@@ -55,9 +55,9 @@ function DownloadPage() {
                 <Field label="SHA-256" value="c7d2b90a70acff2ee7e70f004d9a50e8e9dd471f2e3d088a5554f27dcdf7e02c" mono />
               </dl>
               <p className="mt-6 text-xs text-muted-foreground">
-                OS Map 0.1.0 is the first beta delivery candidate. Download hosting is being
-                finalized — the file is not yet publicly available. The details above are the
-                verified release values; use the SHA-256 to confirm your download once it goes live.
+                OS Map 0.1.0 is the first beta delivery candidate. The details above are the
+                verified release values — use the SHA-256 to confirm your download after the
+                file has been saved.
               </p>
             </CardContent>
           </Card>
@@ -67,13 +67,15 @@ function DownloadPage() {
             <CardContent className="p-8">
               <h2 className="text-xl font-semibold">Download options</h2>
               <div className="mt-6 flex flex-col gap-3">
-                <Button size="lg" disabled>
-                  <Download /> Download — not yet public
+                <Button asChild size="lg">
+                  <a href="https://github.com/PCNav-Labs/os-map-releases/releases/download/v0.1.0/OS-Map-Beta-v0.1.0.zip">
+                    <Download /> Download OS Map
+                  </a>
                 </Button>
               </div>
               <p className="mt-4 text-xs text-muted-foreground">
-                The download button is disabled while hosting for the OS Map 0.1.0 beta is being
-                finalized. It will be enabled here once the release is published.
+                The download is hosted on GitHub Releases. After downloading, verify the file
+                against the SHA-256 above to confirm its integrity.
               </p>
             </CardContent>
           </Card>
