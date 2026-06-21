@@ -50,7 +50,7 @@ function DownloadPage() {
                 <Field label="Release date" value="2026-06-13" />
                 <Field label="File size" value="58.4 MB (61,208,584 bytes)" />
                 <Field label="Platform" value="Windows x64 · self-contained .NET 9" />
-                <Field label="Filename" value="WinOS-Beta-v0.1.0.zip" mono />
+                <Field label="Filename" value="OS-Map-Beta-v0.1.0.zip" mono />
                 <Field label="Build commit" value="fec624c" mono />
                 <Field label="SHA-256" value="c7d2b90a70acff2ee7e70f004d9a50e8e9dd471f2e3d088a5554f27dcdf7e02c" mono />
               </dl>
