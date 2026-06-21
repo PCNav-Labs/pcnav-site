@@ -62,10 +62,10 @@ function DownloadPage() {
             </CardContent>
           </Card>
 
-          {/* Download options */}
+          {/* Getting started */}
           <Card className="border-border/70 shadow-none">
             <CardContent className="p-8">
-              <h2 className="text-xl font-semibold">Download options</h2>
+              <h2 className="text-xl font-semibold">Getting started</h2>
               <div className="mt-6 flex flex-col gap-3">
                 <Button asChild size="lg">
                   <a href="https://github.com/PCNav-Labs/os-map-releases/releases/download/v0.1.0/OS-Map-Beta-v0.1.0.zip">
@@ -73,52 +73,34 @@ function DownloadPage() {
                   </a>
                 </Button>
               </div>
-              <p className="mt-4 text-xs text-muted-foreground">
-                The download is hosted on GitHub Releases. After downloading, verify the file
-                against the SHA-256 above to confirm its integrity.
-              </p>
+              <ol className="mt-6 space-y-4">
+                <Step n={1}>Download the ZIP file.</Step>
+                <Step n={2}>
+                  Right-click it and choose{" "}
+                  <span className="font-medium text-foreground">Extract All</span>.
+                </Step>
+                <Step n={3}>
+                  Open the extracted folder, then the <span className="font-mono">App</span> folder.
+                </Step>
+                <Step n={4}>
+                  Run <span className="font-mono">WinOS.App.exe</span>.
+                </Step>
+              </ol>
+              <div className="mt-6 space-y-2 border-t border-border/60 pt-6 text-xs text-muted-foreground">
+                <p>OS Map is portable and does not require installation.</p>
+                <p>
+                  You will see files labelled "WinOS". WinOS is the internal build name used inside
+                  this release package.
+                </p>
+                <p>To remove OS Map, simply delete the extracted folder.</p>
+                <p>
+                  After downloading, you can verify the file against the SHA-256 in the release
+                  details.
+                </p>
+              </div>
             </CardContent>
           </Card>
         </div>
-      </section>
-
-      {/* Getting started */}
-      <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-        <SectionHeading eyebrow="Getting started" title="Download, extract, and run." />
-        <Card className="mt-8 border-border/70 shadow-none">
-          <CardContent className="p-8">
-            <ol className="space-y-4">
-              <Step n={1}>
-                Download <span className="font-mono">OS-Map-Beta-v0.1.0.zip</span>.
-              </Step>
-              <Step n={2}>
-                Right-click the ZIP and select{" "}
-                <span className="font-medium text-foreground">Extract All</span>.
-              </Step>
-              <Step n={3}>
-                Open the extracted <span className="font-mono">WinOS-Beta-v0.1.0</span> folder, then
-                open the <span className="font-mono">App</span> folder.
-              </Step>
-              <Step n={4}>
-                Double-click <span className="font-mono">WinOS.App.exe</span> to start OS Map.
-              </Step>
-              <Step n={5}>
-                If Windows SmartScreen appears, click{" "}
-                <span className="font-medium text-foreground">More info → Run anyway</span>.
-              </Step>
-              <Step n={6}>Approve the UAC prompt when requested.</Step>
-            </ol>
-            <div className="mt-6 space-y-2 border-t border-border/60 pt-6 text-xs text-muted-foreground">
-              <p>OS Map is portable and does not require installation.</p>
-              <p>
-                You will see files and folders labelled "WinOS". WinOS is the internal build name
-                used by this release. Run <span className="font-mono">WinOS.App.exe</span> to start
-                OS Map.
-              </p>
-              <p>To remove OS Map, simply delete the extracted folder.</p>
-            </div>
-          </CardContent>
-        </Card>
       </section>
 
       <section className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
@@ -127,12 +109,12 @@ function DownloadPage() {
           <NoticeCard
             icon={<ShieldAlert className="h-5 w-5" />}
             title="SmartScreen"
-            body="Windows may display a SmartScreen warning for newly distributed software."
+            body="Windows may show a SmartScreen warning for newly distributed software. Click More info → Run anyway to continue."
           />
           <NoticeCard
             icon={<KeyRound className="h-5 w-5" />}
             title="UAC"
-            body="OS Map requests administrator privileges to access certain system information."
+            body="OS Map requests administrator privileges to access certain system information. Approve the prompt when requested."
           />
         </div>
       </section>
