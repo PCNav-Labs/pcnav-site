@@ -16,6 +16,10 @@ dist-ssr
 .nitro
 *.local
 
+# Deployment / packaging artifacts
+*.zip
+*.patch
+
 # Wrangler / Cloudflare
 .wrangler/
 .dev.vars
