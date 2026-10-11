@@ -1,5 +1,14 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
-import { FileText, ArrowRight, Cpu, Network, ShieldCheck, Globe } from "lucide-react";
+import {
+  FileText,
+  ArrowRight,
+  Cpu,
+  Network,
+  ShieldCheck,
+  Globe,
+  FolderTree,
+  StickyNote,
+} from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
@@ -33,6 +42,30 @@ const PRINCIPLES = [
   { title: "Automation Last", description: "Automate only what is well understood and intentional." },
 ];
 
+// Descriptions come from each application's own information page; no new claims are made here.
+const APPS = [
+  {
+    to: "/os-map",
+    name: "OS Map",
+    status: "Application · 0.1.0 in trusted testing",
+    tagline: "Understand Your Windows PC.",
+    description:
+      "OS Map helps users understand their system, network, privacy settings, and web configuration without digging through dozens of Windows tools.",
+    note: "",
+    icons: [Cpu, Network, ShieldCheck, Globe],
+  },
+  {
+    to: "/workspace-navigator",
+    name: "Workspace Navigator",
+    status: "Application · Beta in preparation",
+    tagline: "",
+    description:
+      "A Windows desktop application that keeps a project's files, notes, tags, tasks and saved web destinations together in one place.",
+    note: "Version 0.5.0 beta is being prepared. It isn't available to download yet.",
+    icons: [FolderTree, FileText, StickyNote, Globe],
+  },
+] as const;
+
 function HomePage() {
   return (
     <>
@@ -41,7 +74,9 @@ function HomePage() {
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-accent)_0%,transparent_70%)] opacity-60" />
         <div className="mx-auto max-w-6xl px-4 pb-20 pt-20 sm:px-6 sm:pt-28">
           <div className="mx-auto max-w-3xl text-center">
-            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">PCNav · Makers of OS Map</p>
+            <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+              PCNav · Makers of OS Map and Workspace Navigator
+            </p>
             <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-6xl">
               Navigate Technology With Confidence.
             </h1>
@@ -61,7 +96,8 @@ function HomePage() {
             </div>
             <p className="mt-5 text-sm text-muted-foreground">
               OS Map 0.1.0 is currently in trusted testing. View release details, verification
-              information, and project status.
+              information, and project status. A Workspace Navigator 0.5.0 beta is being prepared
+              and isn't available to download yet.
             </p>
           </div>
         </div>
@@ -82,38 +118,53 @@ function HomePage() {
         </p>
       </section>
 
-      {/* Featured product */}
-      <section className="mx-auto max-w-6xl px-4 sm:px-6">
-        <Card className="overflow-hidden border-border/70 shadow-none">
-          <CardContent className="grid gap-8 p-8 md:grid-cols-[1.2fr_1fr] md:p-12">
-            <div>
-              <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">Featured product</p>
-              <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">OS Map</h2>
-              <p className="mt-2 text-lg font-medium text-foreground/90">Understand Your Windows PC.</p>
-              <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-                OS Map helps users understand their system, network, privacy settings, and web configuration
-                without digging through dozens of Windows tools.
-              </p>
-              <Button asChild className="mt-6" variant="default">
-                <Link to="/os-map">
-                  Explore OS Map <ArrowRight />
-                </Link>
-              </Button>
-            </div>
-            <div className="hidden items-center justify-center md:flex">
-              <div className="grid w-full max-w-sm grid-cols-2 gap-3">
-                {[Cpu, Network, ShieldCheck, Globe].map((Icon, i) => (
-                  <div
-                    key={i}
-                    className="flex aspect-square items-center justify-center rounded-xl border border-border/70 bg-surface/60"
-                  >
-                    <Icon className="h-7 w-7 text-primary/80" />
+      {/* Applications */}
+      <section id="applications" className="mx-auto max-w-6xl px-4 sm:px-6">
+        <SectionHeading
+          eyebrow="Applications"
+          title="Two separate applications."
+          description="OS Map and Workspace Navigator are independent Windows applications, each with its own information page, release page and feedback channel."
+        />
+        <div className="mt-10 grid gap-6">
+          {APPS.map((app) => (
+            <Card key={app.name} className="overflow-hidden border-border/70 shadow-none">
+              <CardContent className="grid gap-8 p-8 md:grid-cols-[1.2fr_1fr] md:p-12">
+                <div>
+                  <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+                    {app.status}
+                  </p>
+                  <h3 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+                    {app.name}
+                  </h3>
+                  {app.tagline && (
+                    <p className="mt-2 text-lg font-medium text-foreground/90">{app.tagline}</p>
+                  )}
+                  <p className="mt-4 text-base leading-relaxed text-muted-foreground">
+                    {app.description}
+                  </p>
+                  {app.note && <p className="mt-3 text-sm text-muted-foreground">{app.note}</p>}
+                  <Button asChild className="mt-6" variant="default">
+                    <Link to={app.to}>
+                      Explore {app.name} <ArrowRight />
+                    </Link>
+                  </Button>
+                </div>
+                <div className="hidden items-center justify-center md:flex">
+                  <div className="grid w-full max-w-sm grid-cols-2 gap-3">
+                    {app.icons.map((Icon, i) => (
+                      <div
+                        key={i}
+                        className="flex aspect-square items-center justify-center rounded-xl border border-border/70 bg-surface/60"
+                      >
+                        <Icon className="h-7 w-7 text-primary/80" />
+                      </div>
+                    ))}
                   </div>
-                ))}
-              </div>
-            </div>
-          </CardContent>
-        </Card>
+                </div>
+              </CardContent>
+            </Card>
+          ))}
+        </div>
       </section>
 
       {/* Core philosophy */}
@@ -136,12 +187,23 @@ function HomePage() {
           <SectionHeading
             eyebrow="Trust & privacy"
             title="Quiet by design."
+            description="How OS Map behaves on your computer."
           />
           <div className="mt-8">
             <PrivacyList />
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
             Any future changes to these behaviours will be clearly disclosed.
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            How Workspace Navigator handles your information is described on{" "}
+            <Link
+              to="/workspace-navigator"
+              className="text-primary underline-offset-4 hover:underline"
+            >
+              its own page
+            </Link>
+            .
           </p>
         </div>
       </section>
@@ -151,7 +213,7 @@ function HomePage() {
         <SectionHeading
           eyebrow="Ecosystem"
           title="Part of a growing ecosystem."
-          description="OS Map is the first product in the PCNav ecosystem — a set of tools built around the same idea: show you what's happening clearly before anything else."
+          description="OS Map and Workspace Navigator are the first two applications in the PCNav ecosystem. Each is developed and released separately."
         />
         <p className="mt-6 max-w-2xl text-base leading-relaxed text-muted-foreground">
           More tools are planned over time, each focused on making a specific part of technology
