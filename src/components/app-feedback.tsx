@@ -17,6 +17,7 @@ export const OS_MAP_FEEDBACK: FeedbackApp = {
   repoUrl: "https://github.com/PCNav-Labs/os-map-feedback",
   bugTemplate: "bug_report.md",
   featureTemplate: "feature_request.md",
+  privateReportingUrl: "https://github.com/PCNav-Labs/os-map-feedback/security/advisories/new",
 };
 
 export const WORKSPACE_NAVIGATOR_FEEDBACK: FeedbackApp = {
