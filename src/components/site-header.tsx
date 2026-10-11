@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Compass, FileText, ChevronDown } from "lucide-react";
+import { Menu, Compass, ChevronDown } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import {
@@ -100,11 +100,6 @@ export function SiteHeader() {
 
         <div className="ml-auto flex items-center gap-2">
           <ThemeToggle />
-          <Button asChild size="sm" className="hidden lg:inline-flex">
-            <Link to="/os-map/download">
-              <FileText /> OS Map Release Details
-            </Link>
-          </Button>
 
           <Sheet open={open} onOpenChange={setOpen}>
             <SheetTrigger asChild>
@@ -135,11 +130,6 @@ export function SiteHeader() {
                   {FEEDBACK.map((item) => mobileLink(item, "ml-3"))}
                 </div>
                 {NAV_AFTER_FEEDBACK.map((item) => mobileLink(item))}
-                <Button asChild className="mt-4">
-                  <Link to="/os-map/download" onClick={() => setOpen(false)}>
-                    <FileText /> OS Map Release Details
-                  </Link>
-                </Button>
               </nav>
             </SheetContent>
           </Sheet>
