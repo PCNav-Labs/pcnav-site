@@ -90,9 +90,8 @@ function HomePage() {
               </Button>
             </div>
             <p className="mt-5 text-sm text-muted-foreground">
-              OS Map 0.1.0 is currently in trusted testing. View release details, verification
-              information, and project status. A Workspace Navigator 0.5.0 beta is being prepared
-              and isn't available to download yet.
+              OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is being
+              prepared for public beta release in October 2026.
             </p>
           </div>
         </div>
