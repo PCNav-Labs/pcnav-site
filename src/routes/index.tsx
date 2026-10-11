@@ -52,7 +52,7 @@ function HomePage() {
             <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
               <Button asChild size="lg">
                 <Link to="/os-map/download">
-                  <FileText /> View Release Details
+                  <FileText /> View OS Map Release Details
                 </Link>
               </Button>
               <Button asChild size="lg" variant="outline">

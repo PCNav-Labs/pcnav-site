@@ -9,18 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
-import { Route as FeedbackRouteImport } from './routes/feedback'
 import { Route as AboutRouteImport } from './routes/about'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as WorkspaceNavigatorIndexRouteImport } from './routes/workspace-navigator/index'
 import { Route as OsMapIndexRouteImport } from './routes/os-map/index'
+import { Route as FeedbackIndexRouteImport } from './routes/feedback/index'
+import { Route as WorkspaceNavigatorDownloadRouteImport } from './routes/workspace-navigator/download'
 import { Route as OsMapDownloadRouteImport } from './routes/os-map/download'
+import { Route as FeedbackWorkspaceNavigatorRouteImport } from './routes/feedback/workspace-navigator'
+import { Route as FeedbackOsMapRouteImport } from './routes/feedback/os-map'
 
-const FeedbackRoute = FeedbackRouteImport.update({
-  id: '/feedback',
-  path: '/feedback',
-  getParentRoute: () => rootRouteImport,
-} as any)
 const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
@@ -36,14 +35,41 @@ const IndexRoute = IndexRouteImport.update({
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkspaceNavigatorIndexRoute = WorkspaceNavigatorIndexRouteImport.update({
+  id: '/workspace-navigator/',
+  path: '/workspace-navigator/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const OsMapIndexRoute = OsMapIndexRouteImport.update({
   id: '/os-map/',
   path: '/os-map/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const FeedbackIndexRoute = FeedbackIndexRouteImport.update({
+  id: '/feedback/',
+  path: '/feedback/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const WorkspaceNavigatorDownloadRoute =
+  WorkspaceNavigatorDownloadRouteImport.update({
+    id: '/workspace-navigator/download',
+    path: '/workspace-navigator/download',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const OsMapDownloadRoute = OsMapDownloadRouteImport.update({
   id: '/os-map/download',
   path: '/os-map/download',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const FeedbackWorkspaceNavigatorRoute =
+  FeedbackWorkspaceNavigatorRouteImport.update({
+    id: '/feedback/workspace-navigator',
+    path: '/feedback/workspace-navigator',
+    getParentRoute: () => rootRouteImport,
+  } as any)
+const FeedbackOsMapRoute = FeedbackOsMapRouteImport.update({
+  id: '/feedback/os-map',
+  path: '/feedback/os-map',
   getParentRoute: () => rootRouteImport,
 } as any)
 
@@ -51,26 +77,38 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
-  '/feedback': typeof FeedbackRoute
+  '/feedback/os-map': typeof FeedbackOsMapRoute
+  '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
+  '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
+  '/feedback/': typeof FeedbackIndexRoute
   '/os-map/': typeof OsMapIndexRoute
+  '/workspace-navigator/': typeof WorkspaceNavigatorIndexRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
-  '/feedback': typeof FeedbackRoute
+  '/feedback/os-map': typeof FeedbackOsMapRoute
+  '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
+  '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
+  '/feedback': typeof FeedbackIndexRoute
   '/os-map': typeof OsMapIndexRoute
+  '/workspace-navigator': typeof WorkspaceNavigatorIndexRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
-  '/feedback': typeof FeedbackRoute
+  '/feedback/os-map': typeof FeedbackOsMapRoute
+  '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
+  '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
+  '/feedback/': typeof FeedbackIndexRoute
   '/os-map/': typeof OsMapIndexRoute
+  '/workspace-navigator/': typeof WorkspaceNavigatorIndexRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
@@ -78,39 +116,54 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
-    | '/feedback'
+    | '/feedback/os-map'
+    | '/feedback/workspace-navigator'
     | '/os-map/download'
+    | '/workspace-navigator/download'
+    | '/feedback/'
     | '/os-map/'
+    | '/workspace-navigator/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/404' | '/about' | '/feedback' | '/os-map/download' | '/os-map'
+  to:
+    | '/'
+    | '/404'
+    | '/about'
+    | '/feedback/os-map'
+    | '/feedback/workspace-navigator'
+    | '/os-map/download'
+    | '/workspace-navigator/download'
+    | '/feedback'
+    | '/os-map'
+    | '/workspace-navigator'
   id:
     | '__root__'
     | '/'
     | '/404'
     | '/about'
-    | '/feedback'
+    | '/feedback/os-map'
+    | '/feedback/workspace-navigator'
     | '/os-map/download'
+    | '/workspace-navigator/download'
+    | '/feedback/'
     | '/os-map/'
+    | '/workspace-navigator/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
-  FeedbackRoute: typeof FeedbackRoute
+  FeedbackOsMapRoute: typeof FeedbackOsMapRoute
+  FeedbackWorkspaceNavigatorRoute: typeof FeedbackWorkspaceNavigatorRoute
   OsMapDownloadRoute: typeof OsMapDownloadRoute
+  WorkspaceNavigatorDownloadRoute: typeof WorkspaceNavigatorDownloadRoute
+  FeedbackIndexRoute: typeof FeedbackIndexRoute
   OsMapIndexRoute: typeof OsMapIndexRoute
+  WorkspaceNavigatorIndexRoute: typeof WorkspaceNavigatorIndexRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
-    '/feedback': {
-      id: '/feedback'
-      path: '/feedback'
-      fullPath: '/feedback'
-      preLoaderRoute: typeof FeedbackRouteImport
-      parentRoute: typeof rootRouteImport
-    }
     '/about': {
       id: '/about'
       path: '/about'
@@ -132,11 +185,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/workspace-navigator/': {
+      id: '/workspace-navigator/'
+      path: '/workspace-navigator'
+      fullPath: '/workspace-navigator/'
+      preLoaderRoute: typeof WorkspaceNavigatorIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/os-map/': {
       id: '/os-map/'
       path: '/os-map'
       fullPath: '/os-map/'
       preLoaderRoute: typeof OsMapIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback/': {
+      id: '/feedback/'
+      path: '/feedback'
+      fullPath: '/feedback/'
+      preLoaderRoute: typeof FeedbackIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/workspace-navigator/download': {
+      id: '/workspace-navigator/download'
+      path: '/workspace-navigator/download'
+      fullPath: '/workspace-navigator/download'
+      preLoaderRoute: typeof WorkspaceNavigatorDownloadRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/os-map/download': {
@@ -146,6 +220,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof OsMapDownloadRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/feedback/workspace-navigator': {
+      id: '/feedback/workspace-navigator'
+      path: '/feedback/workspace-navigator'
+      fullPath: '/feedback/workspace-navigator'
+      preLoaderRoute: typeof FeedbackWorkspaceNavigatorRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/feedback/os-map': {
+      id: '/feedback/os-map'
+      path: '/feedback/os-map'
+      fullPath: '/feedback/os-map'
+      preLoaderRoute: typeof FeedbackOsMapRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
@@ -153,9 +241,13 @@ const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   AboutRoute: AboutRoute,
-  FeedbackRoute: FeedbackRoute,
+  FeedbackOsMapRoute: FeedbackOsMapRoute,
+  FeedbackWorkspaceNavigatorRoute: FeedbackWorkspaceNavigatorRoute,
   OsMapDownloadRoute: OsMapDownloadRoute,
+  WorkspaceNavigatorDownloadRoute: WorkspaceNavigatorDownloadRoute,
+  FeedbackIndexRoute: FeedbackIndexRoute,
   OsMapIndexRoute: OsMapIndexRoute,
+  WorkspaceNavigatorIndexRoute: WorkspaceNavigatorIndexRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)

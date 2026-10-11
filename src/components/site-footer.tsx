@@ -4,7 +4,7 @@ import { Compass } from "lucide-react";
 export function SiteFooter() {
   return (
     <footer className="mt-24 border-t border-border/60 bg-surface/40">
-      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:px-6 md:grid-cols-4">
+      <div className="mx-auto grid max-w-6xl gap-10 px-4 py-12 sm:grid-cols-2 sm:px-6 md:grid-cols-4">
         <div>
           <Link to="/" className="flex items-center gap-2 font-display text-base font-semibold">
             <Compass className="h-5 w-5 text-primary" /> PCNav
@@ -20,15 +20,19 @@ export function SiteFooter() {
         <FooterCol title="Site">
           <FooterLink to="/">Home</FooterLink>
           <FooterLink to="/about">About</FooterLink>
-        </FooterCol>
-
-        <FooterCol title="Product">
-          <FooterLink to="/os-map">OS Map</FooterLink>
-          <FooterLink to="/os-map/download">Release</FooterLink>
-        </FooterCol>
-
-        <FooterCol title="Project">
           <FooterLink to="/feedback">Feedback</FooterLink>
+        </FooterCol>
+
+        <FooterCol title="OS Map">
+          <FooterLink to="/os-map">Overview</FooterLink>
+          <FooterLink to="/os-map/download">Release</FooterLink>
+          <FooterLink to="/feedback/os-map">Feedback</FooterLink>
+        </FooterCol>
+
+        <FooterCol title="Workspace Navigator">
+          <FooterLink to="/workspace-navigator">Overview</FooterLink>
+          <FooterLink to="/workspace-navigator/download">Beta Release Status</FooterLink>
+          <FooterLink to="/feedback/workspace-navigator">Feedback</FooterLink>
         </FooterCol>
       </div>
 
