@@ -1,15 +1,20 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
+import type { LucideIcon } from "lucide-react";
 import {
   FolderTree,
   FileText,
   StickyNote,
   Tags,
-  ListChecks,
+  FileSearch,
+  History,
+  Bookmark,
   Globe,
+  ExternalLink,
   Info,
   MessageSquarePlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
 
@@ -33,56 +38,76 @@ export const Route = createFileRoute("/workspace-navigator/")({
   component: WorkspaceNavigatorPage,
 });
 
-// Every capability below is described from the in-app Help that ships with the beta build;
-// nothing here describes behaviour that has not been built.
+// Owner-approved editorial copy (2026-10-11). Each capability below was checked against the
+// application's shipped in-app Help for v0.5.0 before publication.
+//
+// PENDING, NOT PUBLISHED (returned to Lex for Owner reconciliation):
+//   - Continuity Manager › Tasks: the approved wording says tasks track "independent files and
+//     folders"; in v0.5.0 Tasks belong to an open project.
+//   - Section 7, AI Helpers: the approved privacy and capability claims are not yet supported by
+//     v0.5.0 release evidence.
 const FEATURES = [
   {
     icon: FolderTree,
     title: "Projects and the Explorer",
     items: [
-      "Create a project, or copy in an existing folder — the original is left untouched",
-      "Browse, rename, copy and move files, with a Recycle Bin",
+      "Create a new project or import a copy of an existing folder without changing the original.",
+      "Browse, rename, copy and move files, with a Recycle Bin for deleted items.",
     ],
   },
   {
     icon: FileText,
     title: "Documents",
     items: [
-      "Create and edit Word (.docx), Markdown and plain-text documents",
-      "Preview PDF files, with search",
+      "Create and edit DOCX, Markdown and plain-text documents with the built-in editor. No separate document editor is required.",
+      "Preview PDF files with search, and view images directly in Workspace Navigator.",
+      "Work with documents independently of your projects or as part of a project.",
     ],
   },
   {
     icon: StickyNote,
     title: "Notes",
     items: [
-      "Keep free-form notes, with or without a project open",
-      "Add a note to a project, a folder, a file or a task",
+      "Quickly jot down ideas, reminders and important details as they come to mind.",
+      "Keep notes independently, without needing to open a project.",
+      "Attach notes to projects, folders, files or tasks to keep relevant information close at hand.",
     ],
   },
+];
+
+const CONTINUITY: Capability[] = [
   {
     icon: Tags,
-    title: "Organize",
-    items: [
-      "Tag files and folders in a project",
-      "See every tag in a project and how often it's used",
-    ],
+    label: "Organize",
+    text: "Arrange and manage tags for project files and folders, making related work easier to find.",
   },
   {
-    icon: ListChecks,
-    title: "Tasks",
-    items: [
-      "Keep a simple task list for each project",
-      "Complete, reopen and edit tasks as work moves on",
-    ],
+    icon: FileSearch,
+    label: "Properties",
+    text: "View information about project files and folders, as well as independent documents.",
+  },
+  {
+    icon: History,
+    label: "Recent Activity",
+    text: "See recent project activity to help you pick up where you left off.",
+  },
+];
+
+const WEB: Capability[] = [
+  {
+    icon: Bookmark,
+    label: "Saved websites",
+    text: "Save web addresses for individual projects or in a shared list accessible independently of a project.",
   },
   {
     icon: Globe,
-    title: "Web Browsing",
-    items: [
-      "Save the websites you use, for every project or for one",
-      "Open them inside Workspace Navigator or in your usual browser",
-    ],
+    label: "Built-in browser",
+    text: "Open and browse websites directly inside Workspace Navigator.",
+  },
+  {
+    icon: ExternalLink,
+    label: "External browser",
+    text: "Open saved websites in your preferred browser whenever you choose.",
   },
 ];
 
@@ -92,6 +117,8 @@ const LOCAL = [
   "Workspace Navigator has no built-in sharing and doesn't send your projects, documents or notes anywhere.",
   "Information leaves your computer only when you open a website you chose.",
 ];
+
+type Capability = { icon: LucideIcon; label: string; text: string };
 
 function WorkspaceNavigatorPage() {
   return (
@@ -128,17 +155,37 @@ function WorkspaceNavigatorPage() {
         </div>
       </section>
 
-      {/* Features */}
+      {/* 1-4: What it does — Projects and the Explorer, Documents, Notes */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
-        <SectionHeading eyebrow="What it does" title="One place for each project's work." />
+        <SectionHeading
+          eyebrow="What it does"
+          title="One place for each project's work."
+          description="Keep your projects, documents, notes and tasks together in one workspace, with a separate Documents section for files you want to manage independently of any project."
+        />
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {FEATURES.map((f) => (
             <FeatureCard key={f.title} icon={f.icon} title={f.title} items={f.items} />
           ))}
         </div>
+
+        {/* 5: Continuity Manager */}
+        <CapabilityGroup
+          id="continuity-manager"
+          title="Continuity Manager"
+          intro="Keep your work organized, understand what's changed and stay on top of what needs doing."
+          items={CONTINUITY}
+        />
+
+        {/* 6: Web Browsing */}
+        <CapabilityGroup
+          id="web-browsing"
+          title="Web Browsing"
+          intro="Keep useful websites close to your work without constantly switching applications."
+          items={WEB}
+        />
       </section>
 
-      {/* Local by design */}
+      {/* On your computer */}
       <section className="bg-surface/40 py-20">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
           <SectionHeading eyebrow="On your computer" title="Your work stays local." />
@@ -155,23 +202,54 @@ function WorkspaceNavigatorPage() {
         </div>
       </section>
 
-      {/* Beta */}
+      {/* 8: Public Beta Release */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="rounded-2xl border border-border/70 bg-gradient-to-br from-accent/60 to-surface px-6 py-12 text-center sm:px-12">
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">
-            Public beta in preparation
+          <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
+            Release status
+          </p>
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
+            Beta Release — October 2026
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base text-muted-foreground">
-            The beta is a chance to try Workspace Navigator and help shape it. Release details will
-            be posted on the release page when the beta is available.
+            Workspace Navigator v0.5.0 is being prepared for public beta testing. Once available,
+            you'll be able to download the application, explore its features and share your feedback
+            to help guide future improvements.
           </p>
-          <Button asChild size="lg" className="mt-6">
-            <Link to="/workspace-navigator/download">
-              <Info /> Beta Release Status
-            </Link>
-          </Button>
         </div>
       </section>
     </>
+  );
+}
+
+function CapabilityGroup({
+  id,
+  title,
+  intro,
+  items,
+}: {
+  id: string;
+  title: string;
+  intro: string;
+  items: Capability[];
+}) {
+  return (
+    <div id={id} className="mt-16">
+      <h3 className="text-2xl font-semibold tracking-tight">{title}</h3>
+      <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">{intro}</p>
+      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+        {items.map(({ icon: Icon, label, text }) => (
+          <Card key={label} className="h-full border-border/70 shadow-none">
+            <CardContent className="p-6">
+              <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-accent text-accent-foreground">
+                <Icon className="h-5 w-5" />
+              </div>
+              <h4 className="mt-4 text-lg font-semibold">{label}</h4>
+              <p className="mt-2 text-sm text-muted-foreground">{text}</p>
+            </CardContent>
+          </Card>
+        ))}
+      </div>
+    </div>
   );
 }
