@@ -10,7 +10,7 @@ import {
   Bookmark,
   Globe,
   ExternalLink,
-  Info,
+  ListChecks,
   MessageSquarePlus,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -41,11 +41,8 @@ export const Route = createFileRoute("/workspace-navigator/")({
 // Owner-approved editorial copy (2026-10-11). Each capability below was checked against the
 // application's shipped in-app Help for v0.5.0 before publication.
 //
-// PENDING, NOT PUBLISHED (returned to Lex for Owner reconciliation):
-//   - Continuity Manager › Tasks: the approved wording says tasks track "independent files and
-//     folders"; in v0.5.0 Tasks belong to an open project.
-//   - Section 7, AI Helpers: the approved privacy and capability claims are not yet supported by
-//     v0.5.0 release evidence.
+// Deferred by the Owner (2026-10-11): AI Assistance is not published until its capabilities and
+// privacy claims are qualified. Tasks are described as project-only, as in v0.5.0.
 const FEATURES = [
   {
     icon: FolderTree,
@@ -91,6 +88,11 @@ const CONTINUITY: Capability[] = [
     label: "Recent Activity",
     text: "See recent project activity to help you pick up where you left off.",
   },
+  {
+    icon: ListChecks,
+    label: "Tasks",
+    text: "Create, edit, complete and reopen tasks to keep track of work within your projects.",
+  },
 ];
 
 const WEB: Capability[] = [
@@ -109,13 +111,6 @@ const WEB: Capability[] = [
     label: "External browser",
     text: "Open saved websites in your preferred browser whenever you choose.",
   },
-];
-
-const LOCAL = [
-  "Your projects and their Workspace Navigator records stay on your computer.",
-  "No account or sign-in is needed.",
-  "Workspace Navigator has no built-in sharing and doesn't send your projects, documents or notes anywhere.",
-  "Information leaves your computer only when you open a website you chose.",
 ];
 
 type Capability = { icon: LucideIcon; label: string; text: string };
@@ -138,11 +133,6 @@ function WorkspaceNavigatorPage() {
             where you left off.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
-              <Link to="/workspace-navigator/download">
-                <Info /> Beta Release Status
-              </Link>
-            </Button>
             <Button asChild size="lg" variant="outline">
               <Link to="/feedback/workspace-navigator">
                 <MessageSquarePlus /> Share Feedback
@@ -174,6 +164,7 @@ function WorkspaceNavigatorPage() {
           title="Continuity Manager"
           intro="Keep your work organized, understand what's changed and stay on top of what needs doing."
           items={CONTINUITY}
+          wide
         />
 
         {/* 6: Web Browsing */}
@@ -185,24 +176,7 @@ function WorkspaceNavigatorPage() {
         />
       </section>
 
-      {/* On your computer */}
-      <section className="bg-surface/40 py-20">
-        <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <SectionHeading eyebrow="On your computer" title="Your work stays local." />
-          <ul className="mt-8 grid gap-3 sm:grid-cols-2">
-            {LOCAL.map((line) => (
-              <li
-                key={line}
-                className="rounded-xl border border-border/70 bg-background px-5 py-4 text-sm text-muted-foreground"
-              >
-                {line}
-              </li>
-            ))}
-          </ul>
-        </div>
-      </section>
-
-      {/* 8: Public Beta Release */}
+      {/* 7: Public Beta Release */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <div className="rounded-2xl border border-border/70 bg-gradient-to-br from-accent/60 to-surface px-6 py-12 text-center sm:px-12">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
@@ -227,17 +201,21 @@ function CapabilityGroup({
   title,
   intro,
   items,
+  wide = false,
 }: {
   id: string;
   title: string;
   intro: string;
   items: Capability[];
+  wide?: boolean;
 }) {
   return (
     <div id={id} className="mt-16">
       <h3 className="text-2xl font-semibold tracking-tight">{title}</h3>
       <p className="mt-3 max-w-2xl text-base leading-relaxed text-muted-foreground">{intro}</p>
-      <div className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+      <div
+        className={`mt-6 grid gap-4 sm:grid-cols-2 ${wide ? "lg:grid-cols-4" : "lg:grid-cols-3"}`}
+      >
         {items.map(({ icon: Icon, label, text }) => (
           <Card key={label} className="h-full border-border/70 shadow-none">
             <CardContent className="p-6">
