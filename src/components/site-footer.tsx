@@ -31,7 +31,7 @@ export function SiteFooter() {
 
         <FooterCol title="Workspace Navigator">
           <FooterLink to="/workspace-navigator">Overview</FooterLink>
-          <FooterLink to="/workspace-navigator/download">Beta Release Status</FooterLink>
+          <FooterLink to="/workspace-navigator/download">Beta Release</FooterLink>
           <FooterLink to="/feedback/workspace-navigator">Feedback</FooterLink>
         </FooterCol>
       </div>
