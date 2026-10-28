@@ -85,7 +85,7 @@ function BetaReleasePage() {
               <dl className="mt-6 grid gap-5 sm:grid-cols-2">
                 <Field label="Version" value={INSTALLER.version} />
                 <Field label="Platform" value="Windows 10 and Windows 11 · x64" />
-                <Field label="Filename" value={INSTALLER.filename} mono />
+                <Field label="Filename" value={INSTALLER.filename} mono wrap="words" />
                 <Field label="File size" value={INSTALLER.size} />
                 <Field label="Beta expires" value={INSTALLER.expires} />
                 <Field label="Code signing" value="Not signed" />
@@ -100,7 +100,11 @@ function BetaReleasePage() {
             <CardContent className="p-8">
               <h2 className="text-xl font-semibold">Download</h2>
               <div className="mt-6">
-                <Button size="lg" disabled className="w-full sm:w-auto">
+                <Button
+                  size="lg"
+                  disabled
+                  className="h-auto min-h-10 w-full whitespace-normal sm:w-auto"
+                >
                   <Download /> Download not yet available
                 </Button>
               </div>
@@ -321,13 +325,28 @@ function BetaReleasePage() {
   );
 }
 
-function Field({ label, value, mono }: { label: string; value: string; mono?: boolean }) {
+function Field({
+  label,
+  value,
+  mono,
+  wrap = "anywhere",
+}: {
+  label: string;
+  value: string;
+  mono?: boolean;
+  // A checksum breaks anywhere; a filename with spaces breaks between its words.
+  wrap?: "anywhere" | "words";
+}) {
   return (
     <div>
       <dt className="text-xs font-semibold uppercase tracking-wider text-muted-foreground">
         {label}
       </dt>
-      <dd className={`mt-1 text-sm ${mono ? "font-mono break-all" : "font-medium"}`}>{value}</dd>
+      <dd
+        className={`mt-1 text-sm ${mono ? `font-mono ${wrap === "words" ? "break-words" : "break-all"}` : "font-medium"}`}
+      >
+        {value}
+      </dd>
     </div>
   );
 }

@@ -195,7 +195,7 @@ function WorkspaceNavigatorPage() {
             you'll be able to download the application, explore its features and share your feedback
             to help guide future improvements.
           </p>
-          <Button asChild size="lg" className="mt-6">
+          <Button asChild size="lg" className="mt-6 h-auto min-h-10 whitespace-normal">
             <Link to="/workspace-navigator/download">
               <FileText /> What to Know Before You Install
             </Link>
