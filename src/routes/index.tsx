@@ -91,7 +91,7 @@ function HomePage() {
             </div>
             <p className="mt-5 text-sm text-muted-foreground">
               OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is being
-              prepared for public beta release in October 2026.
+              prepared for public beta release.
             </p>
           </div>
         </div>
@@ -192,10 +192,11 @@ function HomePage() {
           <p className="mt-2 text-sm text-muted-foreground">
             How Workspace Navigator handles your information is described on{" "}
             <Link
-              to="/workspace-navigator"
+              to="/workspace-navigator/download"
+              hash="your-information"
               className="text-primary underline-offset-4 hover:underline"
             >
-              its own page
+              its beta release page
             </Link>
             .
           </p>
@@ -215,7 +216,14 @@ function HomePage() {
         </p>
       </section>
 
-      <CtaBand description="See the current beta release information." />
+      <CtaBand
+        title="Release details"
+        description="See the current release information for each application."
+        links={[
+          { to: "/os-map/download", label: "OS Map Release Details" },
+          { to: "/workspace-navigator/download", label: "Workspace Navigator Beta Details" },
+        ]}
+      />
     </>
   );
 }

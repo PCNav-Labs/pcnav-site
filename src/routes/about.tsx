@@ -1,4 +1,4 @@
-import { createFileRoute } from "@tanstack/react-router";
+import { createFileRoute, Link } from "@tanstack/react-router";
 import { SectionHeading } from "@/components/section-heading";
 import { PrivacyList } from "@/components/privacy-list";
 import { Card, CardContent } from "@/components/ui/card";
@@ -108,12 +108,24 @@ function AboutPage() {
           <SectionHeading
             eyebrow="Privacy"
             title="Quiet by design."
+            description="How OS Map behaves on your computer."
           />
           <div className="mt-8">
             <PrivacyList />
           </div>
           <p className="mt-6 text-sm text-muted-foreground">
             Any future changes will be clearly disclosed.
+          </p>
+          <p className="mt-2 text-sm text-muted-foreground">
+            How Workspace Navigator handles your information is described on{" "}
+            <Link
+              to="/workspace-navigator/download"
+              hash="your-information"
+              className="text-primary underline-offset-4 hover:underline"
+            >
+              its beta release page
+            </Link>
+            .
           </p>
         </div>
       </section>

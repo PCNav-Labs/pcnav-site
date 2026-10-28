@@ -133,6 +133,11 @@ function WorkspaceNavigatorPage() {
             where you left off.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
+            <Button asChild size="lg">
+              <Link to="/workspace-navigator/download">
+                <FileText /> Beta Release Details
+              </Link>
+            </Button>
             <Button asChild size="lg" variant="outline">
               <Link to="/feedback/workspace-navigator">
                 <MessageSquarePlus /> Share Feedback
@@ -183,13 +188,18 @@ function WorkspaceNavigatorPage() {
             Release status
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Beta Release — October 2026
+            Public Beta in Preparation
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base text-muted-foreground">
             Workspace Navigator v0.5.0 is being prepared for public beta testing. Once available,
             you'll be able to download the application, explore its features and share your feedback
             to help guide future improvements.
           </p>
+          <Button asChild size="lg" className="mt-6">
+            <Link to="/workspace-navigator/download">
+              <FileText /> What to Know Before You Install
+            </Link>
+          </Button>
         </div>
       </section>
     </>
