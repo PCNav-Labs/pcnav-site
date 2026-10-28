@@ -1,6 +1,7 @@
 import { createFileRoute, Link } from "@tanstack/react-router";
 import type { ReactNode } from "react";
 import {
+  ArrowLeft,
   Download,
   ShieldAlert,
   ShieldOff,
@@ -57,7 +58,13 @@ function BetaReleasePage() {
     <>
       <section className="border-b border-border/60 bg-surface/40">
         <div className="mx-auto max-w-6xl px-4 py-16 sm:px-6">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+          <Link
+            to="/workspace-navigator"
+            className="inline-flex min-h-6 items-center gap-1 py-1 text-sm text-muted-foreground underline-offset-4 hover:text-foreground hover:underline"
+          >
+            <ArrowLeft className="h-4 w-4" /> Workspace Navigator overview
+          </Link>
+          <p className="mt-6 text-xs font-semibold uppercase tracking-[0.22em] text-primary">
             Beta release
           </p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">

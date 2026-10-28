@@ -133,9 +133,9 @@ function WorkspaceNavigatorPage() {
             where you left off.
           </p>
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <Button asChild size="lg">
+            <Button asChild size="lg" className="h-auto min-h-10 whitespace-normal">
               <Link to="/workspace-navigator/download">
-                <FileText /> Beta Release Details
+                <FileText /> View Beta Download & Installation Information
               </Link>
             </Button>
             <Button asChild size="lg" variant="outline">
