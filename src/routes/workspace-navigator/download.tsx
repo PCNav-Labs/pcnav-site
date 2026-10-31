@@ -44,9 +44,9 @@ export const Route = createFileRoute("/workspace-navigator/download")({
 const INSTALLER = {
   version: "0.5.0 Beta",
   filename: "Workspace Navigator Setup 0.5.0.exe",
-  size: "117 MB (122,789,897 bytes)",
-  sha256: "5ca39bd15dd224edec2501ede498f8b7ab095023e2e07710d42eb5a94b0a75e2",
-  expires: "23 January 2027, 16:24 UTC",
+  size: "117 MB (122,925,830 bytes)",
+  sha256: "3092a8c8b008f1ca3555127716f77c1e845c7275403e0dbb095b98d6cebe1be3",
+  expires: "29 January 2027, 04:06 UTC",
 };
 
 const HASH_COMMAND = `Get-FileHash "$env:USERPROFILE\\Downloads\\${INSTALLER.filename}"`;
@@ -196,11 +196,15 @@ function BetaReleasePage() {
       </section>
 
       <section id="expiry" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
-        <SectionHeading eyebrow="Beta expiry" title="This beta expires on 23 January 2027." />
+        <SectionHeading
+          eyebrow="Beta expiry"
+          title="This beta expires on the evening of 28 January 2027 (North America)."
+        />
         <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground">
           <p>
-            Each beta stops working 90 days after it was built. This one expires on 23 January 2027
-            at 16:24 UTC (11:24 a.m. Eastern, 8:24 a.m. Pacific). From 24 December 2026, Workspace
+            Each beta stops working 90 days after it was built. This one expires on 29 January 2027
+            at 04:06 UTC, which is 11:06 p.m. Eastern and 8:06 p.m. Pacific on 28 January. From 30
+            December 2026 at 04:06 UTC (the evening of 29 December in North America), Workspace
             Navigator reminds you of the date once each time you start it.
           </p>
           <p>
@@ -239,6 +243,17 @@ function BetaReleasePage() {
             Uninstalling removes the app but leaves your Workspace folder and Workspace Navigator's
             settings on your computer. On some PCs, a Start menu shortcut may remain afterwards; you
             can delete it.
+          </InfoCard>
+          <InfoCard title="Replace All in Word documents">
+            In a Word document, Replace All changes at most 22 matches at a time. If there are more,
+            it changes nothing and asks you to replace them in smaller steps. Undoing a Replace All
+            can take one or more Undo steps for each replacement, and if you close the document
+            before you've undone them all, the replacements you haven't undone stay in the file.
+          </InfoCard>
+          <InfoCard title="Some Word documents open read-only">
+            Word documents that contain tracked changes, or that use settings Workspace Navigator
+            can't keep — such as change tracking or document protection — open read-only. Tracked
+            changes are shown, not accepted. To edit these documents, use another program.
           </InfoCard>
         </div>
       </section>
