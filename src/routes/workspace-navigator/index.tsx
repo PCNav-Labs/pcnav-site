@@ -25,7 +25,7 @@ export const Route = createFileRoute("/workspace-navigator/")({
       {
         name: "description",
         content:
-          "A Windows desktop application that keeps a project's files, notes, tags, tasks and saved web destinations together in one place. A public beta is being prepared.",
+          "A Windows desktop application that keeps a project's files, notes, tags, tasks and saved web destinations together in one place. A public beta is available for Windows.",
       },
       { property: "og:title", content: "Workspace Navigator — PCNav" },
       {
@@ -145,7 +145,7 @@ function WorkspaceNavigatorPage() {
             </Button>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            A Workspace Navigator 0.5.0 beta is being prepared. It isn't available to download yet.
+            Workspace Navigator 0.5.0 Beta is available for Windows 10 and Windows 11.
           </p>
         </div>
       </section>
@@ -188,12 +188,12 @@ function WorkspaceNavigatorPage() {
             Release status
           </p>
           <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
-            Public Beta in Preparation
+            Public Beta Available
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base text-muted-foreground">
-            Workspace Navigator v0.5.0 is being prepared for public beta testing. Once available,
-            you'll be able to download the application, explore its features and share your feedback
-            to help guide future improvements.
+            Workspace Navigator v0.5.0 is available for public beta testing. Download the
+            application, explore its features and share your feedback to help guide future
+            improvements.
           </p>
           <Button asChild size="lg" className="mt-6 h-auto min-h-10 whitespace-normal">
             <Link to="/workspace-navigator/download">

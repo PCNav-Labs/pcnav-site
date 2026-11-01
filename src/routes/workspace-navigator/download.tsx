@@ -14,10 +14,11 @@ import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
 import { WORKSPACE_NAVIGATOR_FEEDBACK } from "@/components/app-feedback";
 
-// PRE-RELEASE. Owner-approved beta disclosures (RR-19, 2026-10-28), prepared before distribution is
-// authorized. The page offers no installer or release link: the download button stays disabled and
-// the source-code section names no URL. Activating the download is a separate, reviewed change made
-// only after the Owner authorizes distribution and the GitHub release exists.
+// PUBLIC BETA. Owner-approved beta disclosures (RR-19, 2026-10-28; the E45s4 content accepted at
+// 058f733d on 2026-10-31), activated for the GitHub release v0.5.0-beta.1 in
+// PCNav-Labs/workspace-navigator-releases. The download and source links point to that release's
+// assets. Deploy this only after the release exists and its assets have been downloaded back and
+// verified against the values below.
 //
 // Every product statement below describes the accepted 0.5.0 Beta build and its in-app Help, not
 // later development builds.
@@ -28,25 +29,42 @@ export const Route = createFileRoute("/workspace-navigator/download")({
       {
         name: "description",
         content:
-          "Workspace Navigator 0.5.0 Beta for Windows: compatibility, the unsigned installer, beta expiry, known limitations, privacy, source code and feedback. Not yet available to download.",
+          "Workspace Navigator 0.5.0 Beta for Windows: compatibility, the unsigned installer, beta expiry, known limitations, privacy, source code and feedback.",
       },
       { property: "og:title", content: "Workspace Navigator 0.5.0 Beta" },
       {
         property: "og:description",
         content:
-          "What to know about the Workspace Navigator 0.5.0 Beta for Windows. The beta isn't available to download yet.",
+          "Download the Workspace Navigator 0.5.0 Beta for Windows, and what to know before you install it.",
       },
     ],
   }),
   component: BetaReleasePage,
 });
 
+const RELEASE = {
+  title: "Workspace Navigator v0.5.0 Public Beta",
+  url: "https://github.com/PCNav-Labs/workspace-navigator-releases/releases/tag/v0.5.0-beta.1",
+  download:
+    "https://github.com/PCNav-Labs/workspace-navigator-releases/releases/download/v0.5.0-beta.1",
+};
+
+// GitHub serves a release asset under its asset name, in which the spaces of the built installer's
+// file name become periods; the bytes, size and SHA-256 are unchanged.
 const INSTALLER = {
   version: "0.5.0 Beta",
-  filename: "Workspace Navigator Setup 0.5.0.exe",
+  filename: "Workspace.Navigator.Setup.0.5.0.exe",
   size: "117 MB (122,925,830 bytes)",
   sha256: "3092a8c8b008f1ca3555127716f77c1e845c7275403e0dbb095b98d6cebe1be3",
   expires: "29 January 2027, 04:06 UTC",
+  url: `${RELEASE.download}/Workspace.Navigator.Setup.0.5.0.exe`,
+};
+
+const SOURCE = {
+  filename: "workspace-navigator-v0.5.0-beta.1-corresponding-source.zip",
+  size: "20 MB (20,576,747 bytes)",
+  sha256: "be9a0f5fd6b85b6d2639a7051f7447da049668d11a18e317d2a387b66165e701",
+  url: `${RELEASE.download}/workspace-navigator-v0.5.0-beta.1-corresponding-source.zip`,
 };
 
 const HASH_COMMAND = `Get-FileHash "$env:USERPROFILE\\Downloads\\${INSTALLER.filename}"`;
@@ -78,9 +96,6 @@ function BetaReleasePage() {
           <p className="mt-3 max-w-2xl text-base text-muted-foreground">
             This beta is intended for users in Canada and the United States.
           </p>
-          <p className="mt-6 max-w-2xl text-sm font-medium text-foreground">
-            The beta isn't available to download yet. This page describes it ahead of its release.
-          </p>
         </div>
       </section>
 
@@ -108,16 +123,25 @@ function BetaReleasePage() {
               <h2 className="text-xl font-semibold">Download</h2>
               <div className="mt-6">
                 <Button
+                  asChild
                   size="lg"
-                  disabled
                   className="h-auto min-h-10 w-full whitespace-normal sm:w-auto"
                 >
-                  <Download /> Download not yet available
+                  <a href={INSTALLER.url}>
+                    <Download /> Download for Windows
+                  </a>
                 </Button>
               </div>
               <p className="mt-4 text-sm text-muted-foreground">
-                When the beta is released, the installer and its source code will be published
-                together on GitHub, and this page will link to them.
+                The installer and its source code are published together on GitHub, in the release{" "}
+                <a
+                  href={RELEASE.url}
+                  {...EXTERNAL}
+                  className="text-primary underline-offset-4 hover:underline"
+                >
+                  {RELEASE.title}
+                </a>
+                .
               </p>
               <ol className="mt-6 space-y-4">
                 <Step n={1}>Download the installer.</Step>
@@ -292,14 +316,19 @@ function BetaReleasePage() {
           <p>
             Workspace Navigator includes open-source components. Their licences and notices are
             installed with the app, in <span className="font-mono">THIRD_PARTY_NOTICES.txt</span> in
-            its installation folder, and will also be published with the release.
+            its installation folder, and are also published with the release, in the source archive
+            below.
           </p>
           <p>
             The complete corresponding source code for the LGPL-licensed components in this version
-            — FFmpeg, Nsis7z and StdUtils — will be published on the GitHub release page alongside
-            the installer, with a README describing each file. This page will link to it when the
-            beta is released. The source will remain available for at least three years after this
-            version is last offered for download.
+            — FFmpeg, Nsis7z and StdUtils — is published on the GitHub release page alongside the
+            installer, as one ZIP archive with a README describing each file:{" "}
+            <a href={SOURCE.url} className="text-primary underline-offset-4 hover:underline">
+              {SOURCE.filename}
+            </a>{" "}
+            ({SOURCE.size}; SHA-256 <span className="break-all font-mono">{SOURCE.sha256}</span>).
+            The source will remain available for at least three years after this version is last
+            offered for download.
           </p>
           <p>
             No account or licence agreement is needed to download or use this beta. Nothing on this

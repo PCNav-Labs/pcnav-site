@@ -57,11 +57,11 @@ const APPS = [
   {
     to: "/workspace-navigator",
     name: "Workspace Navigator",
-    status: "Application · Beta in preparation",
+    status: "Application · Public beta",
     tagline: "",
     description:
       "A Windows desktop application that keeps a project's files, notes, tags, tasks and saved web destinations together in one place.",
-    note: "Version 0.5.0 beta is being prepared. It isn't available to download yet.",
+    note: "Version 0.5.0 Beta is available for Windows 10 and Windows 11.",
     icons: [FolderTree, FileText, StickyNote, Globe],
   },
 ] as const;
@@ -90,8 +90,8 @@ function HomePage() {
               </Button>
             </div>
             <p className="mt-5 text-sm text-muted-foreground">
-              OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is being
-              prepared for public beta release.
+              OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is available
+              as a public beta.
             </p>
           </div>
         </div>
