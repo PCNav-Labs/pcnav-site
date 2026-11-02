@@ -8,6 +8,7 @@ import {
   Globe,
   FolderTree,
   StickyNote,
+  PlayCircle,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -15,6 +16,8 @@ import { SectionHeading } from "@/components/section-heading";
 import { PrincipleCard } from "@/components/principle-card";
 import { PrivacyList } from "@/components/privacy-list";
 import { CtaBand } from "@/components/cta-band";
+import { PromoVideo } from "@/components/promo-video";
+import { WN_INTRO_VIDEO } from "@/lib/promo-video";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -88,12 +91,44 @@ function HomePage() {
               <Button asChild size="lg" variant="outline">
                 <a href="#what-is-pcnav">Learn More</a>
               </Button>
+              <Button asChild size="lg" variant="outline">
+                <a href="#watch-video">
+                  <PlayCircle /> Watch Video
+                </a>
+              </Button>
             </div>
             <p className="mt-5 text-sm text-muted-foreground">
               OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is available
               as a public beta.
             </p>
           </div>
+        </div>
+      </section>
+
+      {/* Workspace Navigator introduction video */}
+      <section
+        id="watch-video"
+        aria-labelledby="watch-video-title"
+        className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-20 sm:px-6"
+      >
+        <SectionHeading
+          align="center"
+          eyebrow="Workspace Navigator · Video"
+          title={<span id="watch-video-title">See Workspace Navigator in Action</span>}
+          description="A three-minute introduction to Workspace Navigator, its tools, and the context map that helps you spend less time searching and more time working."
+        />
+        <div className="mt-10">
+          <PromoVideo video={WN_INTRO_VIDEO} />
+        </div>
+        <div className="mt-8 flex flex-col items-center gap-3 text-center">
+          <Button asChild size="lg" className="h-auto min-h-10 whitespace-normal">
+            <Link to="/workspace-navigator/download">
+              <FileText /> View Beta Download & Installation Information
+            </Link>
+          </Button>
+          <p className="text-sm text-muted-foreground">
+            Workspace Navigator 0.5.0 Beta is available for Windows 10 and Windows 11.
+          </p>
         </div>
       </section>
 
