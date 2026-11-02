@@ -9,6 +9,7 @@ import {
   FolderTree,
   StickyNote,
   Download,
+  FlaskConical,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -72,6 +73,10 @@ const APPS = [
 const RELEASE_STATUS =
   "OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is available as a public beta.";
 
+// Both product actions share one style so neither reads as subordinate; long labels wrap.
+const DOWNLOAD_ACTION =
+  "h-auto min-h-10 w-full justify-start whitespace-normal px-5 py-2 text-left";
+
 function HomePage() {
   return (
     <>
@@ -90,29 +95,43 @@ function HomePage() {
               Practical tools designed to help people understand, navigate, and manage technology
               with greater clarity.
             </p>
-            <div className="mt-7 flex flex-wrap items-center gap-3">
-              <Button asChild size="lg">
-                <Link to="/workspace-navigator/download">
-                  <Download /> Download Beta
-                </Link>
-              </Button>
-              <Button asChild size="lg" variant="outline" className="hidden lg:inline-flex">
-                <a href="#what-is-pcnav">Learn More</a>
-              </Button>
+            <div className="mt-7">
+              <h2 className="font-sans text-xs font-semibold uppercase tracking-[0.18em] text-muted-foreground">
+                Downloads
+              </h2>
+              {/* OS Map is in trusted testing, so its action leads to the information page. */}
+              <div className="mt-3 flex flex-col gap-3 sm:max-w-sm">
+                <Button asChild size="lg" className={DOWNLOAD_ACTION}>
+                  <Link to="/os-map">
+                    <FlaskConical /> OS Map — Trusted Testing
+                  </Link>
+                </Button>
+                <Button asChild size="lg" className={DOWNLOAD_ACTION}>
+                  <Link to="/workspace-navigator/download">
+                    <Download /> Download Workspace Navigator v0.5.0
+                  </Link>
+                </Button>
+              </div>
+              <p className="mt-4 text-sm text-muted-foreground">{RELEASE_STATUS}</p>
             </div>
-            <p className="mt-5 hidden text-sm text-muted-foreground lg:block">{RELEASE_STATUS}</p>
+            <Button asChild variant="link" className="mt-3 hidden h-auto px-0 lg:inline-flex">
+              <a href="#what-is-pcnav">
+                Learn More <ArrowRight />
+              </a>
+            </Button>
           </div>
 
           <div id="watch-video" className="scroll-mt-20">
             <PromoVideo video={WN_INTRO_VIDEO} />
           </div>
 
-          {/* On narrow screens the secondary action and status follow the video. */}
+          {/* On narrow screens the secondary link follows the video. */}
           <div className="lg:hidden">
-            <Button asChild size="lg" variant="outline">
-              <a href="#what-is-pcnav">Learn More</a>
+            <Button asChild variant="link" className="h-auto px-0">
+              <a href="#what-is-pcnav">
+                Learn More <ArrowRight />
+              </a>
             </Button>
-            <p className="mt-4 text-sm text-muted-foreground">{RELEASE_STATUS}</p>
           </div>
         </div>
       </section>
