@@ -8,7 +8,7 @@ import {
   Globe,
   FolderTree,
   StickyNote,
-  PlayCircle,
+  Download,
 } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
@@ -69,66 +69,51 @@ const APPS = [
   },
 ] as const;
 
+const RELEASE_STATUS =
+  "OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is available as a public beta.";
+
 function HomePage() {
   return (
     <>
-      {/* Hero */}
+      {/* Hero: the PCNav introduction beside the Workspace Navigator introduction video */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-accent)_0%,transparent_70%)] opacity-60" />
-        <div className="mx-auto max-w-6xl px-4 pb-20 pt-20 sm:px-6 sm:pt-28">
-          <div className="mx-auto max-w-3xl text-center">
+        <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,32rem)]">
+          <div>
             <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
               PCNav · Makers of OS Map and Workspace Navigator
             </p>
-            <h1 className="mt-5 font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-6xl">
+            <h1 className="mt-4 font-display text-4xl font-semibold leading-[1.1] tracking-tight sm:text-5xl xl:text-[3.5rem]">
               Navigate Technology With Confidence.
             </h1>
-            <p className="mx-auto mt-6 max-w-2xl text-lg leading-relaxed text-muted-foreground">
-              Practical tools designed to help people understand, navigate, and manage technology with greater
-              clarity.
+            <p className="mt-5 max-w-xl text-lg leading-relaxed text-muted-foreground">
+              Practical tools designed to help people understand, navigate, and manage technology
+              with greater clarity.
             </p>
-            <div className="mt-8 flex flex-wrap items-center justify-center gap-3">
-              <Button asChild size="lg" variant="outline">
+            <div className="mt-7 flex flex-wrap items-center gap-3">
+              <Button asChild size="lg">
+                <Link to="/workspace-navigator/download">
+                  <Download /> Download Beta
+                </Link>
+              </Button>
+              <Button asChild size="lg" variant="outline" className="hidden lg:inline-flex">
                 <a href="#what-is-pcnav">Learn More</a>
               </Button>
-              <Button asChild size="lg" variant="outline">
-                <a href="#watch-video">
-                  <PlayCircle /> Watch Video
-                </a>
-              </Button>
             </div>
-            <p className="mt-5 text-sm text-muted-foreground">
-              OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is available
-              as a public beta.
-            </p>
+            <p className="mt-5 hidden text-sm text-muted-foreground lg:block">{RELEASE_STATUS}</p>
           </div>
-        </div>
-      </section>
 
-      {/* Workspace Navigator introduction video */}
-      <section
-        id="watch-video"
-        aria-labelledby="watch-video-title"
-        className="mx-auto max-w-6xl scroll-mt-20 px-4 pb-20 sm:px-6"
-      >
-        <SectionHeading
-          align="center"
-          eyebrow="Workspace Navigator · Video"
-          title={<span id="watch-video-title">See Workspace Navigator in Action</span>}
-          description="A three-minute introduction to Workspace Navigator, its tools, and the context map that helps you spend less time searching and more time working."
-        />
-        <div className="mt-10">
-          <PromoVideo video={WN_INTRO_VIDEO} />
-        </div>
-        <div className="mt-8 flex flex-col items-center gap-3 text-center">
-          <Button asChild size="lg" className="h-auto min-h-10 whitespace-normal">
-            <Link to="/workspace-navigator/download">
-              <FileText /> View Beta Download & Installation Information
-            </Link>
-          </Button>
-          <p className="text-sm text-muted-foreground">
-            Workspace Navigator 0.5.0 Beta is available for Windows 10 and Windows 11.
-          </p>
+          <div id="watch-video" className="scroll-mt-20">
+            <PromoVideo video={WN_INTRO_VIDEO} />
+          </div>
+
+          {/* On narrow screens the secondary action and status follow the video. */}
+          <div className="lg:hidden">
+            <Button asChild size="lg" variant="outline">
+              <a href="#what-is-pcnav">Learn More</a>
+            </Button>
+            <p className="mt-4 text-sm text-muted-foreground">{RELEASE_STATUS}</p>
+          </div>
         </div>
       </section>
 

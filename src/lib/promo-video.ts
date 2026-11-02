@@ -26,7 +26,7 @@ export type PromoVideo = {
 };
 
 export const WN_INTRO_VIDEO: PromoVideo = {
-  title: "Workspace Navigator — Introduction",
+  title: "Workspace Navigator — Video Introduction",
   durationLabel: null,
   src: null,
   type: "video/mp4",

@@ -18,7 +18,7 @@ export function PromoVideo({ video }: { video: PromoVideoConfig }) {
 function Frame({ children, state }: { children: ReactNode; state: string }) {
   return (
     <div
-      className="relative aspect-video w-full overflow-hidden rounded-2xl border border-border/70 bg-[#0b1626] shadow-xl shadow-black/10"
+      className="@container relative aspect-video w-full overflow-hidden rounded-2xl border border-border/70 bg-[#0b1626] shadow-xl shadow-black/10"
       data-promo-state={state}
     >
       {children}
@@ -60,7 +60,7 @@ function Player({ video, src }: { video: PromoVideoConfig; src: string }) {
   };
 
   return (
-    <figure className="mx-auto w-full max-w-5xl">
+    <figure className="@container mx-auto w-full max-w-5xl">
       <Frame state={state}>
         <video
           ref={ref}
@@ -99,8 +99,11 @@ function Player({ video, src }: { video: PromoVideoConfig; src: string }) {
               aria-label={`Play video: ${video.title}${video.durationLabel ? `, ${video.durationLabel}` : ""}`}
               className="group absolute inset-0 flex cursor-pointer flex-col items-center justify-center gap-4 text-white focus-visible:outline-none"
             >
-              <span className="flex h-20 w-20 items-center justify-center rounded-full bg-white text-[#0b1626] shadow-2xl ring-white/60 ring-offset-4 ring-offset-[#0b1626] transition-transform group-hover:scale-105 group-focus-visible:ring-4 motion-reduce:transition-none motion-reduce:group-hover:scale-100 sm:h-24 sm:w-24">
-                <Play className="ml-1 h-9 w-9 fill-current sm:h-10 sm:w-10" aria-hidden="true" />
+              <span className="flex h-16 w-16 items-center justify-center rounded-full bg-white text-[#0b1626] shadow-2xl ring-white/60 ring-offset-4 ring-offset-[#0b1626] transition-transform group-hover:scale-105 group-focus-visible:ring-4 motion-reduce:transition-none motion-reduce:group-hover:scale-100 @md:h-20 @md:w-20 @2xl:h-24 @2xl:w-24">
+                <Play
+                  className="ml-1 h-7 w-7 fill-current @md:h-9 @md:w-9 @2xl:h-10 @2xl:w-10"
+                  aria-hidden="true"
+                />
               </span>
               <span className="rounded-full bg-black/55 px-4 py-1.5 text-sm font-medium backdrop-blur-sm">
                 Play video{video.durationLabel ? ` · ${video.durationLabel}` : ""}
@@ -121,7 +124,7 @@ function Player({ video, src }: { video: PromoVideoConfig; src: string }) {
         )}
       </Frame>
 
-      <figcaption className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground sm:flex-row sm:items-center sm:justify-between">
+      <figcaption className="mt-4 flex flex-col gap-3 text-sm text-muted-foreground @xl:flex-row @xl:items-center @xl:justify-between">
         <Caption video={video} />
         {state !== "error" && (
           <div className="flex items-center gap-2" role="group" aria-label="Playback speed">
@@ -154,7 +157,7 @@ function Player({ video, src }: { video: PromoVideoConfig; src: string }) {
 // control, so it cannot be mistaken for a playable video.
 function Unavailable({ video }: { video: PromoVideoConfig }) {
   return (
-    <figure className="mx-auto w-full max-w-5xl">
+    <figure className="@container mx-auto w-full max-w-5xl">
       <Frame state="unavailable">
         {video.poster ? (
           <img
@@ -232,18 +235,18 @@ function TitleCard({ showTitle = true, note }: { showTitle?: boolean; note?: str
         />
       </svg>
       {showTitle && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center text-white sm:gap-4">
-          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/5 sm:h-16 sm:w-16">
-            <Compass className="h-6 w-6 text-white/85 sm:h-8 sm:w-8" />
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center text-white @sm:gap-3 @2xl:gap-4">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/5 @sm:h-12 @sm:w-12 @2xl:h-16 @2xl:w-16">
+            <Compass className="h-6 w-6 text-white/85 @2xl:h-8 @2xl:w-8" />
           </span>
-          <p className="font-display text-lg font-semibold tracking-tight sm:text-3xl">
+          <p className="font-display text-lg font-semibold tracking-tight @sm:text-2xl @2xl:text-3xl">
             Workspace Navigator
           </p>
-          <p className="text-xs uppercase tracking-[0.22em] text-white/70 sm:text-sm">
+          <p className="text-xs uppercase tracking-[0.22em] text-white/70 @2xl:text-sm">
             Introduction
           </p>
           {note && (
-            <p className="mt-1 rounded-full border border-[#9ecbff]/40 bg-[#9ecbff]/10 px-3 py-1 text-xs font-medium text-[#cfe6ff] sm:mt-2 sm:px-4 sm:text-sm">
+            <p className="mt-1 rounded-full border border-[#9ecbff]/40 bg-[#9ecbff]/10 px-3 py-1 text-xs font-medium text-[#cfe6ff] @2xl:mt-2 @2xl:px-4 @2xl:text-sm">
               {note}
             </p>
           )}
