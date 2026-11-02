@@ -150,9 +150,7 @@ function Player({ video, src }: { video: PromoVideoConfig; src: string }) {
   );
 }
 
-const UNAVAILABLE = "Video in production — not yet available";
-
-// Shown while no finished video is configured. It is labelled as unavailable and offers no play
+// Shown while no finished video is configured. It is labelled "Coming soon" and offers no play
 // control, so it cannot be mistaken for a playable video.
 function Unavailable({ video }: { video: PromoVideoConfig }) {
   return (
@@ -167,18 +165,13 @@ function Unavailable({ video }: { video: PromoVideoConfig }) {
             className="absolute inset-0 h-full w-full object-cover"
           />
         ) : (
-          <TitleCard />
+          <TitleCard note="Coming soon" />
         )}
-        {/* On narrow screens the label moves below the frame so it does not cover the title. */}
-        <div className="absolute inset-x-0 bottom-0 hidden justify-center p-6 sm:flex">
-          <p className="rounded-full bg-black/60 px-4 py-1.5 text-center text-sm font-medium text-white backdrop-blur-sm">
-            {UNAVAILABLE}
-          </p>
-        </div>
       </Frame>
-      <figcaption className="mt-4 flex flex-col gap-1 text-sm text-muted-foreground">
+      <figcaption className="mt-4 text-sm text-muted-foreground">
         <Caption video={video} />
-        <p className="font-medium text-foreground sm:hidden">{UNAVAILABLE}</p>
+        {/* The title card is decorative; this gives screen readers the same status. */}
+        <span className="sr-only">Video coming soon.</span>
       </figcaption>
     </figure>
   );
@@ -208,7 +201,7 @@ function Caption({ video }: { video: PromoVideoConfig }) {
 }
 
 // Neutral title card used where no approved poster image exists. It is not a final poster.
-function TitleCard({ showTitle = true }: { showTitle?: boolean }) {
+function TitleCard({ showTitle = true, note }: { showTitle?: boolean; note?: string }) {
   return (
     <div
       className="absolute inset-0 overflow-hidden bg-[radial-gradient(120%_90%_at_20%_10%,#1d3557_0%,#0b1626_55%,#05090f_100%)]"
@@ -239,8 +232,8 @@ function TitleCard({ showTitle = true }: { showTitle?: boolean }) {
         />
       </svg>
       {showTitle && (
-        <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 px-6 pb-10 text-center text-white sm:gap-4">
-          <span className="flex h-12 w-12 items-center justify-center rounded-full border border-white/25 bg-white/5 sm:h-16 sm:w-16">
+        <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 px-6 text-center text-white sm:gap-4">
+          <span className="flex h-10 w-10 items-center justify-center rounded-full border border-white/25 bg-white/5 sm:h-16 sm:w-16">
             <Compass className="h-6 w-6 text-white/85 sm:h-8 sm:w-8" />
           </span>
           <p className="font-display text-lg font-semibold tracking-tight sm:text-3xl">
@@ -249,6 +242,11 @@ function TitleCard({ showTitle = true }: { showTitle?: boolean }) {
           <p className="text-xs uppercase tracking-[0.22em] text-white/70 sm:text-sm">
             Introduction
           </p>
+          {note && (
+            <p className="mt-1 rounded-full border border-[#9ecbff]/40 bg-[#9ecbff]/10 px-3 py-1 text-xs font-medium text-[#cfe6ff] sm:mt-2 sm:px-4 sm:text-sm">
+              {note}
+            </p>
+          )}
         </div>
       )}
     </div>
