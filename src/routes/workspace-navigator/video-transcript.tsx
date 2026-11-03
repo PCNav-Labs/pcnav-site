@@ -293,7 +293,8 @@ function VideoTranscriptPage() {
           <h2 className="font-display text-2xl font-semibold tracking-tight">Credits</h2>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             The Web Browser scene shows a Wikipedia article, as it appeared when the video was
-            recorded in November 2026, in a screen recording that includes magnified close-ups.
+            recorded in November 2026, in a screen recording. Changes were made: parts of the
+            article and its two images are shown cropped and magnified.
           </p>
           <ul className="mt-4 list-disc space-y-3 pl-5 text-base leading-relaxed text-muted-foreground">
             <li>
