@@ -1,26 +1,26 @@
 // Homepage introduction video for Workspace Navigator.
 //
-// The homepage shows a static thumbnail; selecting it opens the optimized MP4 in a new browser tab,
-// where the browser's own player plays it. No embedded player, iframe or third-party request is
-// involved. The thumbnail is a frame of the video's opening title card, taken from the same file.
+// The homepage plays the optimized MP4 inline in the site's own native player, with a speed
+// selector; the poster is a frame of the video's opening title card, taken from the same file. No
+// iframe, player library or third-party request is involved, and nothing loads until play.
 //
 // A replacement video may keep its filename: /media/ is served with "max-age=0, must-revalidate", so
-// browsers revalidate and fetch the new file. Replace the thumbnail too if the title card changes.
+// browsers revalidate and fetch the new file. Replace the poster too if the title card changes.
 
 export type PromoVideo = {
-  /** Shown beneath the thumbnail; part of the link's accessible name. */
+  /** Shown beneath the video. */
   title: string;
-  /** Shown beside the title, e.g. "3 min". */
+  /** Shown beside the title, e.g. "3 min"; part of the play button's accessible description. */
   durationLabel: string;
-  /** One sentence shown beneath the video link, and part of its accessible description. */
+  /** One sentence shown beneath the video; part of the play button's accessible description. */
   description: string;
-  /** The video link's accessible name. */
+  /** The play button's accessible name. */
   accessibleLabel: string;
-  /** The video file, opened in a new tab. Page-relative, so the prerender crawl never follows it;
-   *  the prerender filter in vite.config.ts also excludes /media/ for any other link to media. */
-  href: string;
-  /** Static 16:9 thumbnail image (1280 x 720). */
-  thumbnail: string;
+  /** The video file. A <video> source is not a link, so the prerender crawl never fetches it; the
+   *  prerender filter in vite.config.ts also excludes /media/ for any link to media. */
+  src: string;
+  /** Static 16:9 poster image (1280 x 720). */
+  poster: string;
 };
 
 export const WN_INTRO_VIDEO: PromoVideo = {
@@ -28,6 +28,6 @@ export const WN_INTRO_VIDEO: PromoVideo = {
   durationLabel: "3 min",
   description: "Discover Workspace Navigator and explore its features.",
   accessibleLabel: "Watch the Workspace Navigator Video Introduction",
-  href: "media/workspace-navigator-introduction-v1.mp4",
-  thumbnail: "/media/workspace-navigator-introduction-v1-thumbnail.jpg",
+  src: "/media/workspace-navigator-introduction-v1.mp4",
+  poster: "/media/workspace-navigator-introduction-v1-thumbnail.jpg",
 };
