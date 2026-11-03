@@ -4,8 +4,8 @@
 // where the browser's own player plays it. No embedded player, iframe or third-party request is
 // involved. The thumbnail is a frame of the video's opening title card, taken from the same file.
 //
-// A replacement video takes a new versioned filename under public/media/, with a new thumbnail, so
-// a cached copy of an earlier version is never mistaken for it.
+// A replacement video may keep its filename: /media/ is served with "max-age=0, must-revalidate", so
+// browsers revalidate and fetch the new file. Replace the thumbnail too if the title card changes.
 
 export type PromoVideo = {
   /** Shown beneath the thumbnail; part of the link's accessible name. */
