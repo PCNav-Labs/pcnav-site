@@ -3,9 +3,9 @@ import { Clock, ExternalLink, FileText, Play } from "lucide-react";
 import type { PromoVideo as PromoVideoConfig } from "@/lib/promo-video";
 
 // A static thumbnail that opens the video file in a new tab, where the browser's own player plays
-// it. One link carries the thumbnail and the title. The image is decorative, so the link's
-// accessible name comes from the visible title, duration and new-tab note. The transcript link
-// sits outside it, so the two links are never nested.
+// it. One link carries the thumbnail and the title. The image is decorative; the link's accessible
+// name is the approved label, and its description is the duration, the new-tab note and the
+// sentence beneath it. The transcript link sits outside it, so the two links are never nested.
 export function PromoVideo({ video }: { video: PromoVideoConfig }) {
   return (
     <div className="@container mx-auto w-full max-w-5xl">
@@ -13,6 +13,8 @@ export function PromoVideo({ video }: { video: PromoVideoConfig }) {
         href={video.href}
         target="_blank"
         rel="noopener noreferrer"
+        aria-label={video.accessibleLabel}
+        aria-describedby="wn-video-duration wn-video-new-tab wn-video-description"
         className="group block rounded-2xl focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-ring focus-visible:ring-offset-4 focus-visible:ring-offset-background"
       >
         <span className="relative block aspect-video w-full overflow-hidden rounded-2xl border border-border/70 bg-[#0b1626] shadow-xl shadow-black/10">
@@ -39,16 +41,20 @@ export function PromoVideo({ video }: { video: PromoVideoConfig }) {
           <span className="font-medium text-foreground underline-offset-4 group-hover:underline">
             {video.title}
           </span>
-          <span className="inline-flex items-center gap-1.5">
+          <span id="wn-video-duration" className="inline-flex items-center gap-1.5">
             <Clock className="h-3.5 w-3.5" aria-hidden="true" />
             {video.durationLabel}
           </span>
-          <span className="inline-flex items-center gap-1.5">
+          <span id="wn-video-new-tab" className="inline-flex items-center gap-1.5">
             <ExternalLink className="h-3.5 w-3.5" aria-hidden="true" />
             Opens in a new tab
           </span>
         </span>
       </a>
+
+      <p id="wn-video-description" className="mt-2 text-sm text-muted-foreground">
+        {video.description}
+      </p>
 
       <Link
         to="/workspace-navigator/video-transcript"

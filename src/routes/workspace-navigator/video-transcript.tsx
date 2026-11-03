@@ -6,16 +6,16 @@ const VIDEO_HREF = "/media/workspace-navigator-introduction-v1.mp4";
 export const Route = createFileRoute("/workspace-navigator/video-transcript")({
   head: () => ({
     meta: [
-      { title: "Workspace Navigator — Video Introduction: transcript" },
+      { title: "Workspace Navigator — Video Introduction: Transcript" },
       {
         name: "description",
         content:
-          "A text version of the Workspace Navigator video introduction, with credits for the third-party content it shows.",
+          "A text version of the Workspace Navigator Video Introduction, with credits for the third-party content it shows.",
       },
-      { property: "og:title", content: "Workspace Navigator — Video Introduction: transcript" },
+      { property: "og:title", content: "Workspace Navigator — Video Introduction: Transcript" },
       {
         property: "og:description",
-        content: "A text version of the Workspace Navigator video introduction.",
+        content: "A text version of the Workspace Navigator Video Introduction.",
       },
     ],
   }),
@@ -232,13 +232,13 @@ function VideoTranscriptPage() {
       <section className="border-b border-border/60 bg-surface/40">
         <div className="mx-auto max-w-3xl px-4 py-16 sm:px-6">
           <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
-            Workspace Navigator
+            Transcript
           </p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-            Video Introduction: transcript
+            Workspace Navigator — Video Introduction
           </h1>
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
-            A text version of the three-minute Workspace Navigator video introduction. The video has
+            A text version of the three-minute Workspace Navigator Video Introduction. The video has
             instrumental music and no spoken narration. Its information is shown as on-screen text
             and demonstrated in the application, using sample Projects and files.
           </p>
@@ -249,7 +249,7 @@ function VideoTranscriptPage() {
               rel="noopener noreferrer"
               className={`inline-flex items-center gap-1.5 font-medium ${linkClass}`}
             >
-              Watch the video
+              Watch the Video Introduction
               <ExternalLink className="h-4 w-4" aria-hidden="true" />
               <span className="sr-only"> (opens in a new tab)</span>
             </a>

@@ -12,6 +12,10 @@ export type PromoVideo = {
   title: string;
   /** Shown beside the title, e.g. "3 min". */
   durationLabel: string;
+  /** One sentence shown beneath the video link, and part of its accessible description. */
+  description: string;
+  /** The video link's accessible name. */
+  accessibleLabel: string;
   /** The video file, opened in a new tab. Page-relative, so the prerender crawl never follows it;
    *  the prerender filter in vite.config.ts also excludes /media/ for any other link to media. */
   href: string;
@@ -22,6 +26,8 @@ export type PromoVideo = {
 export const WN_INTRO_VIDEO: PromoVideo = {
   title: "Workspace Navigator — Video Introduction",
   durationLabel: "3 min",
+  description: "Discover Workspace Navigator and explore its features.",
+  accessibleLabel: "Watch the Workspace Navigator Video Introduction",
   href: "media/workspace-navigator-introduction-v1.mp4",
   thumbnail: "/media/workspace-navigator-introduction-v1-thumbnail.jpg",
 };
