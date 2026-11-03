@@ -1,36 +1,27 @@
 // Homepage introduction video for Workspace Navigator.
 //
-// The finished video is served from public/media/ as a web-delivery copy (H.264/AAC, faststart); a
-// replacement takes a new versioned filename. Its poster is not yet approved, so `poster` is
-// null and the player shows the neutral title card until playback starts. If `src` is set back to
-// null, the homepage shows a clearly labelled placeholder and renders no <video> element.
+// The homepage shows a static thumbnail; selecting it opens the optimized MP4 in a new browser tab,
+// where the browser's own player plays it. No embedded player, iframe or third-party request is
+// involved. The thumbnail is a frame of the video's opening title card, taken from the same file.
 //
-// Captions and a transcript are not invented for an unfinished video. Add them here once they
-// exist; the player renders a <track> per caption file and a transcript link when one is set.
-
-export type PromoCaption = { src: string; srclang: string; label: string; default?: boolean };
+// A replacement video takes a new versioned filename under public/media/, with a new thumbnail, so
+// a cached copy of an earlier version is never mistaken for it.
 
 export type PromoVideo = {
-  /** Accessible name of the video, also shown beneath the player. */
+  /** Shown beneath the thumbnail; part of the link's accessible name. */
   title: string;
-  /** Shown beneath the player and on the play button, e.g. "3 min". */
-  durationLabel: string | null;
-  /** Video file URL, e.g. "/media/workspace-navigator-introduction.mp4". */
-  src: string | null;
-  /** MIME type of `src`. */
-  type: string;
-  /** Poster image URL (16:9), e.g. "/media/workspace-navigator-introduction-poster.jpg". */
-  poster: string | null;
-  captions: PromoCaption[];
-  transcriptHref: string | null;
+  /** Shown beside the title, e.g. "3 min". */
+  durationLabel: string;
+  /** The video file, opened in a new tab. Page-relative on purpose: the prerender step crawls
+   *  root-relative links as pages, and crawling a video file would overwrite the built copy. */
+  href: string;
+  /** Static 16:9 thumbnail image (1280 x 720). */
+  thumbnail: string;
 };
 
 export const WN_INTRO_VIDEO: PromoVideo = {
   title: "Workspace Navigator — Video Introduction",
   durationLabel: "3 min",
-  src: "/media/workspace-navigator-introduction-v1.mp4",
-  type: "video/mp4",
-  poster: null,
-  captions: [],
-  transcriptHref: null,
+  href: "media/workspace-navigator-introduction-v1.mp4",
+  thumbnail: "/media/workspace-navigator-introduction-v1-thumbnail.jpg",
 };
