@@ -1,9 +1,9 @@
 // Homepage introduction video for Workspace Navigator.
 //
-// The finished video and its poster are not yet approved, so `src` and `poster` are null. While
-// `src` is null the homepage shows a clearly labelled placeholder and renders no <video> element,
-// so no media request is made. To connect the finished assets, place them under public/media/ and
-// set the paths below — no change to the homepage layout is needed.
+// The finished video is served from public/media/ as a web-delivery copy (H.264/AAC, faststart); a
+// replacement takes a new versioned filename. Its poster is not yet approved, so `poster` is
+// null and the player shows the neutral title card until playback starts. If `src` is set back to
+// null, the homepage shows a clearly labelled placeholder and renders no <video> element.
 //
 // Captions and a transcript are not invented for an unfinished video. Add them here once they
 // exist; the player renders a <track> per caption file and a transcript link when one is set.
@@ -27,8 +27,8 @@ export type PromoVideo = {
 
 export const WN_INTRO_VIDEO: PromoVideo = {
   title: "Workspace Navigator — Video Introduction",
-  durationLabel: null,
-  src: null,
+  durationLabel: "3 min",
+  src: "/media/workspace-navigator-introduction-v1.mp4",
   type: "video/mp4",
   poster: null,
   captions: [],
