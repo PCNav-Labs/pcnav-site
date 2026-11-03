@@ -18,6 +18,9 @@ export default defineConfig({
       enabled: true,
       crawlLinks: true,
       autoSubfolderIndex: true,
+      // Static media are files, not pages. A crawled link to one would be fetched as a page and
+      // written over the built copy, so nothing under /media/ is ever prerendered.
+      filter: (page: { path: string }) => !page.path.startsWith("/media/"),
     },
     // Explicit page list guarantees every public route is emitted regardless of crawl.
     pages: [
@@ -28,6 +31,7 @@ export default defineConfig({
       { path: "/os-map/download" },
       { path: "/workspace-navigator" },
       { path: "/workspace-navigator/download" },
+      { path: "/workspace-navigator/video-transcript" },
       { path: "/feedback/os-map" },
       { path: "/feedback/workspace-navigator" },
       { path: "/404" },

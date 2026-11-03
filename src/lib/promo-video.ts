@@ -12,8 +12,8 @@ export type PromoVideo = {
   title: string;
   /** Shown beside the title, e.g. "3 min". */
   durationLabel: string;
-  /** The video file, opened in a new tab. Page-relative on purpose: the prerender step crawls
-   *  root-relative links as pages, and crawling a video file would overwrite the built copy. */
+  /** The video file, opened in a new tab. Page-relative, so the prerender crawl never follows it;
+   *  the prerender filter in vite.config.ts also excludes /media/ for any other link to media. */
   href: string;
   /** Static 16:9 thumbnail image (1280 x 720). */
   thumbnail: string;
