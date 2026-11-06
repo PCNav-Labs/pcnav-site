@@ -15,27 +15,27 @@ import { SectionHeading } from "@/components/section-heading";
 import { WORKSPACE_NAVIGATOR_FEEDBACK } from "@/components/app-feedback";
 
 // PUBLIC BETA. Owner-approved beta disclosures (RR-19, 2026-10-28; the E45s4 content accepted at
-// 058f733d on 2026-10-31), activated for the GitHub release v0.5.0-beta.1 in
+// 058f733d on 2026-10-31), revised for 0.5.1 under RR-42, for the GitHub release v0.5.1-beta.1 in
 // PCNav-Labs/workspace-navigator-releases. The download and source links point to that release's
 // assets. Deploy this only after the release exists and its assets have been downloaded back and
 // verified against the values below.
 //
-// Every product statement below describes the accepted 0.5.0 Beta build and its in-app Help, not
+// Every product statement below describes the 0.5.1 Beta build and its in-app Help, not
 // later development builds.
 export const Route = createFileRoute("/workspace-navigator/download")({
   head: () => ({
     meta: [
-      { title: "Workspace Navigator 0.5.0 Beta | PCNav" },
+      { title: "Workspace Navigator 0.5.1 Beta | PCNav" },
       {
         name: "description",
         content:
-          "Workspace Navigator 0.5.0 Beta for Windows: compatibility, the unsigned installer, beta expiry, known limitations, privacy, source code and feedback.",
+          "Workspace Navigator 0.5.1 Beta for Windows: compatibility, the unsigned installer, beta expiry, known limitations, privacy, source code and feedback.",
       },
-      { property: "og:title", content: "Workspace Navigator 0.5.0 Beta" },
+      { property: "og:title", content: "Workspace Navigator 0.5.1 Beta" },
       {
         property: "og:description",
         content:
-          "Download the Workspace Navigator 0.5.0 Beta for Windows, and what to know before you install it.",
+          "Download the Workspace Navigator 0.5.1 Beta for Windows, and what to know before you install it.",
       },
     ],
   }),
@@ -43,28 +43,28 @@ export const Route = createFileRoute("/workspace-navigator/download")({
 });
 
 const RELEASE = {
-  title: "Workspace Navigator v0.5.0 Public Beta",
-  url: "https://github.com/PCNav-Labs/workspace-navigator-releases/releases/tag/v0.5.0-beta.1",
+  title: "Workspace Navigator v0.5.1 Public Beta",
+  url: "https://github.com/PCNav-Labs/workspace-navigator-releases/releases/tag/v0.5.1-beta.1",
   download:
-    "https://github.com/PCNav-Labs/workspace-navigator-releases/releases/download/v0.5.0-beta.1",
+    "https://github.com/PCNav-Labs/workspace-navigator-releases/releases/download/v0.5.1-beta.1",
 };
 
 // GitHub serves a release asset under its asset name, in which the spaces of the built installer's
 // file name become periods; the bytes, size and SHA-256 are unchanged.
 const INSTALLER = {
-  version: "0.5.0 Beta",
-  filename: "Workspace.Navigator.Setup.0.5.0.exe",
-  size: "117 MB (122,925,830 bytes)",
-  sha256: "3092a8c8b008f1ca3555127716f77c1e845c7275403e0dbb095b98d6cebe1be3",
-  expires: "29 January 2027, 04:06 UTC",
-  url: `${RELEASE.download}/Workspace.Navigator.Setup.0.5.0.exe`,
+  version: "0.5.1 Beta",
+  filename: "Workspace.Navigator.Setup.0.5.1.exe",
+  size: "117 MB (122,972,183 bytes)",
+  sha256: "ce713a8afbe911858a5df0835eb489d3564a72118850655a97d55c0651b8b2b2",
+  expires: "3 February 2027, 15:50 UTC",
+  url: `${RELEASE.download}/Workspace.Navigator.Setup.0.5.1.exe`,
 };
 
 const SOURCE = {
-  filename: "workspace-navigator-v0.5.0-beta.1-corresponding-source.zip",
-  size: "20 MB (20,576,747 bytes)",
-  sha256: "be9a0f5fd6b85b6d2639a7051f7447da049668d11a18e317d2a387b66165e701",
-  url: `${RELEASE.download}/workspace-navigator-v0.5.0-beta.1-corresponding-source.zip`,
+  filename: "workspace-navigator-v0.5.1-beta.1-corresponding-source.zip",
+  size: "20 MB (20,581,925 bytes)",
+  sha256: "bbcf5ee70ef11a50b6b5f27442cf32499d53dcde008e256f998892fc570500b1",
+  url: `${RELEASE.download}/workspace-navigator-v0.5.1-beta.1-corresponding-source.zip`,
 };
 
 const HASH_COMMAND = `Get-FileHash "$env:USERPROFILE\\Downloads\\${INSTALLER.filename}"`;
@@ -86,11 +86,11 @@ function BetaReleasePage() {
             Beta release
           </p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">
-            Workspace Navigator 0.5.0 Beta
+            Workspace Navigator 0.5.1 Beta
           </h1>
           <p className="mt-4 max-w-2xl text-base text-muted-foreground">
-            The first public beta of Workspace Navigator for Windows: a free, early version for
-            testing and feedback. It isn't a finished product, and you may find problems. Keep your
+            The latest public beta of Workspace Navigator for Windows, replacing version 0.5.0: a
+            free, early version for testing and feedback. It isn't a finished product, and you may find problems. Keep your
             own backups of anything important — Workspace Navigator doesn't make automatic backups.
           </p>
           <p className="mt-3 max-w-2xl text-base text-muted-foreground">
@@ -222,14 +222,13 @@ function BetaReleasePage() {
       <section id="expiry" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <SectionHeading
           eyebrow="Beta expiry"
-          title="This beta expires on the evening of 28 January 2027 (North America)."
+          title="This beta expires on the morning of 3 February 2027 (North America)."
         />
         <div className="mt-6 max-w-3xl space-y-4 text-sm leading-relaxed text-muted-foreground">
           <p>
-            Each beta stops working 90 days after it was built. This one expires on 29 January 2027
-            at 04:06 UTC, which is 11:06 p.m. Eastern and 8:06 p.m. Pacific on 28 January. From 30
-            December 2026 at 04:06 UTC (the evening of 29 December in North America), Workspace
-            Navigator reminds you of the date once each time you start it.
+            Each beta stops working 90 days after it was built. This one expires on 3 February 2027
+            at 15:50 UTC, which is 10:50 a.m. Eastern and 7:50 a.m. Pacific. From 4 January 2027 at
+            15:50 UTC, Workspace Navigator reminds you of the date once each time you start it.
           </p>
           <p>
             After it expires, Workspace Navigator no longer opens normally. It shows a message with
@@ -252,6 +251,11 @@ function BetaReleasePage() {
       <section id="known-limitations" className="mx-auto max-w-6xl px-4 pb-16 sm:px-6">
         <SectionHeading eyebrow="Known limitations" title="Things to expect in this beta." />
         <div className="mt-8 grid gap-4 md:grid-cols-3">
+          <InfoCard title="Read-only documents can't be closed directly">
+            With a Word document open read-only, Close, File &gt; Close Document and Ctrl+F4 do
+            nothing. PDFs and images shown in the editor may behave the same way. To leave the
+            document, open another one. This doesn't affect your files.
+          </InfoCard>
           <InfoCard title="Your last session may not reopen">
             When Workspace Navigator starts — especially the first time after it's installed over an
             existing installation — it may not reopen the project you last had open. Panes may
@@ -265,8 +269,10 @@ function BetaReleasePage() {
           </InfoCard>
           <InfoCard title="Uninstalling">
             Uninstalling removes the app but leaves your Workspace folder and Workspace Navigator's
-            settings on your computer. On some PCs, a Start menu shortcut may remain afterwards; you
-            can delete it.
+            settings on your computer. After the app is removed, the uninstaller offers to remove
+            this Windows account's licence and trial records as well. The box is unticked by
+            default, and your Workspace, Projects and history aren't affected either way. On some
+            PCs, a Start menu shortcut may remain afterwards; you can delete it.
           </InfoCard>
           <InfoCard title="Replace All in Word documents">
             In a Word document, Replace All changes at most 22 matches at a time. If there are more,
@@ -300,12 +306,14 @@ function BetaReleasePage() {
             </Bullet>
             <Bullet>
               Web Browsing opens the websites you save, and those websites receive what a web
-              browser normally sends them. Choosing External Browser, a link you confirm, or Get
-              Current Version passes the address to your usual web browser.
+              browser normally sends them. The first time you use Web Browsing it opens Google
+              Search, so Google receives that too; nothing is contacted before then. Choosing
+              External Browser, a link you confirm, or Get Current Version passes the address to
+              your usual web browser.
             </Bullet>
           </ul>
           <p className="mt-6 max-w-3xl text-xs text-muted-foreground">
-            This describes how the 0.5.0 Beta behaves. It isn't a complete privacy policy.
+            This describes how the 0.5.1 Beta behaves. It isn't a complete privacy policy.
           </p>
         </div>
       </section>

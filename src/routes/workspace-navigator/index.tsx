@@ -39,10 +39,10 @@ export const Route = createFileRoute("/workspace-navigator/")({
 });
 
 // Owner-approved editorial copy (2026-10-11). Each capability below was checked against the
-// application's shipped in-app Help for v0.5.0 before publication.
+// application's shipped in-app Help for v0.5.1 before publication.
 //
 // Deferred by the Owner (2026-10-11): AI Assistance is not published until its capabilities and
-// privacy claims are qualified. Tasks are described as project-only, as in v0.5.0.
+// privacy claims are qualified. Tasks are described as project-only, as in v0.5.1.
 const FEATURES = [
   {
     icon: FolderTree,
@@ -145,7 +145,7 @@ function WorkspaceNavigatorPage() {
             </Button>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            Workspace Navigator 0.5.0 Beta is available for Windows 10 and Windows 11.
+            Workspace Navigator 0.5.1 Beta is available for Windows 10 and Windows 11.
           </p>
         </div>
       </section>
@@ -191,7 +191,7 @@ function WorkspaceNavigatorPage() {
             Public Beta Available
           </h2>
           <p className="mx-auto mt-3 max-w-2xl text-base text-muted-foreground">
-            Workspace Navigator v0.5.0 is available for public beta testing. Download the
+            Workspace Navigator v0.5.1 is available for public beta testing. Download the
             application, explore its features and share your feedback to help guide future
             improvements.
           </p>

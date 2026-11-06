@@ -65,13 +65,13 @@ const APPS = [
     tagline: "",
     description:
       "A Windows desktop application that keeps a project's files, notes, tags, tasks and saved web destinations together in one place.",
-    note: "Version 0.5.0 Beta is available for Windows 10 and Windows 11.",
+    note: "Version 0.5.1 Beta is available for Windows 10 and Windows 11.",
     icons: [FolderTree, FileText, StickyNote, Globe],
   },
 ] as const;
 
 const RELEASE_STATUS =
-  "OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.0 is available as a public beta.";
+  "OS Map 0.1.0 is currently in trusted testing. Workspace Navigator 0.5.1 is available as a public beta.";
 
 // Both product actions share one style so neither reads as subordinate; long labels wrap.
 const DOWNLOAD_ACTION =
@@ -108,7 +108,7 @@ function HomePage() {
                 </Button>
                 <Button asChild size="lg" className={DOWNLOAD_ACTION}>
                   <Link to="/workspace-navigator/download">
-                    <Download /> Download Workspace Navigator v0.5.0
+                    <Download /> Download Workspace Navigator v0.5.1
                   </Link>
                 </Button>
               </div>
