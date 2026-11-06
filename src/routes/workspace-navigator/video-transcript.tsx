@@ -41,8 +41,22 @@ const SCENES: Scene[] = [
     ],
   },
   {
-    title: "Made For",
+    title: "All in One Place",
     time: "0:07",
+    steps: [
+      {
+        action:
+          "Artwork: a compass on the blueprint background, surrounded by white line icons: a browser window, a document, a notepad with a pencil and a folder with a magnifying glass.",
+      },
+      {
+        caption:
+          "Imagine browsing the web, creating documents, and taking notes all in one place, while always knowing where you left off!",
+      },
+    ],
+  },
+  {
+    title: "Made For",
+    time: "0:13",
     steps: [
       {
         action:
@@ -57,7 +71,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Explore the Possibilities",
-    time: "0:12",
+    time: "0:18",
     steps: [
       { caption: "Explore the possibilities..." },
       {
@@ -68,7 +82,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Create a Project",
-    time: "0:15",
+    time: "0:22",
     band: ["Create a Project", "One place for all your work"],
     steps: [
       {
@@ -90,7 +104,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Explorer",
-    time: "0:38",
+    time: "0:44",
     band: ["Explorer", "Find and organize your files"],
     steps: [
       {
@@ -106,7 +120,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Customize Your Workspace",
-    time: "0:57",
+    time: "1:03",
     band: ["Customize Your Workspace", "Arrange your panes and customize your work area"],
     steps: [
       {
@@ -123,7 +137,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Web Browser",
-    time: "1:20",
+    time: "1:26",
     band: ["Web Browser", "Research without leaving your workspace"],
     steps: [
       {
@@ -144,7 +158,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Documents / File Editor",
-    time: "1:43",
+    time: "1:49",
     band: ["Documents / File Editor", "Open, edit and save your documents"],
     steps: [
       {
@@ -164,7 +178,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Notepad",
-    time: "2:06",
+    time: "2:12",
     band: ["Notepad", "Capture ideas as you work"],
     steps: [
       {
@@ -180,7 +194,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Organize & Properties",
-    time: "2:17",
+    time: "2:23",
     band: ["Organize & Properties", "Find, tag and manage your files"],
     steps: [
       {
@@ -204,7 +218,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Tasks & Recent Activity",
-    time: "2:45",
+    time: "2:51",
     band: ["Tasks & Recent Activity", "Stay on track and pick up where you left off"],
     steps: [
       {
@@ -226,7 +240,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Closing",
-    time: "3:04",
+    time: "3:10",
     steps: [
       {
         action:
@@ -309,7 +323,7 @@ function VideoTranscriptPage() {
           <p className="mt-4 text-base leading-relaxed text-muted-foreground">
             The Web Browser scene shows a Wikipedia article, as it appeared when the video was
             recorded in November 2026, in a screen recording. Changes were made: parts of the
-            article and its two images are shown cropped and magnified.
+            article and its two images are shown cropped.
           </p>
           <ul className="mt-4 list-disc space-y-3 pl-5 text-base leading-relaxed text-muted-foreground">
             <li>
