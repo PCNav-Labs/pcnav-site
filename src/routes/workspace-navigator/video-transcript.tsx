@@ -34,26 +34,41 @@ const SCENES: Scene[] = [
     steps: [
       {
         action:
-          "Artwork: a desk by a window at night, with stacked books, a plant, an open laptop, notebooks and a mug. Mountains and a moonlit lake are outside.",
+          "Artwork: a compass drawn in white lines on a dark blue blueprint background, with stars and glowing blue curves.",
       },
-      { caption: "Welcome to Workspace Navigator" },
+      { caption: "Workspace Navigator" },
       { caption: "A place for everything you need for the important work that you do." },
     ],
   },
   {
+    title: "Made For",
+    time: "0:07",
+    steps: [
+      {
+        action:
+          "Artwork: four white line icons on the blueprint background: a graduation cap, a microscope, a briefcase and four squares.",
+      },
+      { caption: "Made for" },
+      { caption: "Educators & Students" },
+      { caption: "Researchers" },
+      { caption: "Professionals" },
+      { caption: "General Use" },
+    ],
+  },
+  {
     title: "Explore the Possibilities",
-    time: "0:06",
+    time: "0:12",
     steps: [
       { caption: "Explore the possibilities..." },
       {
         action:
-          "Artwork: documents and pictures float above a lake towards the mountains, along a glowing blue path.",
+          "Artwork: a folder, a picture, a document and a table rise along a glowing blue path on the blueprint background.",
       },
     ],
   },
   {
     title: "Create a Project",
-    time: "0:09",
+    time: "0:15",
     band: ["Create a Project", "One place for all your work"],
     steps: [
       {
@@ -75,7 +90,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Explorer",
-    time: "0:32",
+    time: "0:38",
     band: ["Explorer", "Find and organize your files"],
     steps: [
       {
@@ -91,7 +106,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Customize Your Workspace",
-    time: "0:51",
+    time: "0:57",
     band: ["Customize Your Workspace", "Arrange your panes and customize your work area"],
     steps: [
       {
@@ -108,7 +123,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Web Browser",
-    time: "1:12",
+    time: "1:20",
     band: ["Web Browser", "Research without leaving your workspace"],
     steps: [
       {
@@ -129,7 +144,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Documents / File Editor",
-    time: "1:36",
+    time: "1:43",
     band: ["Documents / File Editor", "Open, edit and save your documents"],
     steps: [
       {
@@ -149,7 +164,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Notepad",
-    time: "2:00",
+    time: "2:06",
     band: ["Notepad", "Capture ideas as you work"],
     steps: [
       {
@@ -165,7 +180,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Organize & Properties",
-    time: "2:12",
+    time: "2:17",
     band: ["Organize & Properties", "Find, tag and manage your files"],
     steps: [
       {
@@ -189,7 +204,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Tasks & Recent Activity",
-    time: "2:39",
+    time: "2:45",
     band: ["Tasks & Recent Activity", "Stay on track and pick up where you left off"],
     steps: [
       {
@@ -211,14 +226,14 @@ const SCENES: Scene[] = [
   },
   {
     title: "Closing",
-    time: "2:57",
+    time: "3:04",
     steps: [
       {
         action:
-          "Artwork: a wooden pier leads to a lake at sunset, with a lighthouse, mountains and a glowing path across the water.",
+          "Artwork: a compass drawn in white lines on the blueprint background, above a glowing blue horizon.",
       },
       { caption: "Workspace Navigator" },
-      { caption: "See where you were. Know where you are. Plan where you're going." },
+      { caption: "See where you were. Know where you are. Plan where you’re going." },
       { caption: "pcnav.net" },
     ],
   },
