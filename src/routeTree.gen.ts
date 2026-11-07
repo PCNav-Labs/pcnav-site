@@ -12,6 +12,19 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as R404RouteImport } from './routes/404'
 import { Route as AboutRouteImport } from './routes/about'
+import { Route as AccountRouteImport } from './routes/account'
+import { Route as AccountIndexRouteImport } from './routes/account/index'
+import { Route as AccountCallbackRouteImport } from './routes/account/callback'
+import { Route as AccountForgotRouteImport } from './routes/account/forgot'
+import { Route as AccountJoinRouteImport } from './routes/account/join'
+import { Route as AccountProductsRouteImport } from './routes/account/products'
+import { Route as AccountProfileRouteImport } from './routes/account/profile'
+import { Route as AccountResetRouteImport } from './routes/account/reset'
+import { Route as AccountResourcesRouteImport } from './routes/account/resources'
+import { Route as AccountSignInRouteImport } from './routes/account/sign-in'
+import { Route as AccountSignedOutRouteImport } from './routes/account/signed-out'
+import { Route as AccountVerifyRouteImport } from './routes/account/verify'
+import { Route as AccountWelcomeRouteImport } from './routes/account/welcome'
 import { Route as FeedbackIndexRouteImport } from './routes/feedback/index'
 import { Route as FeedbackOsMapRouteImport } from './routes/feedback/os-map'
 import { Route as FeedbackWorkspaceNavigatorRouteImport } from './routes/feedback/workspace-navigator'
@@ -35,6 +48,71 @@ const AboutRoute = AboutRouteImport.update({
   id: '/about',
   path: '/about',
   getParentRoute: () => rootRouteImport,
+} as any)
+const AccountRoute = AccountRouteImport.update({
+  id: '/account',
+  path: '/account',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AccountIndexRoute = AccountIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountCallbackRoute = AccountCallbackRouteImport.update({
+  id: '/callback',
+  path: '/callback',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountForgotRoute = AccountForgotRouteImport.update({
+  id: '/forgot',
+  path: '/forgot',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountJoinRoute = AccountJoinRouteImport.update({
+  id: '/join',
+  path: '/join',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountProductsRoute = AccountProductsRouteImport.update({
+  id: '/products',
+  path: '/products',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountProfileRoute = AccountProfileRouteImport.update({
+  id: '/profile',
+  path: '/profile',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountResetRoute = AccountResetRouteImport.update({
+  id: '/reset',
+  path: '/reset',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountResourcesRoute = AccountResourcesRouteImport.update({
+  id: '/resources',
+  path: '/resources',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountSignInRoute = AccountSignInRouteImport.update({
+  id: '/sign-in',
+  path: '/sign-in',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountSignedOutRoute = AccountSignedOutRouteImport.update({
+  id: '/signed-out',
+  path: '/signed-out',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountVerifyRoute = AccountVerifyRouteImport.update({
+  id: '/verify',
+  path: '/verify',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountWelcomeRoute = AccountWelcomeRouteImport.update({
+  id: '/welcome',
+  path: '/welcome',
+  getParentRoute: () => AccountRoute,
 } as any)
 const FeedbackIndexRoute = FeedbackIndexRouteImport.update({
   id: '/feedback/',
@@ -84,11 +162,24 @@ export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
+  '/account': typeof AccountRouteWithChildren
+  '/account/callback': typeof AccountCallbackRoute
+  '/account/forgot': typeof AccountForgotRoute
+  '/account/join': typeof AccountJoinRoute
+  '/account/products': typeof AccountProductsRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reset': typeof AccountResetRoute
+  '/account/resources': typeof AccountResourcesRoute
+  '/account/sign-in': typeof AccountSignInRoute
+  '/account/signed-out': typeof AccountSignedOutRoute
+  '/account/verify': typeof AccountVerifyRoute
+  '/account/welcome': typeof AccountWelcomeRoute
   '/feedback/os-map': typeof FeedbackOsMapRoute
   '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
   '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
   '/workspace-navigator/video-transcript': typeof WorkspaceNavigatorVideoTranscriptRoute
+  '/account/': typeof AccountIndexRoute
   '/feedback/': typeof FeedbackIndexRoute
   '/os-map/': typeof OsMapIndexRoute
   '/workspace-navigator/': typeof WorkspaceNavigatorIndexRoute
@@ -97,11 +188,23 @@ export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
+  '/account/callback': typeof AccountCallbackRoute
+  '/account/forgot': typeof AccountForgotRoute
+  '/account/join': typeof AccountJoinRoute
+  '/account/products': typeof AccountProductsRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reset': typeof AccountResetRoute
+  '/account/resources': typeof AccountResourcesRoute
+  '/account/sign-in': typeof AccountSignInRoute
+  '/account/signed-out': typeof AccountSignedOutRoute
+  '/account/verify': typeof AccountVerifyRoute
+  '/account/welcome': typeof AccountWelcomeRoute
   '/feedback/os-map': typeof FeedbackOsMapRoute
   '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
   '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
   '/workspace-navigator/video-transcript': typeof WorkspaceNavigatorVideoTranscriptRoute
+  '/account': typeof AccountIndexRoute
   '/feedback': typeof FeedbackIndexRoute
   '/os-map': typeof OsMapIndexRoute
   '/workspace-navigator': typeof WorkspaceNavigatorIndexRoute
@@ -111,11 +214,24 @@ export interface FileRoutesById {
   '/': typeof IndexRoute
   '/404': typeof R404Route
   '/about': typeof AboutRoute
+  '/account': typeof AccountRouteWithChildren
+  '/account/callback': typeof AccountCallbackRoute
+  '/account/forgot': typeof AccountForgotRoute
+  '/account/join': typeof AccountJoinRoute
+  '/account/products': typeof AccountProductsRoute
+  '/account/profile': typeof AccountProfileRoute
+  '/account/reset': typeof AccountResetRoute
+  '/account/resources': typeof AccountResourcesRoute
+  '/account/sign-in': typeof AccountSignInRoute
+  '/account/signed-out': typeof AccountSignedOutRoute
+  '/account/verify': typeof AccountVerifyRoute
+  '/account/welcome': typeof AccountWelcomeRoute
   '/feedback/os-map': typeof FeedbackOsMapRoute
   '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
   '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
   '/workspace-navigator/video-transcript': typeof WorkspaceNavigatorVideoTranscriptRoute
+  '/account/': typeof AccountIndexRoute
   '/feedback/': typeof FeedbackIndexRoute
   '/os-map/': typeof OsMapIndexRoute
   '/workspace-navigator/': typeof WorkspaceNavigatorIndexRoute
@@ -126,11 +242,24 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
+    | '/account'
+    | '/account/callback'
+    | '/account/forgot'
+    | '/account/join'
+    | '/account/products'
+    | '/account/profile'
+    | '/account/reset'
+    | '/account/resources'
+    | '/account/sign-in'
+    | '/account/signed-out'
+    | '/account/verify'
+    | '/account/welcome'
     | '/feedback/os-map'
     | '/feedback/workspace-navigator'
     | '/os-map/download'
     | '/workspace-navigator/download'
     | '/workspace-navigator/video-transcript'
+    | '/account/'
     | '/feedback/'
     | '/os-map/'
     | '/workspace-navigator/'
@@ -139,11 +268,23 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
+    | '/account/callback'
+    | '/account/forgot'
+    | '/account/join'
+    | '/account/products'
+    | '/account/profile'
+    | '/account/reset'
+    | '/account/resources'
+    | '/account/sign-in'
+    | '/account/signed-out'
+    | '/account/verify'
+    | '/account/welcome'
     | '/feedback/os-map'
     | '/feedback/workspace-navigator'
     | '/os-map/download'
     | '/workspace-navigator/download'
     | '/workspace-navigator/video-transcript'
+    | '/account'
     | '/feedback'
     | '/os-map'
     | '/workspace-navigator'
@@ -152,11 +293,24 @@ export interface FileRouteTypes {
     | '/'
     | '/404'
     | '/about'
+    | '/account'
+    | '/account/callback'
+    | '/account/forgot'
+    | '/account/join'
+    | '/account/products'
+    | '/account/profile'
+    | '/account/reset'
+    | '/account/resources'
+    | '/account/sign-in'
+    | '/account/signed-out'
+    | '/account/verify'
+    | '/account/welcome'
     | '/feedback/os-map'
     | '/feedback/workspace-navigator'
     | '/os-map/download'
     | '/workspace-navigator/download'
     | '/workspace-navigator/video-transcript'
+    | '/account/'
     | '/feedback/'
     | '/os-map/'
     | '/workspace-navigator/'
@@ -166,6 +320,7 @@ export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   R404Route: typeof R404Route
   AboutRoute: typeof AboutRoute
+  AccountRoute: typeof AccountRouteWithChildren
   FeedbackOsMapRoute: typeof FeedbackOsMapRoute
   FeedbackWorkspaceNavigatorRoute: typeof FeedbackWorkspaceNavigatorRoute
   OsMapDownloadRoute: typeof OsMapDownloadRoute
@@ -198,6 +353,97 @@ declare module '@tanstack/react-router' {
       fullPath: '/about'
       preLoaderRoute: typeof AboutRouteImport
       parentRoute: typeof rootRouteImport
+    }
+    '/account': {
+      id: '/account'
+      path: '/account'
+      fullPath: '/account'
+      preLoaderRoute: typeof AccountRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/account/': {
+      id: '/account/'
+      path: '/'
+      fullPath: '/account/'
+      preLoaderRoute: typeof AccountIndexRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/callback': {
+      id: '/account/callback'
+      path: '/callback'
+      fullPath: '/account/callback'
+      preLoaderRoute: typeof AccountCallbackRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/forgot': {
+      id: '/account/forgot'
+      path: '/forgot'
+      fullPath: '/account/forgot'
+      preLoaderRoute: typeof AccountForgotRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/join': {
+      id: '/account/join'
+      path: '/join'
+      fullPath: '/account/join'
+      preLoaderRoute: typeof AccountJoinRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/products': {
+      id: '/account/products'
+      path: '/products'
+      fullPath: '/account/products'
+      preLoaderRoute: typeof AccountProductsRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/profile': {
+      id: '/account/profile'
+      path: '/profile'
+      fullPath: '/account/profile'
+      preLoaderRoute: typeof AccountProfileRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/reset': {
+      id: '/account/reset'
+      path: '/reset'
+      fullPath: '/account/reset'
+      preLoaderRoute: typeof AccountResetRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/resources': {
+      id: '/account/resources'
+      path: '/resources'
+      fullPath: '/account/resources'
+      preLoaderRoute: typeof AccountResourcesRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/sign-in': {
+      id: '/account/sign-in'
+      path: '/sign-in'
+      fullPath: '/account/sign-in'
+      preLoaderRoute: typeof AccountSignInRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/signed-out': {
+      id: '/account/signed-out'
+      path: '/signed-out'
+      fullPath: '/account/signed-out'
+      preLoaderRoute: typeof AccountSignedOutRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/verify': {
+      id: '/account/verify'
+      path: '/verify'
+      fullPath: '/account/verify'
+      preLoaderRoute: typeof AccountVerifyRouteImport
+      parentRoute: typeof AccountRoute
+    }
+    '/account/welcome': {
+      id: '/account/welcome'
+      path: '/welcome'
+      fullPath: '/account/welcome'
+      preLoaderRoute: typeof AccountWelcomeRouteImport
+      parentRoute: typeof AccountRoute
     }
     '/feedback/': {
       id: '/feedback/'
@@ -258,10 +504,44 @@ declare module '@tanstack/react-router' {
   }
 }
 
+interface AccountRouteChildren {
+  AccountCallbackRoute: typeof AccountCallbackRoute
+  AccountForgotRoute: typeof AccountForgotRoute
+  AccountJoinRoute: typeof AccountJoinRoute
+  AccountProductsRoute: typeof AccountProductsRoute
+  AccountProfileRoute: typeof AccountProfileRoute
+  AccountResetRoute: typeof AccountResetRoute
+  AccountResourcesRoute: typeof AccountResourcesRoute
+  AccountSignInRoute: typeof AccountSignInRoute
+  AccountSignedOutRoute: typeof AccountSignedOutRoute
+  AccountVerifyRoute: typeof AccountVerifyRoute
+  AccountWelcomeRoute: typeof AccountWelcomeRoute
+  AccountIndexRoute: typeof AccountIndexRoute
+}
+
+const AccountRouteChildren: AccountRouteChildren = {
+  AccountCallbackRoute: AccountCallbackRoute,
+  AccountForgotRoute: AccountForgotRoute,
+  AccountJoinRoute: AccountJoinRoute,
+  AccountProductsRoute: AccountProductsRoute,
+  AccountProfileRoute: AccountProfileRoute,
+  AccountResetRoute: AccountResetRoute,
+  AccountResourcesRoute: AccountResourcesRoute,
+  AccountSignInRoute: AccountSignInRoute,
+  AccountSignedOutRoute: AccountSignedOutRoute,
+  AccountVerifyRoute: AccountVerifyRoute,
+  AccountWelcomeRoute: AccountWelcomeRoute,
+  AccountIndexRoute: AccountIndexRoute,
+}
+
+const AccountRouteWithChildren =
+  AccountRoute._addFileChildren(AccountRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   R404Route: R404Route,
   AboutRoute: AboutRoute,
+  AccountRoute: AccountRouteWithChildren,
   FeedbackOsMapRoute: FeedbackOsMapRoute,
   FeedbackWorkspaceNavigatorRoute: FeedbackWorkspaceNavigatorRoute,
   OsMapDownloadRoute: OsMapDownloadRoute,

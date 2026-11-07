@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
+import { MEMBERSHIP_ENABLED } from "@/account/mode";
 
 // Main navigation: Home | OS Map | Workspace Navigator | Feedback ▾ | About.
 const NAV_BEFORE_FEEDBACK = [
@@ -19,7 +20,10 @@ const NAV_BEFORE_FEEDBACK = [
   { to: "/workspace-navigator", label: "Workspace Navigator" },
 ] as const;
 
-const NAV_AFTER_FEEDBACK = [{ to: "/about", label: "About" }] as const;
+// Account appears after About only when membership is enabled (WNM-11A; off by default).
+const NAV_AFTER_FEEDBACK = (MEMBERSHIP_ENABLED
+  ? [{ to: "/about", label: "About" }, { to: "/account", label: "Account" }]
+  : [{ to: "/about", label: "About" }]) as readonly { readonly to: "/about" | "/account"; readonly label: string }[];
 
 const FEEDBACK = [
   { to: "/feedback/os-map", label: "OS Map" },
@@ -27,8 +31,8 @@ const FEEDBACK = [
 ] as const;
 
 const DESKTOP_LINK =
-  "rounded-md px-3 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground";
-const DESKTOP_LINK_ACTIVE = "rounded-md px-3 py-2 text-sm text-foreground font-medium";
+  "rounded-md px-2 py-2 text-sm text-muted-foreground transition-colors hover:text-foreground lg:px-3";
+const DESKTOP_LINK_ACTIVE = "rounded-md px-2 py-2 text-sm text-foreground font-medium lg:px-3";
 const MOBILE_LINK =
   "rounded-md px-3 py-2 text-sm text-muted-foreground hover:bg-accent hover:text-foreground";
 const MOBILE_LINK_ACTIVE =

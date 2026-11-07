@@ -11,6 +11,8 @@ import {
 import { useEffect, type ReactNode } from "react";
 
 import appCss from "../styles.css?url";
+import accountCss from "../account/account.css?url";
+import { MEMBERSHIP_ENABLED } from "../account/mode";
 import { reportLovableError } from "../lib/lovable-error-reporting";
 import { ThemeProvider } from "@/components/theme-provider";
 import { SiteHeader } from "@/components/site-header";
@@ -98,6 +100,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
     ],
     links: [
       { rel: "stylesheet", href: appCss },
+      ...(MEMBERSHIP_ENABLED ? [{ rel: "stylesheet", href: accountCss }] : []), // membership only (WNM-11A)
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
       { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
       {
@@ -133,8 +136,16 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <div className="flex min-h-screen flex-col">
+          {MEMBERSHIP_ENABLED && ( // skip link added with membership (WNM-3R); off by default (WNM-11A)
+          <a
+            href="#main"
+            className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:ring-2 focus:ring-ring"
+          >
+            Skip to main content
+          </a>
+          )}
           <SiteHeader />
-          <main className="flex-1">
+          <main {...(MEMBERSHIP_ENABLED ? { id: "main", tabIndex: -1 } : {})} className={MEMBERSHIP_ENABLED ? "flex-1 outline-none" : "flex-1"}>
             {/* Required: nested routes render here. */}
             <Outlet />
           </main>

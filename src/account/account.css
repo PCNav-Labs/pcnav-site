@@ -1,0 +1,29 @@
+/* PCNav membership styles (WNM-11A). Linked from __root.tsx only when membership is enabled, so the
+ default build of the public site is unchanged. Moved from the WNM-3R prototype styles.css. */
+
+/* Scroll lock for dialogs and the mobile menu under the strict style policy. Radix marks
+   <body> with data-scroll-locked from script; its own injected <style> is refused by the
+   Content-Security-Policy, so the equivalent rule lives in this stylesheet instead. The
+   reserved gutter keeps the page from shifting sideways while its scrollbar is hidden. */
+body[data-scroll-locked] {
+  overflow: hidden !important;
+  overscroll-behavior: contain;
+}
+/* Lock on the root element, where the reserved gutter applies directly (with the lock on
+   <body> alone, the overflow propagates to the viewport and the gutter is not kept). The
+   body rule above remains as the fallback for browsers without :has(). */
+html:has(body[data-scroll-locked]) {
+  overflow: hidden !important;
+  scrollbar-gutter: stable;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
