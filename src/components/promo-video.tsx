@@ -161,7 +161,7 @@ export function PromoVideo({ video }: { video: PromoVideoConfig }) {
       </p>
 
       <Link
-        to="/workspace-navigator/video-transcript"
+        to={video.transcript}
         className="mt-2 inline-flex items-center gap-1.5 rounded-sm text-sm text-primary underline-offset-4 hover:underline focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-ring"
       >
         <FileText className="h-3.5 w-3.5" aria-hidden="true" />

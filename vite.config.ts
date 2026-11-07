@@ -65,6 +65,7 @@ export default defineConfig({
       { path: "/workspace-navigator" },
       { path: "/workspace-navigator/download" },
       { path: "/workspace-navigator/video-transcript" },
+      { path: "/workspace-navigator/concept-video-transcript" },
       { path: "/feedback/os-map" },
       { path: "/feedback/workspace-navigator" },
       ...ACCOUNT_PAGES, // membership pages only when enabled (WNM-11A)

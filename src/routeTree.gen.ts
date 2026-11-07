@@ -32,6 +32,7 @@ import { Route as FeedbackWorkspaceNavigatorRouteImport } from './routes/feedbac
 import { Route as OsMapIndexRouteImport } from './routes/os-map/index'
 import { Route as OsMapDownloadRouteImport } from './routes/os-map/download'
 import { Route as WorkspaceNavigatorIndexRouteImport } from './routes/workspace-navigator/index'
+import { Route as WorkspaceNavigatorConceptVideoTranscriptRouteImport } from './routes/workspace-navigator/concept-video-transcript'
 import { Route as WorkspaceNavigatorDownloadRouteImport } from './routes/workspace-navigator/download'
 import { Route as WorkspaceNavigatorVideoTranscriptRouteImport } from './routes/workspace-navigator/video-transcript'
 
@@ -151,6 +152,12 @@ const WorkspaceNavigatorIndexRoute = WorkspaceNavigatorIndexRouteImport.update({
   path: '/workspace-navigator/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const WorkspaceNavigatorConceptVideoTranscriptRoute =
+  WorkspaceNavigatorConceptVideoTranscriptRouteImport.update({
+    id: '/workspace-navigator/concept-video-transcript',
+    path: '/workspace-navigator/concept-video-transcript',
+    getParentRoute: () => rootRouteImport,
+  } as any)
 const WorkspaceNavigatorDownloadRoute =
   WorkspaceNavigatorDownloadRouteImport.update({
     id: '/workspace-navigator/download',
@@ -184,6 +191,7 @@ export interface FileRoutesByFullPath {
   '/feedback/os-map': typeof FeedbackOsMapRoute
   '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
+  '/workspace-navigator/concept-video-transcript': typeof WorkspaceNavigatorConceptVideoTranscriptRoute
   '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
   '/workspace-navigator/video-transcript': typeof WorkspaceNavigatorVideoTranscriptRoute
   '/account/': typeof AccountIndexRoute
@@ -210,6 +218,7 @@ export interface FileRoutesByTo {
   '/feedback/os-map': typeof FeedbackOsMapRoute
   '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
+  '/workspace-navigator/concept-video-transcript': typeof WorkspaceNavigatorConceptVideoTranscriptRoute
   '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
   '/workspace-navigator/video-transcript': typeof WorkspaceNavigatorVideoTranscriptRoute
   '/account': typeof AccountIndexRoute
@@ -238,6 +247,7 @@ export interface FileRoutesById {
   '/feedback/os-map': typeof FeedbackOsMapRoute
   '/feedback/workspace-navigator': typeof FeedbackWorkspaceNavigatorRoute
   '/os-map/download': typeof OsMapDownloadRoute
+  '/workspace-navigator/concept-video-transcript': typeof WorkspaceNavigatorConceptVideoTranscriptRoute
   '/workspace-navigator/download': typeof WorkspaceNavigatorDownloadRoute
   '/workspace-navigator/video-transcript': typeof WorkspaceNavigatorVideoTranscriptRoute
   '/account/': typeof AccountIndexRoute
@@ -267,6 +277,7 @@ export interface FileRouteTypes {
     | '/feedback/os-map'
     | '/feedback/workspace-navigator'
     | '/os-map/download'
+    | '/workspace-navigator/concept-video-transcript'
     | '/workspace-navigator/download'
     | '/workspace-navigator/video-transcript'
     | '/account/'
@@ -293,6 +304,7 @@ export interface FileRouteTypes {
     | '/feedback/os-map'
     | '/feedback/workspace-navigator'
     | '/os-map/download'
+    | '/workspace-navigator/concept-video-transcript'
     | '/workspace-navigator/download'
     | '/workspace-navigator/video-transcript'
     | '/account'
@@ -320,6 +332,7 @@ export interface FileRouteTypes {
     | '/feedback/os-map'
     | '/feedback/workspace-navigator'
     | '/os-map/download'
+    | '/workspace-navigator/concept-video-transcript'
     | '/workspace-navigator/download'
     | '/workspace-navigator/video-transcript'
     | '/account/'
@@ -336,6 +349,7 @@ export interface RootRouteChildren {
   FeedbackOsMapRoute: typeof FeedbackOsMapRoute
   FeedbackWorkspaceNavigatorRoute: typeof FeedbackWorkspaceNavigatorRoute
   OsMapDownloadRoute: typeof OsMapDownloadRoute
+  WorkspaceNavigatorConceptVideoTranscriptRoute: typeof WorkspaceNavigatorConceptVideoTranscriptRoute
   WorkspaceNavigatorDownloadRoute: typeof WorkspaceNavigatorDownloadRoute
   WorkspaceNavigatorVideoTranscriptRoute: typeof WorkspaceNavigatorVideoTranscriptRoute
   FeedbackIndexRoute: typeof FeedbackIndexRoute
@@ -506,6 +520,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof WorkspaceNavigatorIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/workspace-navigator/concept-video-transcript': {
+      id: '/workspace-navigator/concept-video-transcript'
+      path: '/workspace-navigator/concept-video-transcript'
+      fullPath: '/workspace-navigator/concept-video-transcript'
+      preLoaderRoute: typeof WorkspaceNavigatorConceptVideoTranscriptRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/workspace-navigator/download': {
       id: '/workspace-navigator/download'
       path: '/workspace-navigator/download'
@@ -566,6 +587,8 @@ const rootRouteChildren: RootRouteChildren = {
   FeedbackOsMapRoute: FeedbackOsMapRoute,
   FeedbackWorkspaceNavigatorRoute: FeedbackWorkspaceNavigatorRoute,
   OsMapDownloadRoute: OsMapDownloadRoute,
+  WorkspaceNavigatorConceptVideoTranscriptRoute:
+    WorkspaceNavigatorConceptVideoTranscriptRoute,
   WorkspaceNavigatorDownloadRoute: WorkspaceNavigatorDownloadRoute,
   WorkspaceNavigatorVideoTranscriptRoute:
     WorkspaceNavigatorVideoTranscriptRoute,

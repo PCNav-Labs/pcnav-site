@@ -17,6 +17,8 @@ import { Button } from "@/components/ui/button";
 import { Card, CardContent } from "@/components/ui/card";
 import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
+import { PromoVideo } from "@/components/promo-video";
+import { WN_CONCEPT_VIDEO } from "@/lib/promo-video";
 
 export const Route = createFileRoute("/workspace-navigator/")({
   head: () => ({
@@ -148,6 +150,11 @@ function WorkspaceNavigatorPage() {
             Workspace Navigator 0.5.1 Beta is available for Windows 10 and Windows 11.
           </p>
         </div>
+      </section>
+
+      {/* Concept video: what Workspace Navigator is for. The homepage keeps the Video Introduction. */}
+      <section id="concept-video" className="mx-auto max-w-6xl scroll-mt-20 px-4 pt-16 sm:px-6">
+        <PromoVideo video={WN_CONCEPT_VIDEO} />
       </section>
 
       {/* 1-4: What it does — Projects and the Explorer, Documents, Notes */}
