@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { InactiveAuthForm } from "@/account/preview";
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -8,7 +10,7 @@ import { REGISTRATION_OPEN } from "@/account/mode";
 
 export const Route = createFileRoute("/account/sign-in")({
   head: () => ({ meta: [{ title: "Sign in | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: SignIn,
+  component: () => (PUBLIC_PREVIEW ? <InactiveAuthForm title="Sign in" fields={[{ id: "email", label: "Email", type: "email" }, { id: "password", label: "Password", type: "password" }]} submitLabel="Sign in" /> : <SignIn />),
 });
 
 function SignIn() {

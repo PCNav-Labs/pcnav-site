@@ -6,7 +6,8 @@ import { Skeleton } from "@/components/ui/skeleton";
 import { identity, type AccountState } from "./identity";
 import { MfaChallengeForm } from "./forms";
 import { ACCOUNT_CONFIG } from "./config";
-import { REGISTRATION_OPEN } from "./mode";
+import { PUBLIC_PREVIEW, REGISTRATION_OPEN } from "./mode";
+import { SectionPreview } from "./preview";
 
 const SERVER_STATE: AccountState = { status: "signed-out" };
 export function useAccount(): AccountState {
@@ -18,6 +19,7 @@ export const SECTIONS = [
   { to: "/account/profile", label: "My Profile" },
   { to: "/account/products", label: "My Products" },
   { to: "/account/resources", label: "Member Resources" },
+  { to: "/account/security", label: "Account Security" },
 ] as const;
 
 export function SectionNav() {
@@ -87,6 +89,8 @@ export function Panel({ tone = "info", title, children, actions }: { tone?: "inf
 }
 
 export function JoinActions({ returnTo }: { returnTo?: string }) {
+  // Public scaffolding: both lead to the inactive previews; nothing signs in (WNM-11B).
+  if (PUBLIC_PREVIEW) return (<><Button asChild size="lg"><Link to="/account/join">Join Free</Link></Button><Button asChild size="lg" variant="outline"><Link to="/account/sign-in">Sign In</Link></Button></>);
   return (
     <>
       {REGISTRATION_OPEN && <Button size="lg" onClick={() => identity.signIn({ screen: "signup", returnTo })}>Join Free</Button>}
@@ -119,6 +123,7 @@ export function ErrorNote({ message, onRetry }: { message: string; onRetry?: () 
 // it protects nothing. Member data is authorized by the member API and the provider.
 export function Gate({ section, children }: { section: string; children: ReactNode }) {
   const s = useAccount();
+  if (PUBLIC_PREVIEW) return <SectionPreview section={section} />; // a description, never a session (WNM-11B)
   const here = typeof window === "undefined" ? "/account" : window.location.pathname;
   if (s.status === "signed-in") return <>{children}</>;
   if (s.status === "loading") return <Loading label="Loading your account" />;

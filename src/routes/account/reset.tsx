@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { InactiveAuthForm } from "@/account/preview";
 import { useEffect, useRef, useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -7,7 +9,7 @@ import { Loading, useAccount } from "@/account/ui";
 
 export const Route = createFileRoute("/account/reset")({
   head: () => ({ meta: [{ title: "Choose a new password | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: Reset,
+  component: () => (PUBLIC_PREVIEW ? <InactiveAuthForm title="Choose a new password" fields={[{ id: "new-password", label: "New password", type: "password", hint: "At least 12 characters." }]} submitLabel="Save new password" /> : <Reset />),
 });
 
 function Reset() {

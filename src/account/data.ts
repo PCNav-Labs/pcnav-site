@@ -5,6 +5,8 @@ import { ACCOUNT_CONFIG as C } from "./config";
 import { identity, ReauthRequiredError, RequestError } from "./identity";
 import { supabaseMemberData } from "./supabase";
 import type { OptionalAnswers } from "./onboarding";
+import { inertMemberData } from "./inert";
+import { PROVIDER_ACTIVE } from "./mode";
 
 export type Interest = { productId: string; state: "following"; since: string };
 
@@ -46,8 +48,8 @@ const httpMemberData: MemberDataAdapter = {
 };
 
 // Supabase builds use PostgREST under row-level security; other builds use the member API.
-export const memberData: MemberDataAdapter =
-  (import.meta.env as Record<string, string | undefined>).VITE_PCNAV_IDP === "supabase" ? supabaseMemberData : httpMemberData;
+export const memberData: MemberDataAdapter = !PROVIDER_ACTIVE ? inertMemberData
+  : (import.meta.env as Record<string, string | undefined>).VITE_PCNAV_IDP === "supabase" ? supabaseMemberData : httpMemberData;
 
 // Public catalogue. Statuses are the site's own wording: Workspace Navigator's download
 // page publishes v0.5.1-beta.1; the OS Map page says it "is currently in trusted testing".

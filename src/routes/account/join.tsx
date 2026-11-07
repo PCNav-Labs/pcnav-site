@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { InactiveAuthForm } from "@/account/preview";
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -8,7 +10,7 @@ import { REGISTRATION_OPEN } from "@/account/mode";
 
 export const Route = createFileRoute("/account/join")({
   head: () => ({ meta: [{ title: "Join PCNav | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: Join,
+  component: () => (PUBLIC_PREVIEW ? <InactiveAuthForm title="Join PCNav — free" fields={[{ id: "email", label: "Email", type: "email" }, { id: "password", label: "Password", type: "password", hint: "At least 12 characters." }]} submitLabel="Create free account" /> : <Join />),
 });
 
 // Registration is open only in test builds (WNM-11A). Otherwise this page offers no sign-up at all.

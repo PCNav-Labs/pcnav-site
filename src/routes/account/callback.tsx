@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { SupportingPreview } from "@/account/preview";
 import { useEffect, useRef } from "react";
 import { createFileRoute, useNavigate } from "@tanstack/react-router";
 import { identity } from "@/account/identity";
@@ -5,7 +7,7 @@ import { Loading, PageTitle } from "@/account/ui";
 
 export const Route = createFileRoute("/account/callback")({
   head: () => ({ meta: [{ title: "Signing in | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: Callback,
+  component: () => (PUBLIC_PREVIEW ? <SupportingPreview title="Signing in"><p>When membership opens, this page finishes signing you in.</p></SupportingPreview> : <Callback />),
 });
 
 function Callback() {

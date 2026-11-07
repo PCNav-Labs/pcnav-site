@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { InactiveAuthForm } from "@/account/preview";
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -7,7 +9,7 @@ import { AuthCard, Field, FormError, NotDirect, messageFor } from "@/account/for
 
 export const Route = createFileRoute("/account/forgot")({
   head: () => ({ meta: [{ title: "Reset your password | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: Forgot,
+  component: () => (PUBLIC_PREVIEW ? <InactiveAuthForm title="Reset your password" fields={[{ id: "email", label: "Email", type: "email" }]} submitLabel="Send reset link" /> : <Forgot />),
 });
 
 function Forgot() {

@@ -6,14 +6,18 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-// PCNav membership (WNM-11A): OFF unless VITE_PCNAV_MEMBERSHIP is "preview" or "test" (see
+// PCNav membership (WNM-11A/11B): OFF unless VITE_PCNAV_MEMBERSHIP is "public", "preview" or "test" (see
 // src/account/mode.ts). With it off, no account page is emitted and the public site is unchanged.
-const MEMBERSHIP = ["preview", "test"].includes(process.env.VITE_PCNAV_MEMBERSHIP ?? "") ? process.env.VITE_PCNAV_MEMBERSHIP : "off";
+const MEMBERSHIP = ["public", "preview", "test"].includes(process.env.VITE_PCNAV_MEMBERSHIP ?? "") ? process.env.VITE_PCNAV_MEMBERSHIP : "off";
 // The WNM-7B disposable Supabase project is a TEST project: never part of a production-targeted build.
 const TEST_ONLY_SUPABASE_REFS = ["pukocmdivqmzsyqxcvsv"];
 const SUPABASE_URL = process.env.VITE_SUPABASE_URL ?? "";
 if (TEST_ONLY_SUPABASE_REFS.some((r) => SUPABASE_URL.includes(r)) && MEMBERSHIP !== "test") {
   throw new Error("WNM-11A guard: the disposable Supabase test project may be used only by a membership test build (VITE_PCNAV_MEMBERSHIP=test).");
+}
+// Public scaffolding carries no provider at all (WNM-11B).
+if (MEMBERSHIP === "public" && ["VITE_PCNAV_IDP", "VITE_SUPABASE_URL", "VITE_SUPABASE_PUBLISHABLE_KEY", "VITE_COGNITO_USER_POOL_ID", "VITE_TURNSTILE_SITEKEY"].some((k) => process.env[k])) {
+  throw new Error("WNM-11B guard: a public scaffolding build (VITE_PCNAV_MEMBERSHIP=public) must not name any identity provider, key or CAPTCHA site key.");
 }
 if (MEMBERSHIP === "test") {
   const idp = process.env.VITE_PCNAV_IDP ?? "mock";
@@ -24,7 +28,7 @@ if (MEMBERSHIP === "test") {
 }
 const ACCOUNT_PAGES = MEMBERSHIP === "off" ? [] : [
   "/account", "/account/profile", "/account/products", "/account/resources", "/account/callback", "/account/signed-out",
-  "/account/sign-in", "/account/join", "/account/forgot", "/account/verify", "/account/reset", "/account/welcome",
+  "/account/sign-in", "/account/join", "/account/forgot", "/account/verify", "/account/reset", "/account/welcome", "/account/security",
 ].map((p) => ({ path: p }));
 
 export default defineConfig({

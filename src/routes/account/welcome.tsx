@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { PreviewOnboarding } from "@/account/preview";
 import { useState, type FormEvent } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { Button } from "@/components/ui/button";
@@ -7,7 +9,7 @@ import { Gate, PageTitle } from "@/account/ui";
 
 export const Route = createFileRoute("/account/welcome")({
   head: () => ({ meta: [{ title: "Welcome | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: () => (<Gate section="your account"><Welcome /></Gate>),
+  component: () => (PUBLIC_PREVIEW ? <PreviewOnboarding /> : <Gate section="your account"><Welcome /></Gate>),
 });
 
 // The one optional onboarding page, shown once after email verification. Skipping stores

@@ -3,7 +3,8 @@ import { createFileRoute, Outlet, useRouterState } from "@tanstack/react-router"
 import { Button } from "@/components/ui/button";
 import { identity } from "@/account/identity";
 import { PrototypeNotice, SectionNav, useAccount } from "@/account/ui";
-import { MEMBERSHIP_ENABLED } from "@/account/mode";
+import { MEMBERSHIP_ENABLED, PUBLIC_PREVIEW } from "@/account/mode";
+import { ComingSoonNotice } from "@/account/preview";
 
 export const Route = createFileRoute("/account")({
   head: () => ({
@@ -37,16 +38,16 @@ function AccountLayout() {
 
   return (
     <div className="mx-auto max-w-6xl px-4 py-10 sm:px-6 sm:py-14">
-      <PrototypeNotice />
-      {member && !bare ? (
+      {PUBLIC_PREVIEW ? <ComingSoonNotice /> : <PrototypeNotice />}
+      {(member || PUBLIC_PREVIEW) && !bare ? (
         <div className="lg:grid lg:grid-cols-[13rem_minmax(0,1fr)] lg:gap-10">
           <div>
             <SectionNav />
-            <Button variant="outline" size="sm" className="mt-4 hidden lg:inline-flex" onClick={() => identity.signOut()}>Sign out</Button>
+            {member && <Button variant="outline" size="sm" className="mt-4 hidden lg:inline-flex" onClick={() => identity.signOut()}>Sign out</Button>}
           </div>
           <div className="min-w-0">
             <Outlet />
-            <Button variant="outline" size="sm" className="mt-10 lg:hidden" onClick={() => identity.signOut()}>Sign out</Button>
+            {member && <Button variant="outline" size="sm" className="mt-10 lg:hidden" onClick={() => identity.signOut()}>Sign out</Button>}
           </div>
         </div>
       ) : (

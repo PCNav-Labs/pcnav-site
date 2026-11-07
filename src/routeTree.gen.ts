@@ -21,6 +21,7 @@ import { Route as AccountProductsRouteImport } from './routes/account/products'
 import { Route as AccountProfileRouteImport } from './routes/account/profile'
 import { Route as AccountResetRouteImport } from './routes/account/reset'
 import { Route as AccountResourcesRouteImport } from './routes/account/resources'
+import { Route as AccountSecurityRouteImport } from './routes/account/security'
 import { Route as AccountSignInRouteImport } from './routes/account/sign-in'
 import { Route as AccountSignedOutRouteImport } from './routes/account/signed-out'
 import { Route as AccountVerifyRouteImport } from './routes/account/verify'
@@ -92,6 +93,11 @@ const AccountResetRoute = AccountResetRouteImport.update({
 const AccountResourcesRoute = AccountResourcesRouteImport.update({
   id: '/resources',
   path: '/resources',
+  getParentRoute: () => AccountRoute,
+} as any)
+const AccountSecurityRoute = AccountSecurityRouteImport.update({
+  id: '/security',
+  path: '/security',
   getParentRoute: () => AccountRoute,
 } as any)
 const AccountSignInRoute = AccountSignInRouteImport.update({
@@ -170,6 +176,7 @@ export interface FileRoutesByFullPath {
   '/account/profile': typeof AccountProfileRoute
   '/account/reset': typeof AccountResetRoute
   '/account/resources': typeof AccountResourcesRoute
+  '/account/security': typeof AccountSecurityRoute
   '/account/sign-in': typeof AccountSignInRoute
   '/account/signed-out': typeof AccountSignedOutRoute
   '/account/verify': typeof AccountVerifyRoute
@@ -195,6 +202,7 @@ export interface FileRoutesByTo {
   '/account/profile': typeof AccountProfileRoute
   '/account/reset': typeof AccountResetRoute
   '/account/resources': typeof AccountResourcesRoute
+  '/account/security': typeof AccountSecurityRoute
   '/account/sign-in': typeof AccountSignInRoute
   '/account/signed-out': typeof AccountSignedOutRoute
   '/account/verify': typeof AccountVerifyRoute
@@ -222,6 +230,7 @@ export interface FileRoutesById {
   '/account/profile': typeof AccountProfileRoute
   '/account/reset': typeof AccountResetRoute
   '/account/resources': typeof AccountResourcesRoute
+  '/account/security': typeof AccountSecurityRoute
   '/account/sign-in': typeof AccountSignInRoute
   '/account/signed-out': typeof AccountSignedOutRoute
   '/account/verify': typeof AccountVerifyRoute
@@ -250,6 +259,7 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reset'
     | '/account/resources'
+    | '/account/security'
     | '/account/sign-in'
     | '/account/signed-out'
     | '/account/verify'
@@ -275,6 +285,7 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reset'
     | '/account/resources'
+    | '/account/security'
     | '/account/sign-in'
     | '/account/signed-out'
     | '/account/verify'
@@ -301,6 +312,7 @@ export interface FileRouteTypes {
     | '/account/profile'
     | '/account/reset'
     | '/account/resources'
+    | '/account/security'
     | '/account/sign-in'
     | '/account/signed-out'
     | '/account/verify'
@@ -417,6 +429,13 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AccountResourcesRouteImport
       parentRoute: typeof AccountRoute
     }
+    '/account/security': {
+      id: '/account/security'
+      path: '/security'
+      fullPath: '/account/security'
+      preLoaderRoute: typeof AccountSecurityRouteImport
+      parentRoute: typeof AccountRoute
+    }
     '/account/sign-in': {
       id: '/account/sign-in'
       path: '/sign-in'
@@ -512,6 +531,7 @@ interface AccountRouteChildren {
   AccountProfileRoute: typeof AccountProfileRoute
   AccountResetRoute: typeof AccountResetRoute
   AccountResourcesRoute: typeof AccountResourcesRoute
+  AccountSecurityRoute: typeof AccountSecurityRoute
   AccountSignInRoute: typeof AccountSignInRoute
   AccountSignedOutRoute: typeof AccountSignedOutRoute
   AccountVerifyRoute: typeof AccountVerifyRoute
@@ -527,6 +547,7 @@ const AccountRouteChildren: AccountRouteChildren = {
   AccountProfileRoute: AccountProfileRoute,
   AccountResetRoute: AccountResetRoute,
   AccountResourcesRoute: AccountResourcesRoute,
+  AccountSecurityRoute: AccountSecurityRoute,
   AccountSignInRoute: AccountSignInRoute,
   AccountSignedOutRoute: AccountSignedOutRoute,
   AccountVerifyRoute: AccountVerifyRoute,

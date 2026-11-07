@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { SupportingPreview } from "@/account/preview";
 import { useEffect, useState } from "react";
 import { createFileRoute, Link } from "@tanstack/react-router";
 import { JoinActions, PageTitle } from "@/account/ui";
@@ -5,7 +7,7 @@ import { DELETED_KEY } from "@/account/identity";
 
 export const Route = createFileRoute("/account/signed-out")({
   head: () => ({ meta: [{ title: "Signed out | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: SignedOut,
+  component: () => (PUBLIC_PREVIEW ? <SupportingPreview title="Signed out"><p>When membership opens, you'll see this page after signing out.</p></SupportingPreview> : <SignedOut />),
 });
 
 function SignedOut() {

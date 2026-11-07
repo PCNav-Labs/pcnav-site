@@ -5,6 +5,8 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { identity } from "@/account/identity";
 import { memberData, ANNOUNCEMENTS, CATALOGUE } from "@/account/data";
 import { ErrorNote, Gate, JoinActions, Loading, PageTitle, useAccount } from "@/account/ui";
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { SectionDirectory } from "@/account/preview";
 
 export const Route = createFileRoute("/account/")({ component: AccountHome });
 
@@ -42,6 +44,7 @@ function Landing() {
         ))}
       </ul>
       <div className="mt-8 flex flex-wrap gap-3"><JoinActions /></div>
+      {PUBLIC_PREVIEW && <SectionDirectory />}
       <p className="mt-8 max-w-2xl text-sm text-muted-foreground">
         Workspace Navigator works without an account. Signing in here never signs you in to the app, and your licence doesn't depend on it.
       </p>

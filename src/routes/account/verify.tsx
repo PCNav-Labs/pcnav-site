@@ -1,3 +1,5 @@
+import { PUBLIC_PREVIEW } from "@/account/mode";
+import { SupportingPreview } from "@/account/preview";
 import { useEffect, useRef, useState } from "react";
 import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { identity } from "@/account/identity";
@@ -7,7 +9,7 @@ import { Loading } from "@/account/ui";
 
 export const Route = createFileRoute("/account/verify")({
   head: () => ({ meta: [{ title: "Confirming | PCNav Account" }, { name: "robots", content: "noindex, nofollow" }] }),
-  component: Verify,
+  component: () => (PUBLIC_PREVIEW ? <SupportingPreview title="Confirm your email"><p>When membership opens, the link in your confirmation email will bring you here to confirm your address.</p></SupportingPreview> : <Verify />),
 });
 
 function Verify() {
