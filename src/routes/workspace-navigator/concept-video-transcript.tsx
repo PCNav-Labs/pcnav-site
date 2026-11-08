@@ -21,7 +21,7 @@ export const Route = createFileRoute("/workspace-navigator/concept-video-transcr
 });
 
 // One entry per scene, in the order the video shows them. `caption` is on-screen text, quoted
-// exactly as it appears in the video (P3 v4, as published).
+// exactly as it appears in the video (v6 rev1, as published).
 type Step = { action?: string; caption?: string };
 type Scene = { title: string; time: string; steps: Step[] };
 
@@ -32,50 +32,91 @@ const SCENES: Scene[] = [
     steps: [
       {
         action:
-          "Artwork: the Workspace Navigator title card, a compass drawn in white lines on a dark blue blueprint background, with the line “A place for everything you need for the important work that you do.”",
-        caption: "Your work lives in many places.",
+          "Artwork: the Workspace Navigator title card, a compass drawn in white lines on a dark blue blueprint background.",
+        caption: "A place for everything you need for the important work that you do.",
       },
       {
         action:
           "White line icons of a browser window, a document, a notepad and a folder appear, spaced apart.",
-        caption: "Websites. Documents. Notes. Files.",
+        caption: "Your work is often spread across websites, documents, notes and files.",
       },
       {
         action: "Dashed lines join the four icons, then break apart.",
-        caption: "Coming back to it often starts with searching for where you left off.",
+        caption: "And coming back to it usually starts with searching for where you left off.",
       },
     ],
   },
   {
-    title: "One Project",
-    time: "0:14",
+    title: "Documents and Projects",
+    time: "0:17",
     steps: [
       {
         action:
-          "Workspace Navigator is shown open on a sample Project, “Boats and Navigation”, with the Explorer, the File Editor, the Project’s notes, Web Browsing and the Continuity Manager in one window.",
-        caption: "Workspace Navigator brings related work together as a Project.",
+          "The four icons gather inside a window outline, which becomes Workspace Navigator itself, shown with no Project open: the Explorer, the File Editor, the Notepad, Web Browsing and the Continuity Manager in one window.",
+        caption: "Workspace Navigator brings related work together, in Documents or in Projects.",
+      },
+      { caption: "Manage your documents, or create Projects." },
+      {
+        action:
+          "The Project menu, reading “No Project Open”, and the Documents folder are highlighted. The document “Talk outline.docx” opens in the File Editor, with the note “Talk idea: open with the Gull Point lighthouse.” in the Notepad below.",
+        caption: "With no Project open, work from your Documents folder.",
       },
       {
-        action: "The Explorer, listing the Project’s folders and files, is highlighted.",
-        caption:
-          "A Project keeps its files, notes, websites and tasks side by side, in one window.",
+        action:
+          "The Project menu lists recent Projects and offers Create New Project, Import Folder (Copy) and Workspace Folder. The sample Project “Boats and Navigation” is opened, with its folders, notes and saved websites.",
+        caption: "Open a Project to keep related work together.",
       },
     ],
   },
   {
-    title: "Websites, Documents and Notes",
-    time: "0:25",
+    title: "Organising a Project",
+    time: "0:37",
+    steps: [
+      {
+        action: "The Explorer’s New menu offers New Folder, New File and New Project.",
+        caption: "Create Projects, folders and files.",
+      },
+      {
+        action:
+          "In the Continuity Manager’s Organize tab, the file “Tide Times.txt” is selected and carries the tag “Gull Point visit”.",
+        caption: "Tag files and folders to keep related work organised.",
+      },
+      {
+        action:
+          "The Properties tab shows the details of “Tide Times.txt”, then of the Project, whose Purpose reads “Research guide for a coastal navigation talk”.",
+        caption: "View file, folder and Project properties.",
+      },
+      {
+        action: "The Recent Activity tab lists the files, notes and websites used recently.",
+        caption: "View recent files, notes and websites.",
+      },
+      {
+        action:
+          "The Tasks tab lists “Draft the Harrison chapter”, “Check chronometer history”, which is ticked as done, and “Review harbour photos”, and the task “Book the lighthouse gallery visit” is added.",
+        caption: "Create a task list for each Project.",
+      },
+    ],
+  },
+  {
+    title: "Websites and Documents",
+    time: "0:59",
     steps: [
       {
         action:
           "A row of steps appears beneath the window: Project websites, Browser, Document, Project Notepad. The Project’s saved websites are highlighted, then one opens in the built-in browser: “Gull Point Harbour”, a fictional sample page of visitor notices made for this demonstration.",
-        caption: "Save the websites you need to the Project.",
+        caption: "Browse and save websites to a Project or to Global websites.",
       },
       {
         action:
           "The Explorer’s New menu is shown, and the document “Harbour Visit Plan.docx” opens in the File Editor beside the browser.",
-        caption: "Create a new document, or pick up where you left off editing one.",
+        caption: "Create and edit documents.",
       },
+    ],
+  },
+  {
+    title: "Panels and Notes",
+    time: "1:14",
+    steps: [
       {
         action: "Other panels are collapsed, leaving the document and the browser side by side.",
         caption: "Make room for what matters.",
@@ -92,59 +133,22 @@ const SCENES: Scene[] = [
       {
         action:
           "The Project Notepad is highlighted beside the browser, and the notes “Tide checked: high water 06:12 and 18:31.” and “Tripods allowed in the gallery before 11:00.” are typed.",
-        caption: "Keep your notes close to the work you’re doing.",
-      },
-    ],
-  },
-  {
-    title: "Tags",
-    time: "1:00",
-    steps: [
-      {
-        action:
-          "In the Continuity Manager’s Organize tab, Tag Manager shows the uses of the tag “Gull Point visit” in Boats and Navigation: Harbour Visit Plan.docx, Harbour Visit Plan.md and Tide Times.txt.",
-        caption: "Tag related files so they’re easy to find together.",
+        caption: "Keep important notes in view.",
       },
       {
-        action: "The whole window is shown again.",
-        caption: "Everything stays with the work it belongs to.",
-      },
-    ],
-  },
-  {
-    title: "Coming Back",
-    time: "1:12",
-    steps: [
-      {
-        action: "The Project menu lists recent Projects, and Boats and Navigation is opened.",
-        caption: "Later, open the Project again.",
-      },
-      {
-        action:
-          "The Project opens with a document in the editor, and the Continuity Manager’s Recent Activity lists the files, notes and websites used there.",
-        caption:
-          "See where you were: The document you last had open reopens, and Recent Activity lists what you used last.",
-      },
-      {
-        action:
-          "The Properties tab shows the Project’s Purpose, “Research guide for a coastal navigation talk”, and its Project Notes.",
-        caption:
-          "Know where you are: The Project’s Purpose and notes remind you what this work is for.",
-      },
-      {
-        action:
-          "The Tasks tab lists “Draft the Harrison chapter”, “Check chronometer history”, which is ticked as done, and “Review harbour photos”.",
-        caption: "Plan where you’re going: Tasks show what’s done and what’s still to do.",
+        action: "The whole window is shown, with the document, the browser and the notes together.",
+        caption: "All your work, together in one place.",
       },
     ],
   },
   {
     title: "Closing",
-    time: "1:35",
+    time: "1:37",
     steps: [
       {
-        action: "Artwork: a compass drawn in blue lines on the blueprint background.",
-        caption: "Less searching. Less rebuilding. More time for the work itself.",
+        action:
+          "The window draws back to reveal a compass drawn in blue lines on the blueprint background.",
+        caption: "Spend less time searching and more time on what matters.",
       },
       {
         action:
