@@ -67,7 +67,7 @@ const BEARINGS: { kicker: string; title: string; text: string; shot: Shot }[] = 
   {
     kicker: "See where you were",
     title: "Recent Activity",
-    text: "Open a Project again to pick up from the document you last had open. Recent Activity lists the files, notes and websites you used, most recent first.",
+    text: "Recent Activity lists the files, notes and websites you've used in the Project, most recent first, so you can pick up where you left off.",
     shot: SHOTS.recent,
   },
   {
@@ -124,7 +124,7 @@ const TRUST: { icon: LucideIcon; title: string; text: string }[] = [
   {
     icon: HardDrive,
     title: "Your projects stay on your computer",
-    text: "Your work stays in ordinary folders that you can keep using with other programs.",
+    text: "Your files stay in your Workspace folder, and you can keep using them with other programs. Workspace Navigator keeps its own records for each Project in a reserved .workspace folder inside it.",
   },
   {
     icon: UserRound,
@@ -133,7 +133,7 @@ const TRUST: { icon: LucideIcon; title: string; text: string }[] = [
   },
   {
     icon: EyeOff,
-    title: "No telemetry or usage analytics",
+    title: "No telemetry, usage analytics or built-in sharing",
     text: "Workspace Navigator doesn't send your projects, documents or notes to other people or other computers.",
   },
 ];
@@ -144,7 +144,7 @@ function HomePage() {
       {/* 1 · Hero: the approved positioning over the product itself. */}
       <section className="relative overflow-hidden bg-blueprint text-hero-foreground">
         <CompassRose className="pointer-events-none absolute -right-24 -top-28 h-[34rem] w-[34rem] text-hero-accent/30 sm:-right-10" />
-        <div className="relative mx-auto max-w-6xl px-4 pb-0 pt-14 sm:px-6 sm:pt-20">
+        <div className="relative mx-auto max-w-6xl px-4 pb-0 pt-10 sm:px-6 sm:pt-20">
           <div className="mx-auto max-w-3xl text-center">
             <p className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-3 py-1 text-xs font-medium text-hero-muted">
               <span className="h-1.5 w-1.5 rounded-full bg-hero-accent" aria-hidden="true" />
@@ -199,9 +199,10 @@ function HomePage() {
             />
             <ProductShot
               shot={SHOTS.window}
+              narrow={SHOTS.windowNarrow}
               priority
               rounded="rounded-t-xl sm:rounded-t-2xl"
-              className="relative border-b-0"
+              className="relative max-h-[26rem] border-b-0 sm:max-h-none"
             />
             <figcaption className="sr-only">
               Workspace Navigator with a fictional sample Project. Still from the Concept Video.
@@ -213,7 +214,7 @@ function HomePage() {
       {/* 2 · The problem, in the Concept Video's words, and the answer. */}
       <section className="relative overflow-hidden">
         <div className="bg-grid-faint absolute inset-0 -z-10 opacity-60" aria-hidden="true" />
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-24">
           <div className="mx-auto max-w-2xl text-center">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
               Why continuity matters
@@ -256,7 +257,7 @@ function HomePage() {
 
       {/* 3 · The three bearings, each with the part of the app that provides it. */}
       <section className="border-y border-border/60 bg-surface/50">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-24">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
               Your Continuity Compass
@@ -288,7 +289,7 @@ function HomePage() {
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
                 </div>
                 <div className="mt-auto px-4 pb-4">
-                  <ProductShot shot={b.shot} rounded="rounded-lg" className="h-60" />
+                  <ProductShot shot={b.shot} rounded="rounded-lg" className="sm:h-60" />
                 </div>
               </article>
             ))}
@@ -297,7 +298,7 @@ function HomePage() {
       </section>
 
       {/* 4 · Everything a Project needs, in one window. */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-24">
         <div className="mx-auto max-w-2xl text-center">
           <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
             One window
@@ -316,7 +317,7 @@ function HomePage() {
               key={title}
               className="group flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-sm"
             >
-              <div className="flex items-start gap-4 p-6">
+              <div className="flex items-start gap-4 p-5 sm:p-6">
                 <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-lg bg-accent text-primary">
                   <Icon className="h-5 w-5" aria-hidden="true" />
                 </span>
@@ -325,7 +326,7 @@ function HomePage() {
                   <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">{text}</p>
                 </div>
               </div>
-              <div className="mt-auto max-h-72 overflow-hidden bg-[linear-gradient(180deg,var(--color-surface),var(--color-accent))] px-6 pt-2">
+              <div className="mt-auto hidden max-h-72 overflow-hidden bg-[linear-gradient(180deg,var(--color-surface),var(--color-accent))] px-6 pt-2 sm:block">
                 <ProductShot shot={shot} rounded="rounded-t-lg" className="border-b-0" />
               </div>
             </article>
@@ -342,7 +343,7 @@ function HomePage() {
 
       {/* 5 · Who it's for, then the video. */}
       <section id="video" className="scroll-mt-20 bg-blueprint text-hero-foreground">
-        <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-24">
           <div className="grid items-center gap-12 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)]">
             <div>
               <p className="text-xs font-semibold uppercase tracking-[0.18em] text-hero-accent">
@@ -366,7 +367,7 @@ function HomePage() {
                 ))}
               </ul>
             </div>
-            <div className="dark-video [&_figcaption]:text-hero-muted [&_figcaption_span.text-foreground]:text-hero-foreground [&_#wn-video-description]:text-hero-muted [&_a]:text-hero-accent">
+            <div className="[&_select]:border-white/20 [&_select]:bg-white/10 [&_select]:text-hero-foreground [&_select]:[color-scheme:dark] [&_figcaption]:text-hero-muted [&_figcaption_span.text-foreground]:text-hero-foreground [&_#wn-video-description]:text-hero-muted [&_a]:text-hero-accent">
               <PromoVideo video={WN_CONCEPT_VIDEO} />
             </div>
           </div>
@@ -374,7 +375,7 @@ function HomePage() {
       </section>
 
       {/* 6 · Trust, and what the beta is. */}
-      <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
+      <section className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-24">
         <div className="grid gap-12 lg:grid-cols-2">
           <div>
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">

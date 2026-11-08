@@ -115,7 +115,7 @@
 }
 
 .dark {
-  --hero: oklch(0.15 0.035 254);
+  --hero: oklch(0.225 0.045 254);
   --hero-foreground: oklch(0.97 0.006 230);
   --hero-muted: oklch(0.8 0.025 235);
   --hero-accent: oklch(0.78 0.11 210);
@@ -166,4 +166,16 @@
     outline-offset: 2px;
     border-radius: 4px;
   }
+}
+
+/* Dark mode: the navy bands sit a step lighter than the page, with a hairline edge. */
+.dark .bg-blueprint {
+  box-shadow:
+    inset 0 1px 0 oklch(1 0 0 / 0.08),
+    inset 0 -1px 0 oklch(1 0 0 / 0.08);
+}
+
+/* The footer supplies the space below a page, so a final section's bottom padding is not doubled. */
+main > section:last-child.pb-24 {
+  padding-bottom: 0;
 }

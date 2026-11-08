@@ -8,7 +8,7 @@ import { PUBLISHER } from "@/lib/releases";
 // here, marked Coming Soon, only in builds that include the membership scaffolding.
 export function SiteFooter() {
   return (
-    <footer className="mt-24 border-t border-border/60 bg-surface/50">
+    <footer className="mt-16 border-t border-border/60 bg-surface/50 sm:mt-20">
       <div className="mx-auto grid max-w-6xl gap-10 px-4 py-14 sm:grid-cols-2 sm:px-6 lg:grid-cols-[1.4fr_1fr_1fr_1fr]">
         <div>
           <Link
@@ -37,7 +37,7 @@ export function SiteFooter() {
 
         <FooterCol title="Workspace Navigator">
           <FooterLink to="/workspace-navigator">Overview</FooterLink>
-          <FooterLink to="/workspace-navigator/download">Beta download</FooterLink>
+          <FooterLink to="/workspace-navigator/download">Beta release</FooterLink>
           <FooterLink to="/workspace-navigator/concept-video-transcript">
             Video transcript
           </FooterLink>
@@ -46,7 +46,7 @@ export function SiteFooter() {
 
         <FooterCol title="OS Map">
           <FooterLink to="/os-map">Overview</FooterLink>
-          <FooterLink to="/os-map/download">Beta download</FooterLink>
+          <FooterLink to="/os-map/download">Beta release</FooterLink>
           <FooterLink to="/feedback/os-map">Feedback</FooterLink>
         </FooterCol>
 
@@ -70,7 +70,7 @@ export function SiteFooter() {
       <div className="border-t border-border/60">
         <div className="mx-auto flex max-w-6xl flex-col gap-1 px-4 py-6 text-xs text-muted-foreground sm:flex-row sm:items-center sm:justify-between sm:px-6">
           <p>© 2026 {PUBLISHER.name} All rights reserved.</p>
-          <p>PCNav is a brand of {PUBLISHER.name} Not affiliated with Microsoft.</p>
+          <p>PCNav is a brand of {PUBLISHER.name}</p>
         </div>
       </div>
     </footer>

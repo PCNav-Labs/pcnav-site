@@ -5,8 +5,14 @@ import { cn } from "@/lib/utils";
 // Every Workspace Navigator image on the site is a still taken from the published Concept Video
 // (public/media/workspace-navigator-concept-video-v1.mp4), which shows the application itself
 // working on a fictional sample Project, "Boats and Navigation". Stills are cropped from the
-// application window only; nothing in them is drawn or altered. Decorative graphics below are
-// plain SVG line art and never imitate the application.
+// application window only; nothing in them is drawn or altered. The three Continuity Manager stills
+// (Recent Activity, Properties, Tasks) are taken from the video's "Coming Back" scene, which outlines
+// each panel in turn, so all three carry the same outline. Decorative graphics below are plain SVG
+// line art and never imitate the application.
+//
+// Native screenshots of the released 0.5.1 build would be sharper; they need the application run
+// with a fictional Workspace, which is outside this site's work. Stills are therefore never shown
+// wider than their natural size.
 
 export type Shot = { src: string; width: number; height: number; alt: string };
 
@@ -18,6 +24,13 @@ export const SHOTS = {
     width: 1340,
     height: 752,
     alt: "Workspace Navigator showing a sample Project, Boats and Navigation: the Explorer with the Project's documents and folders, the Continuity Manager's Recent Activity, a Word document open in the File Editor, the Project's notes, and a saved website open in the built-in browser.",
+  },
+  // The same moment as `window`, cropped to the Explorer and Continuity Manager for narrow screens.
+  windowNarrow: {
+    src: `${SHOT_DIR}/wn-window-narrow.webp`,
+    width: 432,
+    height: 582,
+    alt: "Workspace Navigator showing a sample Project, Boats and Navigation: the Explorer with the Project's documents and folders, and the Continuity Manager's Recent Activity.",
   },
   explorer: {
     src: `${SHOT_DIR}/wn-explorer.webp`,
@@ -34,7 +47,7 @@ export const SHOTS = {
   notes: {
     src: `${SHOT_DIR}/wn-notes.webp`,
     width: 420,
-    height: 265,
+    height: 150,
     alt: "The Project's notes, with three short notes about tide times and the lighthouse gallery.",
   },
   browser: {
@@ -51,32 +64,37 @@ export const SHOTS = {
   },
   recent: {
     src: `${SHOT_DIR}/wn-recent.webp`,
-    width: 432,
-    height: 342,
-    alt: "The Continuity Manager's Recent Activity, listing the files, notes and websites used in the Project, most recent first.",
+    width: 438,
+    height: 252,
+    alt: "The Continuity Manager's Recent Activity tab, listing the notes, files and websites used in the Project, most recent first.",
   },
   properties: {
     src: `${SHOT_DIR}/wn-properties.webp`,
-    width: 432,
-    height: 342,
+    width: 438,
+    height: 329,
     alt: "The Continuity Manager's Properties tab, showing the Project's Purpose, Research guide for a coastal navigation talk, and its Project Notes.",
   },
   tasks: {
     src: `${SHOT_DIR}/wn-tasks.webp`,
-    width: 432,
-    height: 200,
+    width: 438,
+    height: 168,
     alt: "The Continuity Manager's Tasks tab with three tasks, one of them ticked as done.",
   },
 } satisfies Record<string, Shot>;
 
-/** A product still in a quiet frame. `priority` loads it eagerly (above the fold). */
+/**
+ * A product still in a quiet frame, never wider than the still itself. `priority` loads it eagerly
+ * (above the fold). `narrow`, when given, is served instead on screens up to 639px wide.
+ */
 export function ProductShot({
   shot,
+  narrow,
   className,
   priority = false,
   rounded = "rounded-xl",
 }: {
   shot: Shot;
+  narrow?: Shot;
   className?: string;
   priority?: boolean;
   rounded?: string;
@@ -84,21 +102,32 @@ export function ProductShot({
   return (
     <div
       className={cn(
-        "overflow-hidden border border-white/10 bg-[#0b0e16] shadow-[0_24px_60px_-20px_rgba(8,20,40,0.45)] ring-1 ring-black/5",
+        "mx-auto w-full overflow-hidden border border-white/10 bg-[#0b0e16] shadow-[0_24px_60px_-20px_rgba(8,20,40,0.45)] ring-1 ring-black/5",
         rounded,
         className,
       )}
+      style={{ maxWidth: shot.width + 2 }}
     >
-      <img
-        src={shot.src}
-        width={shot.width}
-        height={shot.height}
-        alt={shot.alt}
-        loading={priority ? "eager" : "lazy"}
-        decoding={priority ? "sync" : "async"}
-        {...(priority ? { fetchPriority: "high" as const } : {})}
-        className="block h-auto w-full"
-      />
+      <picture>
+        {narrow && (
+          <source
+            media="(max-width: 639px)"
+            srcSet={narrow.src}
+            width={narrow.width}
+            height={narrow.height}
+          />
+        )}
+        <img
+          src={shot.src}
+          width={shot.width}
+          height={shot.height}
+          alt={shot.alt}
+          loading={priority ? "eager" : "lazy"}
+          decoding={priority ? "sync" : "async"}
+          {...(priority ? { fetchPriority: "high" as const } : {})}
+          className="block h-auto w-full"
+        />
+      </picture>
     </div>
   );
 }
