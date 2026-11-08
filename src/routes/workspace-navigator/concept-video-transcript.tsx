@@ -21,7 +21,7 @@ export const Route = createFileRoute("/workspace-navigator/concept-video-transcr
 });
 
 // One entry per scene, in the order the video shows them. `caption` is on-screen text, quoted
-// exactly as it appears in the video (v6 rev1, as published).
+// exactly as it appears in the video (v6 rev2, as published).
 type Step = { action?: string; caption?: string };
 type Scene = { title: string; time: string; steps: Step[] };
 
@@ -99,41 +99,42 @@ const SCENES: Scene[] = [
   },
   {
     title: "Websites and Documents",
-    time: "0:59",
+    time: "0:58",
     steps: [
       {
         action:
-          "A row of steps appears beneath the window: Project websites, Browser, Document, Project Notepad. The Project’s saved websites are highlighted, then one opens in the built-in browser: “Gull Point Harbour”, a fictional sample page of visitor notices made for this demonstration.",
+          "The Project’s saved websites are highlighted, and “Gull Point harbour notices” is selected, showing its saved details. It opens in the built-in browser: “Gull Point Harbour”, a fictional sample page of visitor notices made for this demonstration.",
         caption: "Browse and save websites to a Project or to Global websites.",
       },
       {
         action:
-          "The Explorer’s New menu is shown, and the document “Harbour Visit Plan.docx” opens in the File Editor beside the browser.",
+          "The document “Harbour Visit Plan.docx” is opened from the Explorer in the File Editor, beside the browser, and edited: the date becomes “Saturday morning, 10:00 at the lighthouse gallery”, and the checklist items “Photos of the lighthouse and the moorings” and “Park before 10:00 (free until then)” are added.",
         caption: "Create and edit documents.",
       },
     ],
   },
   {
-    title: "Panels and Notes",
-    time: "1:14",
+    title: "Notes and Panels",
+    time: "1:19",
     steps: [
       {
-        action: "Other panels are collapsed, leaving the document and the browser side by side.",
+        action:
+          "The Project Notepad is highlighted below the document, and the notes “Tide checked: high water 06:12 and 18:31.” and “Tripods allowed in the gallery before 11:00.” are typed.",
+        caption: "Keep important notes in view.",
+      },
+      {
+        action:
+          "The Explorer and the Continuity Manager are collapsed, then the Notepad, leaving the document and the browser side by side.",
         caption: "Make room for what matters.",
       },
       {
         action:
-          "The document is edited: the date becomes “Saturday morning, 10:00 at the lighthouse gallery”, and the checklist item “Park before 10:00 (free until then)” is added.",
+          "The document and the browser fill the window, with the other panels collapsed to its edges.",
         caption: "Shrink or expand panels to customise your workspace.",
       },
       {
-        action: "The panels are restored.",
+        action: "The Notepad is restored, then the Explorer and the Continuity Manager.",
         caption: "Restore your panels whenever you need them.",
-      },
-      {
-        action:
-          "The Project Notepad is highlighted beside the browser, and the notes “Tide checked: high water 06:12 and 18:31.” and “Tripods allowed in the gallery before 11:00.” are typed.",
-        caption: "Keep important notes in view.",
       },
       {
         action: "The whole window is shown, with the document, the browser and the notes together.",
@@ -143,7 +144,7 @@ const SCENES: Scene[] = [
   },
   {
     title: "Closing",
-    time: "1:37",
+    time: "1:43",
     steps: [
       {
         action:

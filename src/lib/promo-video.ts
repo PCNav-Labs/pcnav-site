@@ -40,18 +40,19 @@ export const WN_INTRO_VIDEO: PromoVideo = {
 };
 
 // Concept video for the Workspace Navigator page: what the product is for, rather than a tour of its
-// features. The file is a web derivative of the accepted v6 rev1 master: the same picture, cut and
+// features. The file is a web derivative of the accepted v6 rev2 master: the same picture, cut and
 // audio (the AAC track is carried over unchanged), with the video re-encoded to fit the 100 MB
-// per-file limit of the publication route, and its index at the front for fast start. The first
-// published version (workspace-navigator-concept-video-v1.mp4 and its poster) stays in /media for
-// rollback and as the source of the site's product stills; no player uses it.
+// per-file limit of the publication route, and its index at the front for fast start. Earlier
+// published versions stay in /media for rollback, unused by any player:
+// workspace-navigator-concept-video-v6-rev1.mp4 and workspace-navigator-concept-video-v1.mp4, with
+// their posters; v1 is also the source of the site's product stills.
 export const WN_CONCEPT_VIDEO: PromoVideo = {
   title: "Workspace Navigator — Concept Video",
   durationLabel: "2 min",
   description:
     "The idea behind Workspace Navigator: keep related work together, and come back to it knowing where you were.",
   accessibleLabel: "Watch the Workspace Navigator Concept Video",
-  src: "/media/workspace-navigator-concept-video-v6-rev1.mp4",
-  poster: "/media/workspace-navigator-concept-video-v6-rev1-thumbnail.jpg",
+  src: "/media/workspace-navigator-concept-video-v6-rev2.mp4",
+  poster: "/media/workspace-navigator-concept-video-v6-rev2-thumbnail.jpg",
   transcript: "/workspace-navigator/concept-video-transcript",
 };
