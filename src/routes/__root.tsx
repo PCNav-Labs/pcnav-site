@@ -101,7 +101,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { property: "og:image", content: "https://www.pcnav.net/og-image.png" },
       { property: "og:image:width", content: "1200" },
       { property: "og:image:height", content: "630" },
-      { property: "og:image:alt", content: "Workspace Navigator — Your Continuity Compass. A sample Project open in the application." },
+      { property: "og:image:alt", content: "Workspace Navigator — One workspace. One window. A sample Project open in the application." },
       { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [

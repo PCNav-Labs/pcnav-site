@@ -128,7 +128,7 @@ function AboutPage() {
               icon={Compass}
               name="Workspace Navigator"
               status={WN_BETA.label}
-              text="Your Continuity Compass for projects, documents and ongoing work."
+              text="One workspace. One window."
             />
             <ProductLink
               to="/os-map"

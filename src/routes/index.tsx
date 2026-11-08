@@ -32,22 +32,23 @@ import {
 import { OS_MAP_BETA, WN_BETA, WN_COMMERCIAL_NOTE } from "@/lib/releases";
 
 // Homepage: Workspace Navigator first (Owner decision D1, 2026-11-08), with the approved positioning
-// (D2): "Workspace Navigator / Your Continuity Compass. / See where you were. Know where you are.
-// Plan where you're going." Product statements restate the Owner-approved Workspace Navigator page,
+// (Owner, 2026-11-08, superseding D2's "Your Continuity Compass"): "Workspace Navigator / One workspace. One window."
+// and its supporting copy, verbatim. Product statements restate the Owner-approved Workspace Navigator page,
 // the 0.5.1 Beta release page and the published Concept Video; no capability is added here.
 export const Route = createFileRoute("/")({
   head: () => ({
     meta: [
-      { title: "Workspace Navigator — Your Continuity Compass | PCNav" },
+      { title: "Workspace Navigator — One workspace. One window. | PCNav" },
       {
         name: "description",
         content:
-          "Keep your project's files, documents, notes, tasks and saved websites together in one Windows desktop workspace. Workspace Navigator 0.5.1 is a free public beta for Windows 10 and 11.",
+          "Work on your project's files, documents, notes, tasks and saved websites together in one Windows desktop workspace, so you can find what matters and pick up where you left off. Workspace Navigator 0.5.1 is a free public beta for Windows 10 and 11.",
       },
-      { property: "og:title", content: "Workspace Navigator — Your Continuity Compass" },
+      { property: "og:title", content: "Workspace Navigator — One workspace. One window." },
       {
         property: "og:description",
-        content: "See where you were. Know where you are. Plan where you're going.",
+        content:
+          "Work on your project's files, documents, notes, tasks and saved websites together in one Windows desktop workspace, so you can find what matters and pick up where you left off.",
       },
     ],
   }),
@@ -61,23 +62,20 @@ const SCATTERED: { icon: LucideIcon; label: string }[] = [
   { icon: FolderTree, label: "Files" },
 ];
 
-// The three bearings of the Continuity Compass, each shown with the part of the application that
-// provides it, as in the Concept Video's "Coming Back" scene.
-const BEARINGS: { kicker: string; title: string; text: string; shot: Shot }[] = [
+// The Continuity Manager's three tabs that keep a Project's context, each shown with its panel, as in
+// the Concept Video's "Coming Back" scene.
+const BEARINGS: { title: string; text: string; shot: Shot }[] = [
   {
-    kicker: "See where you were",
     title: "Recent Activity",
     text: "Recent Activity lists the files, notes and websites you've used in the Project, most recent first, so you can pick up where you left off.",
     shot: SHOTS.recent,
   },
   {
-    kicker: "Know where you are",
     title: "Properties",
     text: "Each Project can carry its Purpose and Project Notes, so you're reminded what the work is for whenever you return to it.",
     shot: SHOTS.properties,
   },
   {
-    kicker: "Plan where you're going",
     title: "Tasks",
     text: "Keep a list of tasks inside the Project. Tick them off as you finish them and reopen them if you need to.",
     shot: SHOTS.tasks,
@@ -155,15 +153,13 @@ function HomePage() {
                 Workspace Navigator
               </span>
               <span className="mt-2 block text-4xl font-semibold leading-[1.08] sm:text-6xl">
-                Your Continuity Compass.
+                <span className="block">One workspace.</span>{" "}
+                <span className="block">One window.</span>
               </span>
             </h1>
-            <p className="mt-5 font-display text-lg font-medium italic text-hero-foreground/90 sm:text-xl">
-              See where you were. Know where you are. Plan where you're going.
-            </p>
-            <p className="mx-auto mt-5 max-w-2xl text-base leading-relaxed text-hero-muted sm:text-lg">
-              Keep your project's files, documents, notes, tasks and saved websites together in one
-              Windows desktop workspace, so you can find what matters and pick up where you left
+            <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-hero-muted sm:text-lg">
+              Work on your project's files, documents, notes, tasks and saved websites together in
+              one Windows desktop workspace, so you can find what matters and pick up where you left
               off.
             </p>
             <div className="mt-8 flex flex-col items-center justify-center gap-3 sm:flex-row">
@@ -260,7 +256,7 @@ function HomePage() {
         <div className="mx-auto max-w-6xl px-4 py-14 sm:px-6 sm:py-24">
           <div className="max-w-2xl">
             <p className="text-xs font-semibold uppercase tracking-[0.18em] text-primary">
-              Your Continuity Compass
+              Continuity Manager
             </p>
             <h2 className="mt-3 text-3xl font-semibold tracking-tight sm:text-4xl">
               Come back to your work knowing where you were.
@@ -276,16 +272,15 @@ function HomePage() {
                 className="flex flex-col overflow-hidden rounded-2xl border border-border/70 bg-card shadow-sm"
               >
                 <div className="p-6 pb-5">
-                  <p className="flex items-center gap-2 text-sm font-semibold text-primary">
+                  <h3 className="flex items-center gap-3 text-xl font-semibold">
                     <span
-                      className="flex h-6 w-6 items-center justify-center rounded-full bg-primary text-[11px] text-primary-foreground"
+                      className="flex h-7 w-7 items-center justify-center rounded-full bg-primary text-xs text-primary-foreground"
                       aria-hidden="true"
                     >
                       {i + 1}
                     </span>
-                    {b.kicker}
-                  </p>
-                  <h3 className="mt-3 text-xl font-semibold">{b.title}</h3>
+                    {b.title}
+                  </h3>
                   <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{b.text}</p>
                 </div>
                 <div className="mt-auto px-4 pb-4">

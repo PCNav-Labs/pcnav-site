@@ -25,13 +25,13 @@ import { WN_BETA, WN_COMMERCIAL_NOTE } from "@/lib/releases";
 export const Route = createFileRoute("/workspace-navigator/")({
   head: () => ({
     meta: [
-      { title: "Workspace Navigator — Your Continuity Compass | PCNav" },
+      { title: "Workspace Navigator — One workspace. One window. | PCNav" },
       {
         name: "description",
         content:
           "A Windows desktop application that keeps a project's files, notes, tags, tasks and saved web destinations together in one place. A free public beta is available for Windows 10 and 11.",
       },
-      { property: "og:title", content: "Workspace Navigator — Your Continuity Compass" },
+      { property: "og:title", content: "Workspace Navigator — One workspace. One window." },
       {
         property: "og:description",
         content:
@@ -105,15 +105,11 @@ function WorkspaceNavigatorPage() {
             Workspace Navigator
           </h1>
           <p className="mt-3 font-display text-2xl font-semibold text-hero-foreground/95 sm:text-3xl">
-            Your Continuity Compass.
-          </p>
-          <p className="mt-3 font-display text-lg italic text-hero-foreground/85">
-            See where you were. Know where you are. Plan where you're going.
+            One workspace. One window.
           </p>
           <p className="mt-6 max-w-2xl text-base leading-relaxed text-hero-muted">
-            A Windows desktop application that keeps a project's files, notes, tags, tasks and saved
-            web destinations together in one place, so you can see where things stand and pick up
-            where you left off.
+            Work on your project's files, documents, notes, tasks and saved websites together in one
+            Windows desktop workspace, so you can find what matters and pick up where you left off.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row sm:flex-wrap">
             <Button
