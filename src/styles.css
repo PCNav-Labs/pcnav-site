@@ -105,3 +105,65 @@
     letter-spacing: -0.02em;
   }
 }
+
+/* Redesign 2026-11-08: product band, quiet section textures and visible keyboard focus. */
+:root {
+  --hero: oklch(0.21 0.05 254);
+  --hero-foreground: oklch(0.97 0.006 230);
+  --hero-muted: oklch(0.83 0.025 235);
+  --hero-accent: oklch(0.78 0.11 210);
+}
+
+.dark {
+  --hero: oklch(0.15 0.035 254);
+  --hero-foreground: oklch(0.97 0.006 230);
+  --hero-muted: oklch(0.8 0.025 235);
+  --hero-accent: oklch(0.78 0.11 210);
+}
+
+@theme inline {
+  --color-hero: var(--hero);
+  --color-hero-foreground: var(--hero-foreground);
+  --color-hero-muted: var(--hero-muted);
+  --color-hero-accent: var(--hero-accent);
+}
+
+/* The dark product band: navy with a faint drafting grid, after the product video's artwork. */
+@utility bg-blueprint {
+  background-color: var(--hero);
+  background-image:
+    radial-gradient(70% 60% at 50% 0%, oklch(0.45 0.1 230 / 0.5), transparent 72%),
+    linear-gradient(oklch(1 0 0 / 0.05) 1px, transparent 1px),
+    linear-gradient(90deg, oklch(1 0 0 / 0.05) 1px, transparent 1px);
+  background-size:
+    auto,
+    44px 44px,
+    44px 44px;
+  background-position:
+    center,
+    center top,
+    center top;
+}
+
+/* A light drafting grid that fades out towards the edges, for light sections. */
+@utility bg-grid-faint {
+  background-image:
+    linear-gradient(var(--color-border) 1px, transparent 1px),
+    linear-gradient(90deg, var(--color-border) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(ellipse 70% 60% at 50% 40%, black 30%, transparent 75%);
+}
+
+@layer base {
+  /* Every focusable control shows a clear focus ring when reached by keyboard. Components that
+     draw their own ring (buttons, the video player) opt out with focus-visible:outline-none. */
+  a:focus-visible,
+  button:focus-visible,
+  select:focus-visible,
+  summary:focus-visible,
+  [tabindex]:focus-visible {
+    outline: 2px solid var(--color-ring);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}

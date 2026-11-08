@@ -68,7 +68,7 @@ export const CATALOGUE: Product[] = [
     ],
   },
   {
-    id: "os-map", name: "OS Map", status: "Trusted testing",
+    id: "os-map", name: "OS Map", status: "Beta",
     summary: "Understand your system, network, privacy settings and web configuration.",
     links: [
       { label: "Overview", to: "/os-map" },

@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Link, useRouterState } from "@tanstack/react-router";
-import { Menu, Compass, ChevronDown } from "lucide-react";
+import { Menu, Compass, ChevronDown, Download } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Sheet, SheetContent, SheetTrigger, SheetTitle, SheetHeader } from "@/components/ui/sheet";
 import {
@@ -11,23 +11,20 @@ import {
 } from "@/components/ui/dropdown-menu";
 import { cn } from "@/lib/utils";
 import { ThemeToggle } from "./theme-toggle";
-import { MEMBERSHIP_ENABLED } from "@/account/mode";
 
-// Main navigation: Home | OS Map | Workspace Navigator | Feedback ▾ | About.
-const NAV_BEFORE_FEEDBACK = [
-  { to: "/", label: "Home" },
-  { to: "/os-map", label: "OS Map" },
+// Main navigation: Workspace Navigator | OS Map | Feedback ▾ | About, with a Download action.
+// The PCNav mark links home. Account is reached from the footer while membership is Coming Soon
+// (Owner decision D4, 2026-11-08); its pages are unchanged.
+const NAV = [
   { to: "/workspace-navigator", label: "Workspace Navigator" },
+  { to: "/os-map", label: "OS Map" },
 ] as const;
 
-// Account appears after About only when membership is enabled (WNM-11A; off by default).
-const NAV_AFTER_FEEDBACK = (MEMBERSHIP_ENABLED
-  ? [{ to: "/about", label: "About" }, { to: "/account", label: "Account" }]
-  : [{ to: "/about", label: "About" }]) as readonly { readonly to: "/about" | "/account"; readonly label: string }[];
+const NAV_AFTER_FEEDBACK = [{ to: "/about", label: "About" }] as const;
 
 const FEEDBACK = [
-  { to: "/feedback/os-map", label: "OS Map" },
   { to: "/feedback/workspace-navigator", label: "Workspace Navigator" },
+  { to: "/feedback/os-map", label: "OS Map" },
 ] as const;
 
 const DESKTOP_LINK =
@@ -49,7 +46,6 @@ export function SiteHeader() {
       to={item.to}
       className={DESKTOP_LINK}
       activeProps={{ className: DESKTOP_LINK_ACTIVE }}
-      activeOptions={{ exact: item.to === "/" }}
     >
       {item.label}
     </Link>
@@ -69,18 +65,24 @@ export function SiteHeader() {
   );
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+    <header className="sticky top-0 z-40 w-full border-b border-border/60 bg-background/85 backdrop-blur supports-[backdrop-filter]:bg-background/70">
       <div className="mx-auto flex h-16 max-w-6xl items-center gap-4 px-4 sm:px-6">
         <Link
           to="/"
           className="flex shrink-0 items-center gap-2 font-display text-lg font-semibold tracking-tight"
+          aria-label="PCNav home"
         >
-          <Compass className="h-5 w-5 text-primary" />
+          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary text-primary-foreground">
+            <Compass className="h-[18px] w-[18px]" aria-hidden="true" />
+          </span>
           PCNav
         </Link>
 
-        <nav aria-label="Main" className="ml-6 hidden items-center gap-1 whitespace-nowrap md:flex">
-          {NAV_BEFORE_FEEDBACK.map(desktopLink)}
+        <nav
+          aria-label="Main"
+          className="ml-4 hidden items-center gap-1 whitespace-nowrap md:flex lg:ml-6"
+        >
+          {NAV.map(desktopLink)}
           <DropdownMenu modal={false}>
             <DropdownMenuTrigger
               className={cn(
@@ -103,6 +105,11 @@ export function SiteHeader() {
         </nav>
 
         <div className="ml-auto flex items-center gap-2">
+          <Button asChild size="sm" className="hidden sm:inline-flex">
+            <Link to="/workspace-navigator/download">
+              <Download aria-hidden="true" /> Download
+            </Link>
+          </Button>
           <ThemeToggle />
 
           <Sheet open={open} onOpenChange={setOpen}>
@@ -116,7 +123,8 @@ export function SiteHeader() {
                 <SheetTitle className="font-display">PCNav</SheetTitle>
               </SheetHeader>
               <nav aria-label="Main" className="mt-6 flex flex-col gap-1">
-                {NAV_BEFORE_FEEDBACK.map((item) => mobileLink(item))}
+                {mobileLink({ to: "/", label: "Home" })}
+                {NAV.map((item) => mobileLink(item))}
                 <div
                   role="group"
                   aria-labelledby="mobile-feedback-heading"
@@ -135,6 +143,11 @@ export function SiteHeader() {
                 </div>
                 {NAV_AFTER_FEEDBACK.map((item) => mobileLink(item))}
               </nav>
+              <Button asChild className="mt-6 w-full">
+                <Link to="/workspace-navigator/download" onClick={() => setOpen(false)}>
+                  <Download aria-hidden="true" /> Download Workspace Navigator
+                </Link>
+              </Button>
             </SheetContent>
           </Sheet>
         </div>

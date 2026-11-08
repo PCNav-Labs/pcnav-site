@@ -13,6 +13,7 @@ import { SectionHeading } from "@/components/section-heading";
 import { FeatureCard } from "@/components/feature-card";
 import { SurfaceTile } from "@/components/surface-tile";
 import { PrincipleCard } from "@/components/principle-card";
+import { PrivacyList } from "@/components/privacy-list";
 
 export const Route = createFileRoute("/os-map/")({
   head: () => ({
@@ -79,7 +80,9 @@ function OsMapPage() {
       {/* Hero */}
       <section className="border-b border-border/60 bg-surface/40">
         <div className="mx-auto max-w-6xl px-4 py-20 sm:px-6 sm:py-24">
-          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">Product</p>
+          <p className="text-xs font-semibold uppercase tracking-[0.22em] text-primary">
+            Product · Beta
+          </p>
           <h1 className="mt-3 font-display text-4xl font-semibold tracking-tight sm:text-5xl">OS Map</h1>
           <p className="mt-3 text-xl font-medium text-foreground/90">Understand Your Windows PC.</p>
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-muted-foreground">
@@ -94,8 +97,8 @@ function OsMapPage() {
             </Button>
           </div>
           <p className="mt-4 text-sm text-muted-foreground">
-            OS Map 0.1.0 is currently in trusted testing. View release details, verification
-            information, and project status.
+            OS Map 0.1.0 Beta has been publicly available since 21 June 2026. View release details
+            and verification information.
           </p>
         </div>
       </section>
@@ -147,6 +150,21 @@ function OsMapPage() {
         </div>
       </section>
 
+      {/* Privacy */}
+      <section className="mx-auto max-w-6xl px-4 pt-20 sm:px-6">
+        <SectionHeading
+          eyebrow="Trust & privacy"
+          title="Quiet by design."
+          description="How OS Map behaves on your computer."
+        />
+        <div className="mt-8">
+          <PrivacyList />
+        </div>
+        <p className="mt-6 text-sm text-muted-foreground">
+          Any future changes to these behaviours will be clearly disclosed.
+        </p>
+      </section>
+
       {/* A look inside */}
       <section className="mx-auto max-w-6xl px-4 py-20 sm:px-6">
         <SectionHeading
@@ -190,7 +208,7 @@ function OsMapPage() {
       <section className="mx-auto max-w-6xl px-4 pb-24 sm:px-6">
         <div className="rounded-2xl border border-border/70 bg-gradient-to-br from-accent/60 to-surface px-6 py-12 text-center sm:px-12">
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl">OS Map release details</h2>
-          <p className="mt-3 text-base text-muted-foreground">See the current beta release information.</p>
+          <p className="mt-3 text-base text-muted-foreground">See the OS Map 0.1.0 Beta release information.</p>
           <Button asChild size="lg" className="mt-6">
             <Link to="/os-map/download">
               <FileText /> View Release Details

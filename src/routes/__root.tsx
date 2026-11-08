@@ -87,7 +87,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       {
         name: "description",
         content:
-          "PCNav develops practical tools focused on visibility, clarity, and confidence — helping people understand and navigate technology.",
+          "PCNav makes Workspace Navigator and OS Map: practical Windows software that helps people understand their computers and keep their work in order.",
       },
       { name: "author", content: "PCNav" },
       { property: "og:title", content: "PCNav — Navigate Technology With Confidence" },
@@ -96,9 +96,16 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         content: "Practical tools designed to help people understand, navigate, and manage technology.",
       },
       { property: "og:type", content: "website" },
-      { name: "twitter:card", content: "summary" },
+      { property: "og:site_name", content: "PCNav" },
+      // A 1200 x 630 image: the approved positioning beside a still from the Concept Video.
+      { property: "og:image", content: "https://www.pcnav.net/og-image.png" },
+      { property: "og:image:width", content: "1200" },
+      { property: "og:image:height", content: "630" },
+      { property: "og:image:alt", content: "Workspace Navigator — Your Continuity Compass. A sample Project open in the application." },
+      { name: "twitter:card", content: "summary_large_image" },
     ],
     links: [
+      { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "stylesheet", href: appCss },
       ...(MEMBERSHIP_ENABLED ? [{ rel: "stylesheet", href: accountCss }] : []), // membership only (WNM-11A)
       { rel: "preconnect", href: "https://fonts.googleapis.com" },
@@ -136,16 +143,15 @@ function RootComponent() {
     <QueryClientProvider client={queryClient}>
       <ThemeProvider>
         <div className="flex min-h-screen flex-col">
-          {MEMBERSHIP_ENABLED && ( // skip link added with membership (WNM-3R); off by default (WNM-11A)
+          {/* Skip link and main landmark on every page, whatever the membership mode. */}
           <a
             href="#main"
             className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-50 focus:rounded-md focus:bg-background focus:px-4 focus:py-2 focus:text-foreground focus:ring-2 focus:ring-ring"
           >
             Skip to main content
           </a>
-          )}
           <SiteHeader />
-          <main {...(MEMBERSHIP_ENABLED ? { id: "main", tabIndex: -1 } : {})} className={MEMBERSHIP_ENABLED ? "flex-1 outline-none" : "flex-1"}>
+          <main id="main" tabIndex={-1} className="flex-1 outline-none">
             {/* Required: nested routes render here. */}
             <Outlet />
           </main>
