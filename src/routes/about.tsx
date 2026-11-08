@@ -15,7 +15,7 @@ import { Button } from "@/components/ui/button";
 import { CompassRose } from "@/components/product-visuals";
 import { OS_MAP_BETA, PUBLISHER, WN_BETA } from "@/lib/releases";
 
-// Publisher and contact: Owner decision D6 (2026-11-08). The principles and pillars are the site's
+// Publisher: Owner decision D6 (2026-11-08). The contact address is not published (Owner, 2026-11-08). The principles and pillars are the site's
 // existing wording, consolidated here from the homepage.
 export const Route = createFileRoute("/about")({
   head: () => ({
@@ -194,14 +194,8 @@ function AboutPage() {
             <Mail className="h-5 w-5 text-primary" aria-hidden="true" />
             <h3 className="mt-3 font-semibold">General enquiries</h3>
             <p className="mt-1.5 text-sm leading-relaxed text-muted-foreground">
-              Write to{" "}
-              <a
-                href={`mailto:${PUBLISHER.contact}`}
-                className="text-primary underline underline-offset-4 hover:no-underline"
-              >
-                {PUBLISHER.contact}
-              </a>
-              .
+              For enquiries, please use the available feedback and support channels. A dedicated
+              contact form is being prepared.
             </p>
           </div>
           <div className="rounded-xl border border-border/70 bg-card p-6 shadow-sm">

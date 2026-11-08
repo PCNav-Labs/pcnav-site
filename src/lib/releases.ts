@@ -28,5 +28,4 @@ export const OS_MAP_BETA = {
 // Owner decision D6 (2026-11-08).
 export const PUBLISHER = {
   name: "Papaya Services Ltd.",
-  contact: "contact@pcnav.net",
 } as const;

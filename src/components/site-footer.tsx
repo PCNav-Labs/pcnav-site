@@ -1,10 +1,10 @@
 import type { ReactNode } from "react";
 import { Link } from "@tanstack/react-router";
-import { Compass, Mail } from "lucide-react";
+import { Compass } from "lucide-react";
 import { MEMBERSHIP_ENABLED } from "@/account/mode";
 import { PUBLISHER } from "@/lib/releases";
 
-// Publisher and contact: Owner decision D6 (2026-11-08). Account: Owner decision D4 — reached from
+// Publisher: Owner decision D6 (2026-11-08). The contact address is not published (Owner, 2026-11-08). Account: Owner decision D4 — reached from
 // here, marked Coming Soon, only in builds that include the membership scaffolding.
 export function SiteFooter() {
   return (
@@ -23,15 +23,6 @@ export function SiteFooter() {
           <p className="mt-4 max-w-xs text-sm leading-relaxed text-muted-foreground">
             Practical Windows software for understanding your computer and keeping your work in
             order.
-          </p>
-          <p className="mt-4 text-sm">
-            <a
-              href={`mailto:${PUBLISHER.contact}`}
-              className="inline-flex items-center gap-2 text-muted-foreground hover:text-foreground"
-            >
-              <Mail className="h-4 w-4" aria-hidden="true" />
-              {PUBLISHER.contact}
-            </a>
           </p>
         </div>
 
