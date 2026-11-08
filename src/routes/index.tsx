@@ -18,7 +18,7 @@ import { PrincipleCard } from "@/components/principle-card";
 import { PrivacyList } from "@/components/privacy-list";
 import { CtaBand } from "@/components/cta-band";
 import { PromoVideo } from "@/components/promo-video";
-import { WN_INTRO_VIDEO } from "@/lib/promo-video";
+import { WN_CONCEPT_VIDEO } from "@/lib/promo-video";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -80,7 +80,7 @@ const DOWNLOAD_ACTION =
 function HomePage() {
   return (
     <>
-      {/* Hero: the PCNav introduction beside the Workspace Navigator introduction video */}
+      {/* Hero: the PCNav introduction beside the Workspace Navigator Concept Video */}
       <section className="relative overflow-hidden">
         <div className="absolute inset-0 -z-10 bg-[radial-gradient(60%_60%_at_50%_0%,var(--color-accent)_0%,transparent_70%)] opacity-60" />
         <div className="mx-auto grid max-w-6xl items-center gap-8 px-4 pb-12 pt-10 sm:px-6 sm:pb-16 sm:pt-14 lg:grid-cols-[minmax(0,1fr)_minmax(0,30rem)] lg:gap-12 xl:grid-cols-[minmax(0,1fr)_minmax(0,32rem)]">
@@ -122,7 +122,7 @@ function HomePage() {
           </div>
 
           <div id="watch-video" className="scroll-mt-20">
-            <PromoVideo video={WN_INTRO_VIDEO} />
+            <PromoVideo video={WN_CONCEPT_VIDEO} />
           </div>
 
           {/* On narrow screens the secondary link follows the video. */}

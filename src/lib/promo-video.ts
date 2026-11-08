@@ -1,4 +1,6 @@
-// Homepage introduction video for Workspace Navigator.
+// Workspace Navigator videos. The Concept Video plays on the homepage and the Workspace Navigator
+// page. The Video Introduction (R7) is no longer embedded; its file, poster, transcript and credits
+// stay published at their URLs.
 //
 // The homepage plays the optimized MP4 inline in the site's own native player, with a speed
 // selector; the poster is a frame of the video's opening title card, taken from the same file. No

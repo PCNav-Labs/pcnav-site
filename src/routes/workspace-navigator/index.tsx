@@ -152,7 +152,7 @@ function WorkspaceNavigatorPage() {
         </div>
       </section>
 
-      {/* Concept video: what Workspace Navigator is for. The homepage keeps the Video Introduction. */}
+      {/* Concept video: what Workspace Navigator is for. The homepage hero plays it too. */}
       <section id="concept-video" className="mx-auto max-w-6xl scroll-mt-20 px-4 pt-16 sm:px-6">
         <PromoVideo video={WN_CONCEPT_VIDEO} />
       </section>
