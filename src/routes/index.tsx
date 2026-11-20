@@ -186,6 +186,32 @@ function HomePage() {
             <p className="mt-5 text-sm text-hero-muted">
               Version {WN_BETA.version} · {WN_BETA.platformShort} (x64) · No account needed
             </p>
+            <section
+              id="mac-availability"
+              aria-labelledby="mac-availability-title"
+              className="mx-auto mt-6 max-w-xl rounded-xl border border-white/15 bg-white/5 px-5 py-4 text-left"
+            >
+              <h2
+                id="mac-availability-title"
+                className="text-sm font-semibold text-hero-foreground"
+              >
+                Workspace Navigator for Mac — Planned for Spring 2027
+              </h2>
+              <p className="mt-2 text-sm font-semibold text-hero-foreground">
+                Your Continuity Compass is coming to macOS.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-hero-muted">
+                We're working towards bringing Workspace Navigator to Mac in Spring 2027.
+              </p>
+              <p className="mt-2 text-sm leading-relaxed text-hero-muted">
+                In the meantime, Workspace Navigator for Windows is available now, with continued
+                improvements as we prepare for Version 1.0.
+              </p>
+              <p className="mt-2 text-xs italic text-hero-muted">
+                Spring 2027 is our target release window. Timing is subject to development and
+                testing.
+              </p>
+            </section>
           </div>
 
           <figure className="relative mx-auto mt-12 max-w-5xl sm:mt-14">
